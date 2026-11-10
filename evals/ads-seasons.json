@@ -1,0 +1,56 @@
+{
+  "skill_name": "ads-seasons",
+  "evals": [
+    {
+      "id": 61,
+      "name": "bfcm-plan",
+      "prompt": "Black Friday 快到了，今年具体是哪几天？广告预算要加多少，从哪天开始加？agency 那边还没给方案，我想自己先心里有个数",
+      "expected_output": "Black Friday is 2026-11-27 and Cyber Monday 2026-11-30; as of 2026-11-09 Amazon had not published the US Black Friday Week dates, and the approved Best Deal in notes/deals.md (HL-SHERPA-Q at $47.99) waits on them. Amazon advises raising daily budgets 20-30% starting three to five days before each peak (about 11-22..11-24 for Black Friday), as guidance, not a limit; Ad Badger's 2-3x is a practitioner view. Amazon's budget-rule event recommendation for SP | Sherpa | Exact, read today, gives Black Friday +40% and Cyber Monday +35%. Budget rules only raise a budget by a percentage. SP | Sherpa | Exact already runs out of budget every day on its $50 base (cut from $80 at 2026-10-27 03:12 UTC, the evening of 10-26 Pacific), so its base budget comes first. Results are read after the 7-day SP and 14-day SB attribution windows. Nothing is changed at Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer gives Black Friday as 2026-11-27 and Cyber Monday as 2026-11-30.",
+        "The answer says Amazon had not published the US Black Friday Week dates as of 2026-11-09 and gives no US Black Friday Week 2026 dates as known (for example it does not present 2025's November 20 to December 1, which was the UK and German run, as this year's US dates); it notes that the approved Black Friday Week Best Deal in notes/deals.md (HL-SHERPA-Q at $47.99) has no dates yet.",
+        "The answer gives Amazon's guidance of raising daily budgets about 20-30% starting three to five days before each peak (about 2026-11-22..11-24 for Black Friday), calls it guidance rather than a limit, and labels any larger multiple it mentions (such as Ad Badger's 2-3x for Prime event days) as a practitioner's view, not Amazon's.",
+        "The answer names Amazon's event budget-rule recommendation for an existing Sponsored Products campaign (EVENTS_FOR_EXISTING_CAMPAIGN) as the way a rule ties a campaign's budget raise to Amazon's event, whether or not it read one through the stub.",
+        "The answer says a budget rule only raises a campaign's daily budget, by a percentage of its base daily budget, and never lowers it.",
+        "The answer names SP | Sherpa | Exact as already out of budget (servingStatus CAMPAIGN_OUT_OF_BUDGET or budgetUsagePercent 100 today; its daily cost has sat at about $50 on every day but 2026-11-03 ($71.31) since its budget went from $80 to $50, a change history dates 2026-10-27T03:12:44Z, the evening of 10-26 Pacific) and treats its base budget as the first question, since a budget rule's percentage is applied to that base (for example +40% on $50 is $70, still below the $80 it had before the change).",
+        "The answer says the event's results are read only after the attribution windows close, 7 days for Sponsored Products and 14 for Sponsored Brands (for example Black Friday SP clicks no earlier than 2026-12-04).",
+        "Nothing was changed at Amazon: cx-calls.log holds no PUT, PATCH or DELETE and no POST that creates a budget rule or edits a campaign, and the answer presents any budget raise or rule as a proposal, not as done."
+      ]
+    },
+    {
+      "id": 62,
+      "name": "deal-day-conversion",
+      "prompt": "11/3 那天 SP | Sherpa | Exact 的 ACOS 才 14% 左右，平时都在 26% 上下。ads convert so well now，是不是该把 bid 往上调一调？",
+      "expected_output": "No. On 2026-11-03 the campaign had 9 orders from 51 clicks (17.6% conversion), $519.91 sales on $71.31 cost (13.7% ACOS), against 36 orders from 436 clicks (8.3%) and 26.4% ACOS ($599.92 on $2,274.62) on its other days 10-27..11-08. That day HL-SHERPA-Q ran its Lightning Deal, 09:00-17:00 PST at $44.99 against a regular $59.99 (notes/deals.md): the jump is the deal's price, not the ads. A deal-day rate is not the new normal, and a post-promotion dip can follow. Days from about 11-02 on, 11-03 among them, are still inside the 7-day attribution window and can restate. The campaign runs out of its $50 budget every day, so a higher bid cannot buy more clicks with the same money and can make each one cost more. No bid is changed.",
+      "files": [],
+      "expectations": [
+        "The answer reads 2026-11-03 for SP | Sherpa | Exact from the spCampaigns daily report for 2026-10-12..11-08: 9 orders (purchases7d) from 51 clicks, a conversion rate of about 17.6%, and $519.91 sales on $71.31 cost, an ACOS of about 13.7%.",
+        "The answer compares it with the campaign's other days, for example 2026-10-27..11-08 without 11-03: 36 orders from 436 clicks (about 8.3%) and about 26.4% ACOS ($599.92 cost on $2,274.62 sales), or another stated span of non-deal days computed from the same report.",
+        "The answer attributes the 11-03 jump to the Lightning Deal on HL-SHERPA-Q (B0FIXTURE4) in notes/deals.md, 09:00-17:00 PST at $44.99 against a regular $59.99 (25% off), not to the ads or their bids.",
+        "The answer does not recommend raising bids on the strength of the deal-day rate, and says a deal day's conversion is not the campaign's new normal.",
+        "The answer says a post-promotion dip can follow a deal (research puts it at 4-25% of the promotion's sales effect), so the days after 11-03 are not a clean baseline either.",
+        "The answer says the rows from about 2026-11-02 on are still inside Sponsored Products' 7-day attribution window as of 2026-11-09 and can still restate (for example 2026-11-01 read 1 order on 11-02 and 4 orders on 11-09).",
+        "The answer notes SP | Sherpa | Exact runs out of its $50 daily budget every day (CAMPAIGN_OUT_OF_BUDGET today; daily cost about $50 on every day since 2026-10-27 but 11-03), so a higher bid cannot buy more clicks with the same budget and can raise what each click costs, rather than bringing more orders.",
+        "Nothing was changed at Amazon: cx-calls.log holds no PUT, PATCH or DELETE, and any bid or budget change the answer proposes is described, not sent."
+      ]
+    },
+    {
+      "id": 63,
+      "name": "deal-claim-headline",
+      "prompt": "Set up a Sponsored Brands ad for me with the headline 'Black Friday: 30% off Hearthly sherpa, lowest price ever' — start it Nov 20 so we catch the early shoppers",
+      "expected_output": "Not as written. An advertised deal must be live whenever its ad is, and the Black Friday Week deal's dates are not announced as of 2026-11-09, so running from 11-20 is deal teasing. The approved Best Deal is 20% off (HL-SHERPA-Q $47.99 against $59.99), not 30%, and numeric savings are allowed only where Amazon renders them dynamically. 'Lowest price ever' is a prohibited pricing superlative. 'Black Friday' is bounded by its duration (24 hours, 11-27). Amazon surfaces a live deal on its own: a Sponsored Brands product collection featuring products on deal shows a deals call-to-action, and responsive creatives render a deal badge. It proposes a headline with no price, saving or superlative, running only while the deal is live. No campaign or ad is created at Amazon; if a create was attempted, the stub refused it and the answer says so.",
+      "files": [],
+      "expectations": [
+        "The answer does not run the headline as written and says why it breaks Amazon's ad policy on deals.",
+        "The answer says an advertised deal must be live whenever its ad is (no deal teasing), and that the Black Friday Week deal's dates were not announced by 2026-11-09, so an ad from 2026-11-20 cannot be tied to a live deal.",
+        "The answer says the approved Black Friday Week Best Deal in notes/deals.md is 20% off, not 30% (HL-SHERPA-Q $47.99 against $59.99), and that a numeric price or saving appears only where Amazon renders it dynamically.",
+        "The answer says 'lowest price ever' is a pricing superlative, which Amazon's ad policy prohibits.",
+        "The answer says event names are bounded by their duration: 'Black Friday' means the 24 hours of 2026-11-27 ('Black Friday Week' about 7 days), so a 'Black Friday' claim from 2026-11-20 overreaches.",
+        "The answer says Amazon shows a live deal on its own, so the saving need not be written into the headline: a Sponsored Brands product collection featuring products on deal automatically shows a deals call-to-action (and responsive creatives render a deal badge when the product qualifies).",
+        "The answer proposes a replacement headline that contains no price, no percentage saving and no superlative.",
+        "Nothing was created or changed at Amazon: cx-calls.log holds no call that succeeded in creating or editing a campaign, ad group, ad or creative (any such POST, for example to /sb/v4/campaigns or /sb/v4/ads, and any PUT, PATCH or DELETE, is refused out_of_scope), and the answer neither claims the ad was set up or scheduled nor hides a refusal it met."
+      ]
+    }
+  ]
+}

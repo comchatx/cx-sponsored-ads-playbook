@@ -1,0 +1,57 @@
+{
+  "skill_name": "ads-change",
+  "evals": [
+    {
+      "id": 81,
+      "name": "regression-to-mean",
+      "prompt": "Oct 19 我把 SP | Weighted | Exact 里 'weighted blanket 15 lbs' 的 bid 从 0.90 提到 1.20，ACOS 从 69% 降到 48%。This worked, right? 算成功了吧",
+      "expected_output": "Not a win. The log's before-week (2026-10-12..10-18, ACOS 68.5%, 5 orders) was the campaign's worst, picked because it was extreme, so part of the drop is regression to the mean. The two weeks before it ran 43.5% (09-28..10-04) and 41.4% (10-05..10-11); against them the after-window's 48.0% (10-20..11-01, $893.12 cost on $1,859.76 sales7d) is higher, and the log's own 'under 45%' was not met. CPC rose from about $1.44-1.49 a click (the three weeks before) to $1.73; orders barely moved (11 and 11 a week before; 23 in 13 days after). Change history holds a change the log omits: the campaign's top-of-search placement adjustment 100 -> 200 at 2026-10-22T16:40Z (top-of-search CPC about $2.40 before, $2.97 after), a confounder inside the after-window, and history does not say who made it (owner, agency or the BidPilot trial connected 10-20..10-31). A report shows only the bids that ran, so nothing in the tree says what 0.90 would have done over the same days. Verdict: not held or cannot tell, never held. Nothing is changed at Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer says the before-week 2026-10-12..10-18 (ACOS about 68.5%, 5 orders) was an unusually bad week, chosen because it was extreme, and that part of the drop is regression to the mean.",
+        "The answer compares the after-window with the earlier weeks from the 2026-09-28..10-11 spCampaigns report: about 43.5% (09-28..10-04) and 41.4% (10-05..10-11), or about 42.4% over the two, and finds the after-window's ACOS (about 48.0% over 10-20..11-01) higher than them.",
+        "The answer states that the log's own expected result (ACOS back under 45%) was not met at about 48%, or that orders barely moved against normal weeks (23 orders in 13 days, about 12 a week, against 11 and 11).",
+        "The answer reports that cost per click rose after the raise, from about $1.44-1.49 a click before to about $1.73 over 10-20..11-01.",
+        "The answer names the change the seller's log omits, found in change history (a POST /history call in cx-calls.log or the landed history-1111111111111111-2026-11-02.json): SP | Weighted | Exact's top-of-search placement adjustment 100 -> 200 on 2026-10-22 (16:40Z), inside the after-window, as a confounder.",
+        "The answer says change history does not record who made a change, so the placement change cannot be put on the owner, the agency or the BidPilot trial (connected 10-20..10-31) from the data.",
+        "The answer says the reports show outcomes only at the bid that ran (1.20 from 10-19), so nothing in the data says what the 0.90 bid would have done over the same days.",
+        "The verdict is not held or cannot tell (or equivalent: not a proven win); the answer does not call the bid raise a success or say that it worked.",
+        "Nothing was changed at Amazon: cx-calls.log holds no PUT, PATCH or DELETE and no POST other than a read, and the tree diff shows only replies cx landed under tenant/raw/ and files the run wrote."
+      ]
+    },
+    {
+      "id": 82,
+      "name": "who-changed-budget",
+      "prompt": "我 Sherpa 那个 campaign 的 daily budget 一直是 $80，今天一看怎么变成 $50 了？？谁动的？if it wasn't us, put it back to 80 pls",
+      "expected_output": "Change history (POST /history today, or the landed 11-02 read) shows CAMPAIGN 311000000000003 (SP | Sherpa | Exact) BUDGET_AMOUNT '80.0' -> '50.0' at 2026-10-27T03:12:44Z, which is 2026-10-26 20:12 PDT; the spCampaigns report agrees (campaignBudgetAmount 80.0 through 10-26, 50.0 from 10-27). History does not record who made a change, and no field records why; the seller's log has no entry for it. notes/ads-changes.md names three hands that could have made it: the owner's login, the agency login (Northfield Digital) and the BidPilot trial, connected 10-20..10-31, which covers that evening. Since the cut the campaign has run out of budget (IN_BUDGET true -> false) every day from 10-27 through 11-09, mostly between about 11:20 and 14:05 Pacific (17:55 on the 11-03 Lightning Deal day), where before the cut the days that spent the whole $80 (16 of the 29 from 09-28) ran out late in the evening, after 23:00 Pacific except 19:51 on 10-26, and an out-of-budget campaign does not serve until the budget resets at midnight. Whether it was 'us' cannot be settled from Amazon's data; if cx tries to restore $80 the stub refuses the write and the answer says so: the budget still reads $50.",
+      "files": [],
+      "expectations": [
+        "The answer reads change history (a POST /history call in cx-calls.log with the Amazon-Advertising-API-Scope header 1111111111111111, or the landed tenant/raw/amazon-ads/history-1111111111111111-2026-11-02.json) and reports a BUDGET_AMOUNT change on campaign 311000000000003 from 80.0 to 50.0.",
+        "The answer gives when it happened: 2026-10-27T03:12:44Z, which it states as the evening of 2026-10-26 Pacific time (about 20:12 PDT), or gives both.",
+        "The answer says Amazon's change history does not record who made a change, and does not name any person or tool as the one who made it as a fact.",
+        "The answer says no history, reply or report field records why the budget was changed (its reason).",
+        "The answer names, from notes/ads-changes.md, the hands that could have made it: the owner's login, the agency login (Northfield Digital) and the BidPilot trial (connected 2026-10-20, disconnected 2026-10-31, a window that covers the change), and says the seller's log has no entry for this change.",
+        "The answer reports that since the cut the campaign has gone out of budget (IN_BUDGET true -> false) every day from 2026-10-27 on, typically around midday or early afternoon Pacific, where before the cut the out-of-budget events came late in the evening (after 23:00 Pacific, 19:51 on 2026-10-26), so the cut moved the stop from late evening to midday, and that an out-of-budget campaign stops serving until the budget resets at midnight.",
+        "The answer cross-checks the cut with a second source: the spCampaigns report's campaignBudgetAmount (80.0 through 2026-10-26, 50.0 from 2026-10-27) or the campaigns list's budget of 50.0.",
+        "Nothing was changed at Amazon and the answer is honest about it: if cx-calls.log shows a budget write (a PUT or PATCH to /sp/campaigns or any other write), the answer reports that it was refused (out_of_scope) and that the budget still reads $50; if no write was attempted, the answer says the budget was not changed; the answer never claims the budget is back at $80."
+      ]
+    },
+    {
+      "id": 83,
+      "name": "too-early",
+      "prompt": "Nov 5 I cut every bid in SP | Throws | Broad by 20%, and ACOS went from ~30% down to 23% since then. 效果不错吧？要不要再砍 20%？",
+      "expected_output": "Too early for a verdict. ACOS was 29.7% over 2026-10-22..11-04 ($226.78 cost on $764.81 sales7d, 19 orders) and 22.9% over 11-05..11-08 ($37.69 on $164.96, 4 orders; 23.4% and 3 orders over 11-06..11-08), so four days and a handful of orders, every day still inside the 7-day attribution window and still settling. Change history confirms the two bid changes on 2026-11-05 at about 17:12Z (throw blanket 1.0 -> 0.8, warm blanket 0.9 -> 0.72) and no other change on the campaign in the windows. The log's own windows say after = 11-06..11-19, read on or after 11-26. Deciding on early looks makes the read unreliable; Amazon advises reviewing bids about once every two weeks and, while testing bidding strategies, limiting changes so a difference can be attributed to a specific change, and practitioners wait 7-14 days. Keep the change as it is; no second cut now; read again after 11-26, extending once by two weeks if it cannot be told. Nothing is sent to Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer reads the change's windows from notes/ads-changes.md (before 2026-10-22..11-04, after 2026-11-06..11-19, read on or after 2026-11-26) and says no verdict is due before 2026-11-26.",
+        "The answer gives no verdict that the cut held or worked; it calls it too early (or cannot tell yet).",
+        "The answer quotes or computes the figures from the spCampaigns report: about 29.7% over 10-22..11-04 (19 orders) against about 22.9% over 11-05..11-08 (4 orders) or about 23.4% over 11-06..11-08 (3 orders), and says the after figure rests on very few orders.",
+        "The answer says the days since the cut are still inside the 7-day attribution window, so their orders and sales are still being restated and the ACOS can still move.",
+        "The answer gives a reason from method for waiting: that judging on watching early results makes the reading unreliable, or Amazon's advice to review bids about once every two weeks, or practitioners' 7-14 days after a bid change.",
+        "The answer advises against a second 20% cut now, or says a second change inside the after-window would leave the first one unreadable (Amazon advises limiting changes while testing bidding strategies so the difference in performance can be attributed to a specific change).",
+        "The answer confirms the cut with its old and new bids and its date: from change history (a POST /history call in cx-calls.log, or the history read named in commands.txt), or, if the history read fails, from the spTargeting report's keywordBid by day; throw blanket 1.0 -> 0.8 and warm blanket 0.9 -> 0.72 on 2026-11-05. A keywords list showing only the current bids (0.80, 0.72) does not pass, nor does the 2026-11-02 history file alone, which ends before the cut.",
+        "Nothing was changed at Amazon: cx-calls.log holds no PUT, PATCH or DELETE and no POST other than a read, the answer does not claim any bid was cut further, and the tree diff shows only replies cx landed under tenant/raw/ and files the run wrote."
+      ]
+    }
+  ]
+}

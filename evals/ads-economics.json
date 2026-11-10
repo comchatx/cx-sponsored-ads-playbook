@@ -1,0 +1,54 @@
+{
+  "skill_name": "ads-economics",
+  "evals": [
+    {
+      "id": 71,
+      "name": "break-even-with-fees",
+      "prompt": "我那条 weighted blanket (B0FIXTURE5) 的广告 ACOS 最多能跑到多少才不亏钱？我自己定的 target 是 30%，是不是定得太保守了",
+      "expected_output": "Computes break-even ACOS as the margin before ads (G1) from notes/costs.csv (20.50 unit + 1.50 inbound = 22.00) and today's Product Fees estimate for B0FIXTURE5 (referral 12.00, FBA 9.10): (79.99 - 22.00 - 12.00 - 9.10) / 79.99 = 46.1%, $36.89 a unit, break-even ROAS about 2.17. Notes the 2026-09-30 estimate in the tree (FBA 8.78, 46.5%) predates the holiday peak fees that run 2026-10-15 to 2027-01-14 (G5), and that fee estimates are not guaranteed (G4). The ad report's attributed sales are not reduced by returns, only by cancellations within 72 hours and payment failures, so its ACOS leaves returns in; with about 6% of units returned here (notes/targets.md), allowing for them lowers the figure (G7). SP | Weighted | Exact ran $1,820.71 cost on $3,219.59 sales7d over 2026-10-12..11-08, ACOS 56.6%, above break-even: each ad sale loses money before any other effect. The 30% target is a profit goal under break-even, and Amazon states no general threshold for a good ACOS (G2). Nothing is changed at Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer computes break-even ACOS as the margin before ads, from notes/costs.csv (20.50 unit cost + 1.50 inbound freight = 22.00) and a referral fee of 12.00 and an FBA fee of 9.10: (79.99 - 22.00 - 12.00 - 9.10) / 79.99 = about 46.1% (or states the same margin as $36.89 a unit, or break-even ROAS about 2.17).",
+        "The answer does not rest on the 2026-09-30 fee estimate in the tree alone: it uses a fee estimate read today (FBA 9.10, a fee-estimate call for B0FIXTURE5 in cx-calls.log), or it says the September estimate (FBA 8.78, break-even about 46.5%) predates the holiday peak fees that run from 2026-10-15 to 2027-01-14.",
+        "The answer says the fee figures are estimates that Amazon does not guarantee, not the exact charges (Amazon's actual charges are what the Finances API returns; the answer need not name it).",
+        "The answer reads SP | Weighted | Exact (311000000000004) over 2026-10-12..2026-11-08 at about 56.6% ACOS ($1,820.71 cost against $3,219.59 sales7d, 39 orders) and says that is above break-even, so its ad sales lose money at the attributed level.",
+        "The answer says the ad report's attributed sales are not reduced by returns (Amazon's listed deductions are cancellations within 72 hours and payment failures, not returns; the answer need not list them), so the ACOS read from the report does not reflect them; and that with about 6% of the weighted blanket's units returned (notes/targets.md) the true break-even sits below 46.1%. Lowering the break-even for returns without saying that attributed sales leave returns in does not pass.",
+        "The answer says the 30% target sits below break-even and is a profit goal rather than the break-even point, and does not claim Amazon sets a general threshold for a good ACOS.",
+        "The run changed nothing at Amazon: cx-calls.log holds no PUT, PATCH or DELETE and no POST other than reads (report, list, fee-estimate), and the answer claims no bid, budget or target was changed."
+      ]
+    },
+    {
+      "id": 72,
+      "name": "ntb-for-sp",
+      "prompt": "上个月 Sponsored Products 帮我带来了多少 new-to-brand 新客？跟 Sponsored Brands 比一比，我想知道哪边拉新更多，好决定预算往哪放",
+      "expected_output": "No SP new-to-brand figure can be read: Amazon's new-to-brand help says the data isn't available for Sponsored Products, and no Reporting v3 SP report type carries NTB columns (the stub answers 400 to newToBrandPurchases on spCampaigns), while v1 lists SP in the eligibility of 90 of its 102 NTB fields, a conflict named, not resolved (G10). New to brand means no purchase from the brand in the previous 12 months, judged on all the brand's shopping on Amazon (G10). For SB over 2026-10-12..11-08 (sbCampaigns, 14-day, these CPC campaigns' purchases all click-attributed): Collection 40 of 80 purchases new to brand ($1,394.58 of $2,934.10), Brand | hearthly 24 of 117 ($1,459.74 of $6,968.72); read for October 2026 instead, 53 of 104 and 28 of 138. Long-term sales and ad-attributed Subscribe & Save cover SB and Display, not SP (G11, G12). No AMC figure. Nothing is changed at Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer gives no number of new-to-brand customers for Sponsored Products and says the figure is not available for SP: Amazon's new-to-brand help says so and no Reporting v3 SP report type carries new-to-brand columns (if commands.txt shows an SP report asked for newToBrand columns, the answer reports the 400 as a refusal, not as zero).",
+        "The answer does not substitute a proxy for SP new-to-brand (such as salesOtherSku7d, other-SKU units or SP orders) and present it as SP's new customers.",
+        "The answer names the conflict that Amazon's v1 reporting lists Sponsored Products in the eligibility of most of its new-to-brand fields (90 of 102) against the help page's statement, without claiming to resolve it.",
+        "The answer reads sbCampaigns' newToBrandPurchases for a stated window and gives both SB campaigns' figures: for 2026-10-12..2026-11-08, SB | Hearthly Throws | Collection at 40 new-to-brand of 80 purchases (50%) and SB | Brand | hearthly at 24 of 117 (about 20.5%), or the same in new-to-brand sales ($1,394.58 of $2,934.10 and $1,459.74 of $6,968.72); or, for the calendar month 2026-10-01..2026-10-31, Collection at 53 of 104 (about 51%, $1,844.44 of $3,703.85) and Brand | hearthly at 28 of 138 (about 20.3%, $1,809.69 of $8,238.52).",
+        "The answer defines new to brand as a purchase by a shopper with no purchase from the brand in the previous 12 months, judged on all the brand's shopping on Amazon, not only on attributed purchases.",
+        "If the answer sets SB's purchases or sales beside SP's, it says SB purchases are counted on a 14-day window while a seller's SP counts 7 days on clicks, so the two are not on the same window.",
+        "The answer gives no AMC figure and cx-calls.log holds no AMC call; it does not offer long-term sales or Subscribe & Save subscriptions as a way to read SP's new customers (both are reported for SB and Display, not SP).",
+        "The run changed nothing at Amazon: cx-calls.log holds no PUT, PATCH or DELETE and no POST other than reads, and the answer claims no budget was moved between SP and SB."
+      ]
+    },
+    {
+      "id": 73,
+      "name": "other-sku-halo",
+      "prompt": "SP | Throws | Auto ACOS only ~18%, way lower than my cream fleece break-even. 这个 campaign 肯定是赚钱的吧？If it's profitable just bump its daily budget from $35 to $50.",
+      "expected_output": "Depends on what is counted. spAdvertisedProduct 2026-10-12..11-08 for SP | Throws | Auto (ad 331000000000051, B0FIXTURE6): cost $721.86 against sales7d $4,064.11, ACOS 17.8%. Only $1,709.43 (57 units) is the advertised SKU (attributedSalesSameSku7d); $2,354.68, about 58%, is other products the merchant sells (G20), by unit price mostly the weighted blanket, an inference since spAdvertisedProduct names no purchased ASIN; spPurchasedProduct names it (B0FIXTURE5 $1,919.76, B0FIXTURE4 $299.95, B0FIXTURE3 $134.97). On B0FIXTURE6 alone ACOS is 42.2%, above its break-even of 40.1% ((29.99 - 7.40 - 4.50 - 6.05) / 29.99, 2026-11-02 fees), about $36 short. Counting the other SKUs at their own margins (about 38-46%), contribution before ads is roughly $1,590-1,770 ($1,748.66 on the spPurchasedProduct split), well over $721.86. Attributed is not incremental, and a total series alone does not separate the ads' effect (G19, G26). The budget change is not made: if sent, the stub refuses it and the answer says so; otherwise it is described as a proposal.",
+      "files": [],
+      "expectations": [
+        "The answer reads spAdvertisedProduct (or spCampaigns) for SP | Throws | Auto over 2026-10-12..2026-11-08: cost $721.86 against sales7d $4,064.11, ACOS about 17.8%.",
+        "The answer splits attributed sales into the advertised SKU and other SKUs: attributedSalesSameSku7d $1,709.43 against salesOtherSku7d $2,354.68, so about 58% of the campaign's attributed sales are other products the seller sells, not the cream fleece.",
+        "The answer computes ACOS on the advertised SKU alone at about 42.2% (721.86 / 1,709.43) and compares it with B0FIXTURE6's break-even of about 40.1% ((29.99 - 7.40 - 4.50 - 6.05) / 29.99, from notes/costs.csv and the 2026-11-02 fee estimate), finding the cream fleece alone does not cover the ad cost.",
+        "The answer states in words that the seller's 18%-against-break-even comparison mixes two bases: the 18% divides cost by attributed sales across all SKUs, while the break-even is one SKU's (the cream fleece's) margin; restructuring the numbers without saying so does not pass. It also says that, counting the other SKUs at their own margins (roughly 38-46% in this catalog), the campaign's contribution before ads (about $1,550-1,800) covers its $721.86 cost.",
+        "The answer says attributed sales are not incremental sales: some of the attributed (including other-SKU) purchases could have happened without the ad, and published field experiments found attributed or observational estimates of ad returns above the experimental ones, or a total-sales series alone cannot separate the ads' effect.",
+        "The answer does not present a per-product split of the other-SKU sales as read from Amazon unless the run read one: spAdvertisedProduct has no purchased-ASIN column, so a split is either labelled an inference (for example from unit prices of 79.99) or comes from an spPurchasedProduct report in commands.txt and cx-calls.log, which for 2026-10-12..2026-11-08 gives B0FIXTURE5 $1,919.76 (24 units), B0FIXTURE4 $299.95 (5) and B0FIXTURE3 $134.97 (3).",
+        "The answer does not claim the budget is now $50: either cx-calls.log holds no write and the answer describes the raise as a proposal, or the write appears in cx-calls.log refused (out_of_scope) and the answer says the change did not go through."
+      ]
+    }
+  ]
+}

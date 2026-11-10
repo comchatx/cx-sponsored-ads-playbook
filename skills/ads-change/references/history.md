@@ -2,8 +2,8 @@
 
 ## What it returns
 
-Amazon's change history, `POST /history`, returns up to 90 days of Sponsored Products and Sponsored Brands campaign changes, each with its previous value, new value and Unix timestamp. (C1)
-Its campaign change types include STATUS, IN_BUDGET, BUDGET_AMOUNT, END_DATE, SMART_BIDDING_STRATEGY and PLACEMENT_GROUP. (C1)
+Amazon's change history, `POST /history`, returns up to 90 days of change events for Sponsored Products and Sponsored Brands campaigns, each with its previous value, new value and Unix timestamp. (C1)
+For a campaign, its change types include STATUS, IN_BUDGET, BUDGET_AMOUNT, END_DATE, SMART_BIDDING_STRATEGY and PLACEMENT_GROUP. (C1)
 Amazon's model states "Changes for Sponsored Display campaigns are not returned", and that the history "doesn't return information about who made the change". (C1)
 
 ## An event

@@ -5,7 +5,7 @@ description: "What a change to a seller's sponsored ads leaves behind and how it
 
 ## Change history
 
-- `POST /history` returns up to 90 days of SP and SB campaign changes, old and new values; not Sponsored Display's, nor who made them (C1).
+- `POST /history` returns up to 90 days of change events for SP and SB campaigns, each with its `entityType`, old and new values and timestamp; not Sponsored Display's, nor who made them (C1, C2).
 - It has no event for negative product targets, audience or shopper bid adjustments, ad creative or budget-rule associations (C2).
 - No history, reply or report field records a change's reason, expected effect, judging metric or windows (C6).
 
@@ -19,15 +19,13 @@ description: "What a change to a seller's sponsored ads leaves behind and how it
 ## Testing
 
 - No Amazon page or model read offers a randomized test for sponsored ads; Manage Your Experiments covers listing content only (C10).
-- No Amazon page read states a statistical test or confidence level for an ad change (C9).
+- Amazon recommends limiting changes while testing bidding strategies, to attribute a difference to a specific change, and reviewing bids about once every two weeks (C9).
 - Practitioners disagree on how long to wait after a bid change (C20).
-- Amazon states it continually experiments with its ad auctions (C22).
 
 ## Before and after
 
 - Across 25 large ad field experiments the median ROI confidence interval exceeded 100 percentage points (C13).
 - Position differences won by bidding carry selection bias that randomizing one advertiser's bids cannot eliminate (C14).
-- Arms sharing budgets or auctions can severely bias a measured bid effect unless each keeps a separate budget (C15).
 - A report shows outcomes only at the bid that ran (C27).
 - A campaign picked after an extreme period shows a change that is partly regression to the mean (C18).
 - Ordinary p-values are unreliable when a test stops on watching its results (C16).
@@ -35,9 +33,9 @@ description: "What a change to a seller's sponsored ads leaves behind and how it
 
 ## References
 
-- references/history.md: history events and gaps.
-- references/writes.md: replies, idempotency, names, refusals, targets.
-- references/tests.md: Amazon's tests, practitioners, vendors.
+- references/history.md: event fields, `fromDate`, `THEME`, missing event types.
+- references/writes.md: 207 replies, idempotency, refusals, target types.
+- references/tests.md: Amazon's advice, missing tests and own experiments, practitioners' waits, vendors.
 - references/findings.md: organic, noise, positions, durability.
 - references/designs.md: ratios, interference, switchbacks, CUPED, verdicts.
 - ../ads-review/references/metrics.md: metric definitions.

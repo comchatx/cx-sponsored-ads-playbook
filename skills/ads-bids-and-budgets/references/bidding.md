@@ -40,7 +40,7 @@
 - Rule-based bidding adjusts base bids per impression toward a ROAS guardrail that Amazon bases on the previous 21 days and does not guarantee. (B11)
 - It can raise a bid up to five times the adjusted bid, and sets a goal itself when none is given. (B11)
 - Amazon warns that it can reduce conversions under an aggressive guardrail. (B11)
-- It needs a campaign running at least 10 days with at least 10 conversions in the last 30, at or above a marketplace minimum daily budget, so a newly launched campaign is not eligible. (B11)
+- It needs a campaign running at least 10 days with at least 10 conversions in the last 30, at or above a marketplace minimum daily budget, whose figure this skill does not hold, so a newly launched campaign is not eligible. (B11)
 - A comparison of rule-based campaigns with ineligible ones mixes the rule's effect with that gate. (B11)
 - Amazon switches it off when 20-day ROAS falls below 30% of the prior 20-to-40-day ROAS, restoring the earlier strategy and bids. (B11)
 

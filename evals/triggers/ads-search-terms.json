@@ -1,0 +1,82 @@
+[
+  {
+    "query": "pull the search term report for my 3 auto campaigns, last 30 days, and tell me which terms I should harvest into my exact campaign",
+    "should_trigger": true
+  },
+  {
+    "query": "auto 广告里 'blanket for dogs' 点了 38 次一单没出，花了 $31，我卖 $29.99 的毯子，要不要直接否掉？",
+    "should_trigger": true
+  },
+  {
+    "query": "I added 'dog bed' as negative exact two days ago and it's still showing up in yesterday's search term report with clicks. why isn't it working?",
+    "should_trigger": true
+  },
+  {
+    "query": "search term report 里好多 b0 开头的词，还有一行就是一个 *，这些是什么？能加成否定关键词吗",
+    "should_trigger": true
+  },
+  {
+    "query": "can I add negative keywords at campaign level in a Sponsored Brands campaign or only per ad group? and what about SD",
+    "should_trigger": true
+  },
+  {
+    "query": "我之前加的 negative exact 'cheap throw' 想改成 negative phrase，API 能直接改 matchType 吗还是要删了重建",
+    "should_trigger": true
+  },
+  {
+    "query": "which search terms got lots of impressions but zero clicks in my SP campaigns? I want to find the irrelevant traffic",
+    "should_trigger": true
+  },
+  {
+    "query": "is there a shared negative keyword list in Amazon Ads I can apply to all 40 of my campaigns at once, like Google Ads has?",
+    "should_trigger": true
+  },
+  {
+    "query": "Amazon's negative brand recommendations are telling me to negate my own brand Hearthly in my SP auto campaigns. should I?",
+    "should_trigger": true
+  },
+  {
+    "query": "after I move a converting auto search term to exact, do I need to negate it in the auto? or should I just use target promotion groups and let Amazon move them",
+    "should_trigger": true
+  },
+  {
+    "query": "my exact keyword bid is $1.20 but top of search is costing me ~$3 a click, dynamic bids up and down 开着，Prime Big Deal Days 前要不要把 placement 加到 +300%？",
+    "should_trigger": false
+  },
+  {
+    "query": "change the keyword 'throw blanket' in SP | Throws | Broad from broad match to phrase match",
+    "should_trigger": false
+  },
+  {
+    "query": "我的 break-even ACOS 应该是多少？售价 29.99，FBA 费 6.80，佣金 15%，货成本 9 块",
+    "should_trigger": false
+  },
+  {
+    "query": "my fleece throw SP campaign is enabled but impressions dropped to zero since Nov 5, did amazon suspend my ads?",
+    "should_trigger": false
+  },
+  {
+    "query": "we cut every bid 20% on SP | Throws | Broad on Nov 5. when can I tell whether it actually lowered ACOS, and how do I measure it?",
+    "should_trigger": false
+  },
+  {
+    "query": "new waffle throw went live last week with 0 reviews, how should I set up its first sponsored products campaign? daily budget 多少合适",
+    "should_trigger": false
+  },
+  {
+    "query": "what headers does the Ads API need for POST /reporting/reports, and how do I poll the reportId and download the gzip file?",
+    "should_trigger": false
+  },
+  {
+    "query": "add 'heated' and 'electric' to the backend search terms of my fleece throw listing so I rank for those searches",
+    "should_trigger": false
+  },
+  {
+    "query": "write me an AMC SQL query that joins customer_search_term to conversions over the last 90 days to see the path to purchase",
+    "should_trigger": false
+  },
+  {
+    "query": "Brand Analytics 里 'fleece throw' 这个词的 search frequency rank 是多少？点击份额前三的 ASIN 是谁，有没有我的？",
+    "should_trigger": false
+  }
+]

@@ -9,11 +9,13 @@
 
 - A search term of `*` is a detail-page placement with no keyword. (S2)
 - ASIN-shaped terms are the detail pages the ad appeared on, and they show only on auto and product-targeting rows. (S2)
+- A negative ASIN target stops ads on such a detail page, while a negative keyword stops ads on search pages for matching queries. (S2, S5)
 
 ## Columns
 
 - The Sponsored Products search term report carries the keyword or targeting expression, the match type, and the ids of keyword, ad group and campaign. (S3)
 - It has no advertised-ASIN column. (S3)
+- ../ads-structure-and-targets/references/structure.md: what products in one ad group share, and practitioners' per-ASIN structures.
 - ../ads-review/references/reports.md: report types and columns across ad products.
 
 ## Sponsored Display's matched target

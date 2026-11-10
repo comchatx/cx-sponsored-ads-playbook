@@ -7,6 +7,7 @@ Budget-rule event recommendations (`EVENTS_FOR_EXISTING_CAMPAIGN`) return, per c
 Amazon chooses those events from the campaign's products, and they change when the products change. (E3)
 Recommended events exist for Sponsored Products and Sponsored Brands only. (E3)
 A budget rule tied to an unannounced event is created with empty dates, which Amazon fills in when the dates are announced. (E3)
+Budget rules at large: ../ads-bids-and-budgets/references/budgets.md.
 
 ## Themes
 

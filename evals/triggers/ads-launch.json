@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Hearthly just got Brand Registry approved. can we run Sponsored Brands and Sponsored Display now, or is there another eligibility step? Professional plan, everything FBA",
+    "should_trigger": true
+  },
+  {
+    "query": "新品上架才 5 天，0 review。Amazon 允许投 Sponsored Products 吗？还是要先攒够 5 个 3.5 星以上的评论？",
+    "should_trigger": true
+  },
+  {
+    "query": "launching B0FIXTURE9 next week. first campaign auto or manual? and what daily budget do I start at, Amazon keeps saying $10",
+    "should_trigger": true
+  },
+  {
+    "query": "tried to add the parent ASIN B0FIXTURE8 to an ad group and it says INELIGIBLE, VARIATION_PARENT. how do I advertise the whole variation family then?",
+    "should_trigger": true
+  },
+  {
+    "query": "is the new-listing honeymoon period real? a coach told me Amazon gives new ASINs 2-4 weeks of boosted rank so I should spend hard on PPC right now",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm a brand new seller, first product listed 3 weeks ago. how do the new seller Sponsored Products credits work and what's the deadline to start my first campaign?",
+    "should_trigger": true
+  },
+  {
+    "query": "Vine 还是 Review Requests？新品没评论，Review Requests 是怎么收费的，按 review 算吗？US 能用吗",
+    "should_trigger": true
+  },
+  {
+    "query": "我们是 vendor (1P)，没做 Brand Registry，能投 Sponsored Brands 吗？还是只能投 SP？",
+    "should_trigger": true
+  },
+  {
+    "query": "before I build campaigns for 40 SKUs, can I check through the API which ones are actually advertisable? some are refurbished and a couple are out of stock",
+    "should_trigger": true
+  },
+  {
+    "query": "my first Sponsored Brands ad has been in moderation for 2 days, is that normal? how long until approval and what if it gets rejected",
+    "should_trigger": true
+  },
+  {
+    "query": "the waffle throw went live 10-28 and its auto campaign has spent $90 for 1 order. product ad reads AD_STATUS_LIVE but impressions halved since Nov 5, 帮我查下是什么原因",
+    "should_trigger": false
+  },
+  {
+    "query": "the Sherpa King's auto campaign has run three weeks now. go through its search terms: which move to an exact campaign and which get negated in the auto?",
+    "should_trigger": false
+  },
+  {
+    "query": "SP | Sherpa | Exact runs out of its $50 budget by 1pm every day. raise it to the $82 Amazon suggests, or cut bids instead?",
+    "should_trigger": false
+  },
+  {
+    "query": "the King's campaign has run since Oct 30. for Black Friday week, 预算什么时候加、加多少？do CPCs jump on Black Friday itself?",
+    "should_trigger": false
+  },
+  {
+    "query": "Sherpa King: $69.99, landed cost $19.60, FBA fee $13.40, referral 15%. what's its break-even ACOS, and once it's past launch is a 35% ACOS target still profitable?",
+    "should_trigger": false
+  },
+  {
+    "query": "I switched the waffle auto campaign from down only to up and down on Nov 3 and ACOS went 48% -> 39%. did the switch work or is that noise?",
+    "should_trigger": false
+  },
+  {
+    "query": "我的 DSP advertiser 不在 GET /v2/profiles 的返回里，Amazon-Advertising-API-Scope 该填什么？and what Accept header does /sp/campaigns/list need, I keep getting 415",
+    "should_trigger": false
+  },
+  {
+    "query": "rewrite the Sherpa King title and bullets so it ranks for 'king size sherpa blanket', and why does the Buy Box on my fleece throw keep going to another seller?",
+    "should_trigger": false
+  },
+  {
+    "query": "set up Amazon Attribution tags for our Meta ads pointing at the King listing. can Brand Metrics or an AMC query show whether those shoppers later bought through SP?",
+    "should_trigger": false
+  },
+  {
+    "query": "upload the new lifestyle video to our Brand Store home page and the creative asset library, and add a holiday subpage to the Store linking the Queen and King",
+    "should_trigger": false
+  }
+]

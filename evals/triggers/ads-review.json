@@ -1,0 +1,82 @@
+[
+  {
+    "query": "my SP ads for B0FIXTURE3 went to zero impressions since Thursday, campaign says enabled and the budget isn't capped. bids are the same. what's going on?",
+    "should_trigger": true
+  },
+  {
+    "query": "广告报表里昨天和前天的销售额比上周同一天低了一半，花费差不多。是不是数据还没更新完？亚马逊广告的数据要多久才算最终的",
+    "should_trigger": true
+  },
+  {
+    "query": "ACOS on my sherpa auto campaign jumped from 22% to 41% in two weeks. figure out whether it's CPC, CTR or conversion that moved",
+    "should_trigger": true
+  },
+  {
+    "query": "Do a health check on all my Sponsored Products, Sponsored Brands and Sponsored Display campaigns for October and tell me what's underperforming and why",
+    "should_trigger": true
+  },
+  {
+    "query": "two of my product ads show AD_NOT_IN_BUYBOX and one shows AD_OUT_OF_STOCK in the API. what does each mean for whether they serve?",
+    "should_trigger": true
+  },
+  {
+    "query": "我们是 vendor，SP 广告这周突然不出了。是不是 Amazon 没下 PO 导致缺货？怎么查是不是 supply 的问题",
+    "should_trigger": true
+  },
+  {
+    "query": "why doesn't sales7d in my spCampaigns API report match the console for last week? it's off by about 8% on the same campaigns",
+    "should_trigger": true
+  },
+  {
+    "query": "every campaign in the account stopped serving overnight and the status says something about payment. is it all of them, and what exactly stopped?",
+    "should_trigger": true
+  },
+  {
+    "query": "can you pull hourly clicks and orders for my SP campaigns for the last 30 days? I want to see which hours convert",
+    "should_trigger": true
+  },
+  {
+    "query": "有个卖家跟卖了我的 fleece blanket，我的 SP 广告没曝光了，但 Sponsored Brands 还在花钱，这正常吗？品牌广告会把客人送去他那边吗",
+    "should_trigger": true
+  },
+  {
+    "query": "switch SP | Weighted | Exact to fixed bids and set the top of search placement adjustment to 150%",
+    "should_trigger": false
+  },
+  {
+    "query": "go through last month's search term report on my throws auto campaign: which terms do I add as exact keywords and which do I negate?",
+    "should_trigger": false
+  },
+  {
+    "query": "restructure the account: split my one auto campaign into exact, phrase and broad campaigns, one ASIN per ad group, and put them in a portfolio",
+    "should_trigger": false
+  },
+  {
+    "query": "下周上一个新的 king size 子体，还没有 review。第一个广告活动怎么建？auto 还是 manual，预算给多少",
+    "should_trigger": false
+  },
+  {
+    "query": "what should my target ACOS be for Black Friday week if my margin is 35%? and how much do CPCs usually go up before the peak",
+    "should_trigger": false
+  },
+  {
+    "query": "we cut every bid on the broad campaign by 20% last Wednesday. did that actually work or is it just noise? how long until I can tell",
+    "should_trigger": false
+  },
+  {
+    "query": "which headers does POST /reporting/reports need, and what content-type does the v3 create take? I keep getting a 415",
+    "should_trigger": false
+  },
+  {
+    "query": "I lost the Buy Box on my grey fleece throw to a reseller at $26.99. should I drop my price, fix the listing or file a brand complaint to win it back?",
+    "should_trigger": false
+  },
+  {
+    "query": "write an AMC query for cart abandoners from the last 30 days and push them as an audience to a DSP retargeting line, maybe Sponsored TV too",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我把新的 lifestyle 图和视频传到 Brand Store 页面，顺便给 Instagram 引流链接加 Amazon Attribution tag，再看看 Brand Metrics",
+    "should_trigger": false
+  }
+]

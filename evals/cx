@@ -1,0 +1,370 @@
+#!/usr/bin/env bash
+# The skill-creator runs' stand-in for the box's cx, for cx-sponsored-ads-playbook. It never touches the network.
+#   cx raw amazon-ads --origin O --method M --path P [--header K=V]... [--query k=v]... [--body B|@file] [--output F] [--json]
+#   cx raw amazon-sp-api [--origin O] --method GET --path P [--query k=v]... [--output F] [--json]
+# Reads are answered from $TENANT_TREE/../stub-replies/ first (beside the tree, out of the run's sight), then from the tree's
+# landed replies under $TENANT_TREE/raw/<source>/. Every change is refused (out_of_scope, exit 2): any PUT, PATCH or DELETE, and
+# any POST that is not a list, report, history, budget-usage, recommendation, eligibility or fee-estimate read. Every
+# amazon-ads call but /v2/profiles needs --header Amazon-Advertising-API-Scope=<profileId>. A report created with
+# POST /reporting/reports is COMPLETED at once; its url is a file:// path under stub-replies/report-files/, gzipped JSON rows.
+# Each call is appended to $TENANT_TREE/../cx-calls.log. Works on bash 3.2 (macOS) and bash 5; JSON goes through python3 -I.
+set -u
+T="${TENANT_TREE:?TENANT_TREE is the seller tree}"
+ROOT="$(cd "$T/.." && pwd)"
+S="$ROOT/stub-replies"
+STATE="$ROOT/stub-state"
+echo "cx $*" >>"$ROOT/cx-calls.log"
+
+refuse() {
+  python3 -I -c 'import json,sys; print(json.dumps({"request_id": "stub", "paths": [], "cost": [], "refusal": {"reason": sys.argv[1], "detail": sys.argv[2]}}))' "$1" "$2"
+  exit 2
+}
+lower() { printf '%s' "$1" | tr '[:upper:]' '[:lower:]'; }
+
+[ "${1-}" = raw ] || { echo "stub cx: this run has only 'cx raw <source> ...'" >&2; exit 2; }
+[ $# -ge 2 ] || { echo "stub cx: cx raw <source> --method M --path P ..." >&2; exit 2; }
+src="$2"; shift 2
+method=GET path='' origin='' output='' json=0 body='' has_body=0 scope='' query=''
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --origin) origin="${2-}"; shift 2 ;;
+    --method) method="$(printf '%s' "${2-}" | tr '[:lower:]' '[:upper:]')"; shift 2 ;;
+    --path) path="${2-}"; shift 2 ;;
+    --query) query="$query&${2-}"; shift 2 ;;
+    --body) body="${2-}"; has_body=1; shift 2 ;;
+    --output) output="${2-}"; shift 2 ;;
+    --json) json=1; shift ;;
+    --header)
+      h="${2-}"; shift 2
+      case "$h" in *=*) k="${h%%=*}"; v="${h#*=}" ;; *:*) k="${h%%:*}"; v="${h#*:}"; v="${v# }" ;; *) k="$h"; v='' ;; esac
+      case "$(lower "$k")" in
+        authorization|amazon-advertising-api-clientid|amazon-ads-clientid)
+          refuse out_of_scope "the door attaches its own token and client id; a request naming $k is refused" ;;
+        amazon-advertising-api-scope) scope="$v" ;;
+      esac ;;
+    *) echo "stub cx: unknown flag $1" >&2; exit 2 ;;
+  esac
+done
+[ -n "$path" ] || { echo "stub cx: --path is required" >&2; exit 2; }
+case "$path" in /*) ;; *) path="/$path" ;; esac
+path="${path%%\?*}"
+
+case "$src" in
+  amazon-ads)
+    case "$origin" in
+      https://advertising-api.amazon.com|https://advertising-api-eu.amazon.com|https://advertising-api-fe.amazon.com) ;;
+      '') refuse out_of_scope "amazon-ads needs --origin, one of the advertising-api hosts" ;;
+      *) refuse out_of_scope "stub: $origin is not an Amazon Ads API origin" ;;
+    esac ;;
+  amazon-sp-api) ;;
+  *) refuse out_of_scope "stub: this run has only amazon-ads and amazon-sp-api" ;;
+esac
+
+case "$method" in
+  GET|HEAD) [ $has_body -eq 0 ] || refuse out_of_scope "a $method with a body is not sent" ;;
+  POST) ;;
+  PUT|PATCH|DELETE) refuse out_of_scope "stub: this run sends no change to Amazon ($method $path)" ;;
+  *) refuse out_of_scope "$method is not sent" ;;
+esac
+
+if [ "$method" = POST ]; then
+  ok=0
+  if [ "$src" = amazon-ads ]; then
+    case "$path" in
+      /sp/campaigns/list|/sp/adGroups/list|/sp/productAds/list|/sp/keywords/list|/sp/targets/list|/sp/negativeKeywords/list|\
+      /sp/campaignNegativeKeywords/list|/sp/negativeTargets/list|/sp/campaignNegativeTargets/list|/sb/v4/campaigns/list|\
+      /sb/v4/adGroups/list|/sb/v4/ads/list|/portfolios/list|/reporting/reports|/history|/sp/campaigns/budget/usage|\
+      /sb/campaigns/budget/usage|/sd/campaigns/budget/usage|/portfolios/budget/usage|/sp/campaigns/budgetRecommendations|\
+      /sb/campaigns/budgetRecommendations|/sd/campaigns/budgetRecommendations|/sp/campaigns/initialBudgetRecommendation|\
+      /sp/campaigns/budgetRules/recommendations|/sb/campaigns/budgetRules/recommendations|/sp/targets/keywords/recommendations|\
+      /sp/targets/products/recommendations|/sp/targets/bid/recommendations|/sp/campaign/recommendations|/sp/v1/events|\
+      /eligibility/product/list|/eligibility/programs|/product/metadata|/billing/statuses|/billing/notifications|\
+      /adsApi/v1/query/*|/adsApi/v1/retrieve/reports) ok=1 ;;
+    esac
+  else
+    case "$path" in /products/fees/v0/items/*/feesEstimate|/products/fees/v0/listings/*/feesEstimate|/products/fees/v0/feesEstimate) ok=1 ;; esac
+  fi
+  [ $ok -eq 1 ] || refuse out_of_scope "stub: this run sends no change to Amazon; POST $path is not a read this stand-in answers"
+fi
+
+mkdir -p "$STATE"
+bodyfile="$STATE/body-$$.json"
+: >"$bodyfile"
+if [ $has_body -eq 1 ]; then
+  case "$body" in
+    @*) f="${body#@}"; [ -f "$f" ] || refuse out_of_scope "no such body file: $f"; cat "$f" >"$bodyfile" ;;
+    *) printf '%s' "$body" >"$bodyfile" ;;
+  esac
+fi
+
+name="$(printf '%s' "$path" | tr '/' '-' | sed 's/^-//' | cut -c1-80)"
+if [ -z "$output" ]; then
+  mkdir -p "$T/raw/$src"
+  output="$T/raw/$src/stub-$(date +%Y%m%dT%H%M%S)-$$-${RANDOM}-${name}.json"
+fi
+[ ! -e "$output" ] || { rm -f "$bodyfile"; refuse out_of_scope "the file is already there"; }
+[ -d "$(dirname "$output")" ] || { rm -f "$bodyfile"; refuse out_of_scope "no such directory"; }
+
+PY='
+import datetime as dt, glob, gzip, hashlib, json, os, re, sys
+
+src, method, path, scope, query, bodyfile, out, S, T, STATE = sys.argv[1:11]
+TODAY = dt.date(2026, 11, 9)
+PROFILES = ("1111111111111111", "2222222222222222")
+R = os.path.join(T, "raw", src)
+raw = open(bodyfile).read()
+
+
+def reply(status, doc):
+    with open(out, "w") as f:
+        json.dump(doc, f, indent=2)
+    print(status)
+    sys.exit(0)
+
+
+def fail(status, detail):
+    reply(status, {"code": str(status), "details": "stub: " + detail})
+
+
+def body():
+    if not raw.strip():
+        return {}
+    try:
+        return json.loads(raw)
+    except ValueError:
+        fail(400, "the body is not JSON")
+
+
+def latest(pattern):
+    for base in (S, R):
+        hits = sorted(p for p in glob.glob(os.path.join(base, pattern)) if "-if-" not in os.path.basename(p))
+        if hits:
+            return json.load(open(hits[-1]))
+    return None
+
+
+key = path.strip("/").replace("/", "-")
+
+if src == "amazon-sp-api":
+    m = re.fullmatch(r"/products/pricing/v0/items/([A-Z0-9]+)/offers", path)
+    f = re.fullmatch(r"/products/fees/v0/items/([A-Z0-9]+)/feesEstimate", path)
+    if m:
+        doc = latest("getItemOffers-%s-*.json" % m.group(1))
+    elif f:
+        doc = latest("getMyFeesEstimateForASIN-%s-*.json" % f.group(1))
+    elif path == "/fba/inventory/v1/summaries":
+        doc = latest("getInventorySummaries-*.json")
+    else:
+        doc = latest(key + "-*.json")
+    if doc is None:
+        reply(404, {"errors": [{"code": "NotFound", "message": "stub: no fixture for this path"}]})
+    reply(200, doc)
+
+# amazon-ads
+if path != "/v2/profiles":
+    if not scope:
+        fail(400, "the Amazon-Advertising-API-Scope header is missing; every call but /v2/profiles names a profile")
+    if scope not in PROFILES:
+        fail(401, "no profile %s for this grant; read the ids from GET /v2/profiles" % scope)
+
+if path == "/v2/profiles":
+    doc = latest("v2-profiles-*.json")
+    reply(200, doc if doc is not None else [])
+
+if path == "/reporting/reports" and method == "POST":
+    b = body()
+    cfg = b.get("configuration") or {}
+    rtype, group_by = cfg.get("reportTypeId"), cfg.get("groupBy") or []
+    if not rtype or not group_by or not b.get("startDate") or not b.get("endDate") or not cfg.get("columns") or not cfg.get("timeUnit"):
+        fail(400, "a report needs startDate, endDate and configuration.{adProduct, groupBy, columns, reportTypeId, timeUnit, format}")
+    gkey = "campaignPlacement" if "campaignPlacement" in group_by else group_by[0]
+    srcfile = os.path.join(S, "report-sources", "%s-%s.json" % (rtype, gkey))
+    if not os.path.exists(srcfile):
+        fail(400, "no report source for reportTypeId %s grouped by %s in this fixture" % (rtype, gkey))
+    source = json.load(open(srcfile))
+    if cfg.get("adProduct") != source["adProduct"]:
+        fail(400, "reportTypeId %s takes adProduct %s" % (rtype, source["adProduct"]))
+    if cfg.get("format") != "GZIP_JSON":
+        fail(400, "format must be GZIP_JSON")
+    try:
+        start, end = dt.date.fromisoformat(b["startDate"]), dt.date.fromisoformat(b["endDate"])
+    except ValueError:
+        fail(400, "startDate and endDate are YYYY-MM-DD")
+    if end < start:
+        fail(400, "endDate is before startDate")
+    if (end - start).days + 1 > source["maxDays"]:
+        fail(400, "the date range exceeds the %d-day maximum for %s" % (source["maxDays"], rtype))
+    if start < TODAY - dt.timedelta(source["retentionDays"]):
+        fail(400, "startDate is past the %d-day retention of %s" % (source["retentionDays"], rtype))
+    unit, cols = cfg["timeUnit"], list(cfg["columns"])
+    if unit == "DAILY" and "date" not in cols:
+        fail(400, "timeUnit DAILY needs the date column")
+    if unit == "SUMMARY" and "date" in cols:
+        fail(400, "timeUnit SUMMARY takes startDate and endDate, not date")
+    if unit not in ("DAILY", "SUMMARY"):
+        fail(400, "timeUnit is DAILY or SUMMARY")
+    known = set(k for r in source["rows"] for k in r) | ({"startDate", "endDate"} if unit == "SUMMARY" else set())
+    bad = [c for c in cols if c not in known]
+    if bad:
+        fail(400, "columns not valid for %s in this fixture: %s" % (rtype, ", ".join(bad)))
+    rows = [r for r in source["rows"] if b["startDate"] <= r["date"] <= b["endDate"]]
+    if unit == "SUMMARY":
+        dims = ("campaignId", "adGroupId", "keywordId", "searchTerm", "adId", "placementClassification", "advertisedAsin", "purchasedAsin")
+        attrs = ("campaignBudgetAmount", "keywordBid")
+        agg = {}
+        for r in rows:
+            k = tuple(r.get(d) for d in dims)
+            a = agg.get(k)
+            if a is None:
+                agg[k] = a = dict(r)
+                continue
+            for c, v in r.items():
+                if c in attrs or c == "date":
+                    a[c] = v
+                elif isinstance(v, (int, float)) and not isinstance(v, bool) and c not in ("costPerClick", "clickThroughRate"):
+                    a[c] = round(a[c] + v, 2) if isinstance(v, float) or isinstance(a[c], float) else a[c] + v
+                else:
+                    a[c] = v
+        rows = []
+        for a in agg.values():
+            if "costPerClick" in a:
+                a["costPerClick"] = round(a["cost"] / a["clicks"], 4) if a["clicks"] else 0.0
+            if "clickThroughRate" in a:
+                a["clickThroughRate"] = round(a["clicks"] / a["impressions"], 6) if a["impressions"] else 0.0
+            a["startDate"], a["endDate"] = b["startDate"], b["endDate"]
+            rows.append(a)
+    rows = [{c: r.get(c) for c in cols} for r in rows]
+    os.makedirs(os.path.join(STATE, "reports"), exist_ok=True)
+    os.makedirs(os.path.join(S, "report-files"), exist_ok=True)
+    n = len(os.listdir(os.path.join(STATE, "reports"))) + 1
+    rid = "%08x-5eb1-4f1a-8c0d-%s" % (n, hashlib.sha256((raw + str(n)).encode()).hexdigest()[:12])
+    gz = os.path.join(S, "report-files", rid + ".json.gz")
+    with gzip.open(gz, "wt") as f:
+        json.dump(rows, f)
+    stamp = "2026-11-09T23:%02d:%02dZ" % ((10 + n) % 60, (7 * n) % 60)
+    meta = {"reportId": rid, "name": b.get("name"), "startDate": b["startDate"], "endDate": b["endDate"], "configuration": cfg,
+            "createdAt": stamp, "updatedAt": stamp, "generatedAt": None, "url": None, "urlExpiresAt": None, "fileSize": None, "failureReason": None,
+            "status": "PENDING"}
+    json.dump({**meta, "status": "COMPLETED", "generatedAt": stamp, "url": "file://" + os.path.abspath(gz),
+               "urlExpiresAt": "2026-11-10T00:%02d:%02dZ" % ((10 + n) % 60, (7 * n) % 60),
+               "fileSize": os.path.getsize(gz)}, open(os.path.join(STATE, "reports", rid + ".json"), "w"))
+    reply(200, meta)
+
+m = re.fullmatch(r"/reporting/reports/([A-Za-z0-9-]+)", path)
+if m and method in ("GET", "HEAD"):
+    f = os.path.join(STATE, "reports", m.group(1) + ".json")
+    if not os.path.exists(f):
+        fail(404, "no report %s; neither reporting API lists reports, so a report is found only by the id its create returned" % m.group(1))
+    reply(200, json.load(open(f)))
+
+if path in ("/sd/campaigns", "/sd/campaigns/extended"):
+    doc = latest("sd-campaigns-%s-*.json" % scope)
+    if doc is None:
+        fail(404, "no fixture for this path")
+    if path.endswith("extended"):
+        doc = [dict(c, servingStatus="CAMPAIGN_STATUS_ENABLED") for c in doc]
+    reply(200, doc)
+
+doc = latest("%s-%s-*.json" % (key, scope))
+if doc is None:
+    fail(404, "no fixture for this path")
+b = body() if method == "POST" else {}
+asins = set(re.findall(r"B0[A-Z0-9]{8}", raw))
+
+if key.endswith("-list") and key.split("-")[0] in ("sp", "sb", "portfolios") and isinstance(doc, dict):
+    lk = next((k for k, v in doc.items() if isinstance(v, list)), None)
+    items = doc[lk] if lk else []
+    for fld, filt in (("campaignId", "campaignIdFilter"), ("adGroupId", "adGroupIdFilter"), ("keywordId", "keywordIdFilter"),
+                      ("targetId", "targetIdFilter"), ("adId", "adIdFilter"), ("portfolioId", "portfolioIdFilter")):
+        inc = (b.get(filt) or {}).get("include") if isinstance(b.get(filt), dict) else None
+        if inc:
+            items = [i for i in items if str(i.get(fld)) in set(map(str, inc))]
+    st = (b.get("stateFilter") or {}).get("include") if isinstance(b.get("stateFilter"), dict) else None
+    if st:
+        items = [i for i in items if str(i.get("state", "")).upper() in set(s.upper() for s in st)]
+    if key.startswith("sp-") and not b.get("includeExtendedDataFields"):
+        items = [{k: v for k, v in i.items() if k != "extendedData"} for i in items]
+    if b.get("maxResults"):
+        items = items[: int(b["maxResults"])]
+    if lk:
+        doc = dict(doc, **{lk: items, "totalResults": len(items)})
+    reply(200, doc)
+
+if key.endswith("budget-usage"):
+    ids = [str(i) for i in (b.get("campaignIds") or b.get("portfolioIds") or [])]
+    if not ids:
+        fail(400, "campaignIds (or portfolioIds) is required, up to 100")
+    have = dict((str(x.get("campaignId", x.get("portfolioId"))), x) for x in doc["success"])
+    ok = [dict(have[i], index=n) for n, i in enumerate(ids) if i in have]
+    err = [{"index": n, "campaignId": i, "code": "INVALID_ARGUMENT", "details": "stub: no such campaign"} for n, i in enumerate(ids) if i not in have]
+    reply(207 if err else 200, {"success": ok, "error": err})
+
+if key.endswith("budgetRecommendations"):
+    ids = [str(i) for i in (b.get("campaignIds") or [])]
+    have = dict((x["campaignId"], x) for x in doc["budgetRecommendationsSuccessResults"])
+    ok = [dict(have[i], index=n) for n, i in enumerate(ids) if i in have]
+    err = [{"index": n, "campaignId": i, "error": {"code": "NOT_FOUND", "message": "stub: no recommendation for this campaign in the fixture"}}
+           for n, i in enumerate(ids) if i not in have]
+    reply(207 if err else 200, {"budgetRecommendationsSuccessResults": ok, "budgetRecommendationsErrorResults": err})
+
+if key.endswith("budgetRules-recommendations"):
+    cid = str(b.get("campaignId") or "")
+    if not cid or b.get("recommendationType") != "EVENTS_FOR_EXISTING_CAMPAIGN":
+        fail(400, "campaignId and recommendationType EVENTS_FOR_EXISTING_CAMPAIGN are required; events are recommended per campaign")
+    camps = latest("%s-campaigns-list-%s-*.json" % ("sp" if key.startswith("sp-") else "sb-v4", scope)) or {}
+    if cid not in set(str(c.get("campaignId")) for c in camps.get("campaigns", [])):
+        fail(400, "no campaign %s in profile %s" % (cid, scope))
+    reply(200, doc)
+
+if key == "history":
+    try:
+        lo, hi = int(b.get("fromDate")), int(b.get("toDate"))
+    except (TypeError, ValueError):
+        fail(400, "eventTypes, fromDate and toDate (epoch milliseconds) are required")
+    floor = int(dt.datetime(2026, 11, 9, tzinfo=dt.timezone.utc).timestamp() * 1000) - 90 * 86400000
+    if lo < floor:
+        fail(400, "fromDate reaches back more than 90 days")
+    et = b.get("eventTypes") or {}
+    if not et:
+        fail(400, "eventTypes is required")
+    if not isinstance(et, dict) or not all(isinstance(v, dict) for v in et.values()):
+        fail(400, "eventTypes is an object keyed by entity type (CAMPAIGN, KEYWORD, ...), each value an object")
+    ev = []
+    for e in doc["events"]:
+        spec = et.get(e["entityType"])
+        if spec is None or not lo <= e["timestamp"] <= hi:
+            continue
+        if spec.get("eventTypeIds") and str(e["entityId"]) not in set(map(str, spec["eventTypeIds"])):
+            continue
+        if spec.get("filters") and e["changeType"] not in spec["filters"]:
+            continue
+        parents = [str(p.get("campaignId")) for p in (spec.get("parents") or []) if p.get("campaignId")]
+        if parents and str(e["metadata"].get("campaignId")) not in parents:
+            continue
+        ev.append(e)
+    if ((b.get("sort") or {}).get("direction") or "DESC") == "ASC":
+        ev.reverse()
+    count = max(50, min(200, int(b.get("count") or 100)))
+    reply(200, {"events": ev[:count], "totalResults": len(ev)})
+
+if key in ("eligibility-product-list", "product-metadata"):
+    lk = "productResponseList" if key.startswith("eligibility") else "ProductMetadataList"
+    pick = [x for x in doc[lk] if (x.get("productDetails") or x).get("asin") in asins]
+    if not pick:
+        fail(400, "no product of this merchant named in the body; requests are permitted only for products sold by the profile merchant")
+    reply(200, {lk: pick})
+
+reply(200, doc)
+'
+status="$(python3 -I -c "$PY" "$src" "$method" "$path" "$scope" "$query" "$bodyfile" "$output" "$S" "$T" "$STATE")"
+rc=$?
+rm -f "$bodyfile"
+[ $rc -eq 0 ] && [ -n "$status" ] || { echo "stub cx: internal error" >&2; exit 1; }
+case "$status" in 2??) kind=fresh code=0 ;; *) kind=failed code=1 ;; esac
+if [ $json -eq 1 ]; then
+  printf '{"request_id":"stub","paths":[{"path":"%s","http_status":%s,"outcome":{"kind":"%s"},"file":"%s"}],"cost":[]}\n' "$path" "$status" "$kind" "$output"
+else
+  [ $code -eq 0 ] || echo "the source answered HTTP $status" >&2
+  echo "$output"
+fi
+exit $code

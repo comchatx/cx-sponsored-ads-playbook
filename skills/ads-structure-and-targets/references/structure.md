@@ -13,6 +13,7 @@
 
 - Fixed at creation: whether an SP campaign is auto or manual (`targetingType`), a keyword's match type, a Sponsored Brands campaign's goal, and several other fields Amazon lists per ad product. (T4)
 - Changing one of them means archiving and recreating; a keyword in another match type can be added beside the old one. (T4)
+- While both run, the higher-bid match type of the two is used on a query both match; Amazon's pages do not say whether this reaches across ad groups or campaigns. (T4, T22)
 
 ## Archiving
 

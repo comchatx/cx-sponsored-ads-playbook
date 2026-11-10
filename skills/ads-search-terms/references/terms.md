@@ -3,6 +3,7 @@
 ## Amazon's guide
 
 - Amazon's targeting guide puts a minimum click count before judging a keyword for a negative and a period before judging a negative, and recommends phrase or exact for negatives. (S13)
+- ../ads-change/references/tests.md: the same guide's click count and period, quoted in figures.
 
 ## Practitioners' thresholds
 

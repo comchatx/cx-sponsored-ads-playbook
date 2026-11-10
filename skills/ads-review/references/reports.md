@@ -48,6 +48,7 @@
 - Stream v2 delivers Parquet totals at least once to an S3 bucket and SQS queue in the subscriber's AWS account, and the record to keep for a key is the one with the highest `streamBatch.version` (R15).
 - Stream v2's thresholded values fall into an `(Other)` row evaluated at the exact level of detail (R15).
 - A Stream v2 destination belongs to the application that first uses it, at most five per application (R15).
+- ComChatX runs no Stream v2 destination, so hourly data beyond Reporting v1's span is out of cx's reach, which cx can tell a seller who asks for it (R12, R15).
 - Stream v1 carries `keyword_id`, `placement` and the hour in one record until 2027-06-30, and Stream v2's `ads-performance-v1` keys hourly records by placement, target and search term (R20).
 - Stream v1's Sponsored Products datasets are `sp-traffic` and `sp-conversion`, documented on the page whose path is `sp-performance`, with the hour in the profile's time zone (R21).
 
