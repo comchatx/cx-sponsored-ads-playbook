@@ -87,6 +87,12 @@ One line each in `prompts/`. They overlap with the door's own three (`spend-this
 2. `cx-amazon-ads-playbook`. Clearest on its own, but it repeats the door's name in full and is longer than the sibling's.
 3. `cx-ppc-playbook`. The sellers' word, but narrower than the research: vCPM display, Streaming TV, reserve share of voice and Brand Tailored Promotions are not pay-per-click.
 
+## The package, and the positions that left with the split
+
+On 2026-11-10 Jack passed the 333 positions and named the package `@comchatx/cx-sponsored-ads-playbook`, the first of five ads playbooks. It holds the eight skills above and the seven templates; the report reader went to `cx-amazon-ads`, so R's facts live in `ads-review/references/reports.md` and the door's own skill says how a report is asked for and landed.
+
+Ten positions left with the split and no skill of this package cites them: S16, E17, G13, G29, C11, M18 and R25 (AMC, to `cx-amc-playbook`); G24 (its Amazon Attribution clause to `cx-brand-measurement`, its Events API clause to `cx-dva-playbook`); P5 and P18 (Stores and the asset library, to `cx-brand-creative`). G10 enters without its last clause, on AMC's new-to-brand columns, which went to `cx-amc-playbook`. Their text below is unchanged. `test/citations.test.ts` holds this.
+
 ## Positions the skills will take
 
 Letters as above; numbers run within each letter. Source lists are grouped by tag, Amazon's first; "and N more" means the file names further pages for the same position.
