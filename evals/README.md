@@ -51,7 +51,7 @@ One run per case and configuration, in Claude Code (Opus 5.5), each graded by a 
 | | With the skills | Baseline |
 |---|---|---|
 | Iteration 1, the skills as first written | 143 of 183 expectations, 78.1% | 113 of 183, 61.7% |
-| Iteration 2, after the analyst's findings (load-bearing facts moved into the bodies, reference pointers sharpened, nine expectations reworded to check the fact rather than its wording) | 86.7% | 64.0% |
+| Iteration 2, after the analyst's findings (load-bearing facts moved into the bodies, reference pointers sharpened, expectations reworded to check the fact rather than its wording, 186 in all) | 161 of 186, 86.6% | 119 of 186, 64.0% |
 
 A single run per configuration leaves the per-case figures noisy: three cases moved down between iterations with no change to their skill's facts. `ads-structure-and-targets`'s brand-search case stays at the baseline's 4 of 8, because no run found the Brand Analytics report the tree holds under `tenant/reports/`, and no position of this package says where an SP-API report lands.
 
