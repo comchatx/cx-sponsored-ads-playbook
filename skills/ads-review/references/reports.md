@@ -1,6 +1,6 @@
 # Reports: types, windows, limits, the v3 sunset and Stream
 
-- How a v3 report is asked for, polled and landed: the amazon-ads skill's references/door.md.
+- How a report, v3 or v1, is asked for, addressed, polled and landed: the amazon-ads skill's references/door.md.
 
 ## The sunset
 
@@ -8,7 +8,7 @@
 
 ## Reporting v3
 
-- A pending v3 report can be cancelled with `DELETE` on its id; a completed one carries a pre-signed S3 `url` expiring at `urlExpiresAt`, 3600 seconds by default, which Amazon says "may vary", and a failed one carries a `failureReason` (R2).
+- A pending v3 report can be cancelled; a completed one carries a pre-signed S3 `url` expiring at `urlExpiresAt`, 3600 seconds by default, which Amazon says "may vary", and a failed one carries a `failureReason` (R2).
 - For a create identical to a report still processing, which answers `425`, Amazon's direction is to wait for the existing report and keep report ids (R3).
 - v3 report types are per ad product, each with its own `groupBy`, filters, maximum range and retention, and a filter applies only when every `groupBy` supports it (R5).
 - SP has campaign, targeting, search term, advertised product, purchased product, gross and invalid, prompt and video extension types, with ad-group and placement data from `spCampaigns` grouped by `adGroup` or `campaignPlacement` (R5).
@@ -20,9 +20,9 @@
 
 ## Reporting v1
 
-- A v1 report is created, retrieved and deleted with `POST /adsApi/v1/create/reports`, `/retrieve/reports` and `/delete/reports`, each answering 207 with one result (R6).
-- A v1 request names the advertiser by global account id in `accessRequestedAccounts`, with no scope header, and holds one report and one period (R6).
-- A v1 report's status is `PENDING`, `PROCESSING`, `COMPLETED` or `FAILED`, polled about once a minute (R6).
+- v1's report operations create, retrieve and delete a report, each answering 207 with one result (R6).
+- A v1 report holds one report and one period for one advertiser (R6).
+- A v1 report's status is `PENDING`, `PROCESSING`, `COMPLETED` or `FAILED` (R6).
 - A completed v1 report lists up to 100 parts, each with its own pre-signed URL and expiry, partitioned formats splitting into chunks of up to 1 GB uncompressed (R6).
 - A v1 create has no `425` and no idempotency key, and no Amazon page says what an identical create does while its twin runs (R6).
 - Neither API lists reports, so a report is found again only by the id returned at creation (R6).
@@ -39,7 +39,6 @@
 ## Limits
 
 - A throttled call answers `429` with `Retry-After` in seconds; limits move with system load and, for reports, with the region's queue (R4).
-- Amazon's guidance is exponential backoff on `429` and 5xx answers, longer for report generation, and investigating other 4xx answers first (R4).
 - Field reports show `429`s without `Retry-After`, one persisting over 24 hours on change history and one from the MCP gateway as HTML (R4).
 - Amazon's pages disagree on Reporting v1 concurrency: its limits page and v1 overview say limits apply per client id, shared across every advertiser the client calls for, with concurrency "as low as 1", while the reporting overview, the Stream v2 overview and the GA note say per advertiser (R9).
 
@@ -62,11 +61,11 @@
 
 ## Ads API v1, the MCP server and test accounts
 
-- Ads API v1 is one set of `POST` create, update, query and delete operations over campaigns, ad groups, ads, targets and associations, which Amazon says will eventually replace the per-product APIs (R22).
+- Ads API v1 is one set of create, update, query and delete operations over campaigns, ad groups, ads, targets and associations, which Amazon says will eventually replace the per-product APIs (R22).
 - SP, SB and DSP campaign management on v1 have been GA since 2025; at launch each call is bound to one ad product, with a per-product rate limit and batch sizes (`maxItems`, `maxResults`), SB writes taking far fewer items per call than SP's (R22).
 - The v1 contract and overview also list Sponsored Display and Sponsored Television as supported, and SD has a published v1 specification with no dated GA note (R22).
 - The Amazon Ads MCP server is served from `advertising-ai.amazon.com`, `-eu` and `-fe`, not the Ads API hosts, with the same token and client id, and the `cx-amazon-ads` door, whose origins are the `advertising-api*` hosts, does not reach it (R23).
 - The MCP server's `campaign_management` group holds 32 tools, among them a single-call SP campaign create whose specification states no response and no behaviour on a failure part-way (R23).
 - None of those tools is named for harvesting or negatives, although the MCP server's 2026-02-18 release note describes workflows that "automate keyword harvesting from automatic to manual campaigns" (R23).
-- Amazon's skills library is served by `GET /skills` on the Ads API hosts, with an `ads-api-migration` skill published on 2026-11-02 (R23).
+- Amazon serves a skills library on the Ads API hosts, with an `ads-api-migration` skill published on 2026-11-02 (R23).
 - Test accounts serve and bill nothing, are created under a separate `advertising::test:create_account` scope as vendor or author accounts only, and do not run rules (R24).

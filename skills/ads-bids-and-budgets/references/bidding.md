@@ -20,7 +20,7 @@
 - An SP 3.0 campaign may boost up to 10 audiences (Amazon or AMC audiences; one outside the US), each 0–900%. (B8)
 - When a shopper is in several boosted audiences only the highest boost applies, ties going to one audience at random. (B8)
 - In v1 the field `bidAdjustments.audienceBidAdjustments[]` takes at most one per campaign. (B8)
-- Audience ids come from `POST /targetableEntities/list`, and "Only the audiences retrieved using these filters are usable". (B8)
+- Audience ids come from the targetable-entities list, and "Only the audiences retrieved using these filters are usable". (B8)
 - A Sponsored Brands campaign takes one audience group, Amazon-built or AMC, not both. (B8)
 
 ## Off-Amazon placements and site restrictions

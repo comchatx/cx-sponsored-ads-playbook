@@ -2,13 +2,13 @@
 
 ## Product eligibility
 
-- `POST /eligibility/product/list` takes up to 50 products, only products sold by the profile's merchant, and returns per product and ad type an overall status: `ELIGIBLE`, `ELIGIBLE_WITH_WARNING` ("may not receive impressions") or `INELIGIBLE` ("cannot be included in an advertisement"). (P1)
+- Amazon's product eligibility read takes up to 50 products, only products sold by the profile's merchant, and returns per product and ad type an overall status: `ELIGIBLE`, `ELIGIBLE_WITH_WARNING` ("may not receive impressions") or `INELIGIBLE` ("cannot be included in an advertisement"). (P1)
 - The overall status inherits the highest severity among the named reasons, such as `NOT_IN_BUYBOX`, `OUT_OF_STOCK`, `LISTING_SUPRESSED`, `MISSING_IMAGE`, `RESTRICTED_CATEGORY` and `VARIATION_PARENT`. (P1)
-- `POST /product/metadata` returns availability, price, best seller rank and eligibility for up to 300 products. (P1)
+- The product metadata read returns availability, price, best seller rank and eligibility for up to 300 products. (P1)
 
 ## Program eligibility
 
-- `POST /eligibility/programs` returns per marketplace and program (`SB`, `SD`, `SPOT`, `DTC`, `MAAS`) whether the account may use it, with reasons covering standing, terms, brand relation, business verification, tax, billing and payment. (P2)
+- Amazon's program eligibility read returns per marketplace and program (`SB`, `SD`, `SPOT`, `DTC`, `MAAS`) whether the account may use it, with reasons covering standing, terms, brand relation, business verification, tax, billing and payment. (P2)
 - Most advertisers are verified automatically; the others are verified through verification tasks. (P2)
 - Sponsored Brands does not support adult, used or refurbished products and is limited to a listed set of categories. (P3)
 - Streaming TV needs a professional seller with Brand Registry or a vendor account, is not available to Health and Personal Care advertisers and is in open API beta in BR, CA, MX, UK and US. (P3)
@@ -68,8 +68,8 @@
 
 - Moderation combines automated and human review, usually within 24 hours and up to 3 business days. (P9)
 - Since February 2026 Amazon emails only rejections; an appeal goes through the rejection link, and repeat violations can lead to suspension. (P9)
-- `POST /preModeration` checks one entity's components before submission. (P9)
-- `POST /moderation/results` reports SP, SB and display moderation status (`APPROVED`, `IN_PROGRESS`, `REJECTED`, `FAILED`) with reasons and an expected time. (P9)
+- Pre-moderation checks one entity's components before submission. (P9)
+- The moderation results read reports SP, SB and display moderation status (`APPROVED`, `IN_PROGRESS`, `REJECTED`, `FAILED`) with reasons and an expected time. (P9)
 - The legacy SB moderation endpoint shut off on 2025-12-15, and the asset library runs no eligibility check on images. (P9)
 
 ## Billing

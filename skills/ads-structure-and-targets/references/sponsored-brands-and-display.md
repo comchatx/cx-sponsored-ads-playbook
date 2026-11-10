@@ -19,19 +19,19 @@
 - Sponsored Brands formats are manual and automatic collections (3–10 products, the type fixed once the ad group exists), store spotlight and video. (T38)
 - Under drive page visits every format can serve on search, detail pages and the home page. (T38)
 - Sponsored Brands video has its own placement and auction, and video creative follows chapters 1 to 5 of Amazon's moderation guide. (T38)
-- `GET /pageAsins` returns only ASINs placed directly on a Store page. (T38)
+- The ASIN list of a Store page returns only ASINs placed directly on that page. (T38)
 
 ## Product Collection retirement
 
 - Sponsored Brands Product Collection ads are being retired: since August 2026 a create makes a Manual Collection ad. (T19)
 - Amazon's pages give January 2027 for creates to error and February 2027 for the end of support. (T19)
-- `POST /sb/v4/migrations/list` returns recommended replacements. (T19)
+- The Sponsored Brands v4 migration list returns recommended replacements. (T19)
 
 ## Sponsored Brands model files
 
 - Amazon publishes Sponsored Brands targeting across three model files. (T39)
-- The SB 3.0 YAML holds `/sb/keywords`, `/sb/negativeKeywords`, `/sb/targets`, `/sb/negativeTargets` and `/sb/themes`. (T39)
-- The JSON file titled "Sponsored Brands 3.0" and the SB 4.0 JSON hold `/sb/targets/categories`, `/sb/targets/products/count` and `/sb/negativeTargets/brands/recommendations`, and neither of those two carries `/sb/negativeKeywords`. (T39)
+- The SB 3.0 YAML holds the keyword, negative keyword, target, negative target and theme operations. (T39)
+- The JSON file titled "Sponsored Brands 3.0" and the SB 4.0 JSON hold the category target, product target count and negative brand target recommendation operations, and neither of those two carries the negative keyword operations. (T39)
 
 ## Sponsored Display targets
 
@@ -39,6 +39,6 @@
 - Unrefined categories and "similar to advertised products" also serve off Amazon; the console adds "similar to advertised products" on its own, and the API does not. (T37)
 - Audience campaigns exclude shoppers who bought the advertised or similar products in the past 30 days. (T37)
 - View audiences reach back up to 90 days and purchase audiences up to 365, including viewers or buyers of a given brand. (T37)
-- Audience ids come from `POST /audiences/list`. (T37)
+- Audience ids come from the audience list. (T37)
 - On the unified console, contextual targeting is part of multi-signal targeting. (T37)
 - Randomised experiments outside Amazon found retargeting incremental for the advertisers studied, and showing the exact product a shopper viewed was not always the better ad. (T41)

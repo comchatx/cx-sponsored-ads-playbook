@@ -3,7 +3,7 @@
 ## Vendor profiles
 
 - A vendor profile's `accountInfo.type` is `vendor`, and Amazon says vendor accounts are used with Sponsored Products, Sponsored Brands and Sponsored Display only (A24).
-- In the Profiles 3.0 model `validPaymentMethod` is present only for vendors, the profile `dailyBudget` and `PUT /v2/profiles` are for sellers only, and `accountInfo.id` is not unique and may repeat across marketplaces (A24).
+- In the Profiles 3.0 model `validPaymentMethod` is present only for vendors, the profile `dailyBudget` and profile updates are for sellers only, and `accountInfo.id` is not unique and may repeat across marketplaces (A24).
 
 ## Purchase orders
 

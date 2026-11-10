@@ -30,7 +30,7 @@ description: "What shoppers' search terms and negatives look like in a seller's 
 ## References
 
 - references/search-term-report.md: rows, columns, bulksheets.
-- references/negatives.md: levels, match types, paths, conflicts.
+- references/negatives.md: levels, match types, writing, conflicts.
 - references/terms.md: thresholds, harvest, small counts.
 - ../ads-change/references/tests.md: Amazon's click and week figures.
 - ../ads-structure-and-targets/references/structure.md: ad groups, per-ASIN structures.

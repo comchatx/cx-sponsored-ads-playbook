@@ -10,7 +10,7 @@ Black Friday 2026 is November 27; Amazon had not published US Black Friday Week 
 
 ## Events in the Ads API
 
-`POST /sp/v1/events` returns special events with suggested date ranges. (E3)
+SP's events operation returns special events with suggested date ranges. (E3)
 Budget-rule event recommendations (`EVENTS_FOR_EXISTING_CAMPAIGN`) give an SP or SB campaign Amazon's recommended events, each with a `suggestedBudgetIncreasePercent`; a rule tied to an unannounced event is created with empty dates that Amazon fills in on announcement. (E3)
 Theme-based bid recommendations offer `PRIME_DAY`, `FALL_PRIME_DEAL_EVENT` and `BFCM_HOLIDAY`. (E4)
 
@@ -30,7 +30,7 @@ Store-level scanner research puts the post-promotion dip at 4–25% of the promo
 ## Deals and claims
 
 An advertised deal must be live whenever the ad is; sponsored ads mention Prime Day only through dynamically pulled detail-page information such as deal badges. (E13)
-Amazon's ad policy bounds event names by duration: "available on Black Friday only" means 24 hours (November 27 in 2026), "Black Friday Week" about 7 days. (E1, E13)
+Amazon's ad policy bounds event names by duration: "available on Black Friday only" means 24 hours (November 27 in 2026), "Black Friday Week" about 8 days. (E1, E13)
 
 ## References
 

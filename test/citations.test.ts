@@ -60,6 +60,30 @@ it("G10 enters without its AMC clause, which went to cx-amc-playbook", () => {
   for (const { file, line, ids } of lines) if (ids.includes("G10")) expect(line, file).not.toMatch(/\bAMC\b|Marketing Cloud/);
 });
 
+/** An Ads API request route as a request names it: a method and a path, or a path of Amazon's from its root. */
+const ROUTE = /\b(?:GET|POST|PUT|PATCH|DELETE)\s+`?\/|`\/[A-Za-z]|(?<![\w.~/])\/(?:adsApi|sp|sb|sd|v2|v3|reporting|history|portfolios|eligibility|product|products|accountBudgets|targetPromotionGroups|insights|attribution|amc|dsp|stores|media|assets|recommendations|budgetRules)\b/;
+/** A polling interval: how often a status is asked for. */
+const POLL = /\bonce an? (?:second|minute|hour)\b|\bevery \d+ ?(?:s|sec|seconds?|min|minutes?)\b|\bpoll\w*\s+(?:about\s+|roughly\s+|at most\s+)?(?:every|once)\b/i;
+
+it("no line of the skills names an Ads API request route or a polling interval: how a call is made and a report is asked for is the amazon-ads skill's", () => {
+  for (const { file, line } of lines) {
+    expect(ROUTE.test(line), `${file}: ${line}`).toBe(false);
+    expect(POLL.test(line), `${file}: ${line}`).toBe(false);
+  }
+});
+
+it("the route and polling checks catch the lines they are for", () => {
+  for (const line of [
+    "- A v1 report is created with `POST /adsApi/v1/create/reports` (R6).",
+    "- `POST /history` returns up to 90 days (C1).",
+    "- The list is `/sp/campaigns/list` (T6).",
+  ]) expect(ROUTE.test(line), line).toBe(true);
+  expect(POLL.test("- A v1 report's status is polled about once a minute (R6)."), "poll").toBe(true);
+  for (const line of ["- SP/SB and/or SD (A8).", "- How a report is asked for: the amazon-ads skill's references/door.md.", "- The interval has poor coverage (S20)."]) {
+    expect(ROUTE.test(line) || POLL.test(line), line).toBe(false);
+  }
+});
+
 it("each SKILL.md body is at most 371 words", () => {
   for (const name of readdirSync(join(ROOT, "skills"))) {
     const words = body(readFileSync(join(ROOT, "skills", name, "SKILL.md"), "utf8")).split(/\s+/).filter(Boolean).length;

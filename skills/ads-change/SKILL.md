@@ -5,7 +5,7 @@ description: "What a change to a seller's sponsored ads leaves behind and how it
 
 ## Change history
 
-- `POST /history` returns up to 90 days of change events for SP and SB campaigns, each with its `entityType`, old and new values and timestamp; not Sponsored Display's, nor who made them (C1, C2).
+- Amazon's change history returns up to 90 days of change events for SP and SB campaigns, each with its `entityType`, old and new values and timestamp; not Sponsored Display's, nor who made them (C1, C2).
 - It has no event for negative product targets, audience or shopper bid adjustments, ad creative or budget-rule associations (C2).
 - No history, reply or report field records a change's reason, expected effect, judging metric or windows (C6).
 
@@ -33,7 +33,7 @@ description: "What a change to a seller's sponsored ads leaves behind and how it
 
 ## References
 
-- references/history.md: event fields, `fromDate`, `THEME`, missing event types.
+- references/history.md: event fields, how far back, `THEME`, missing event types.
 - references/writes.md: 207 replies, idempotency, refusals, target types.
 - references/tests.md: Amazon's advice, missing tests and own experiments, practitioners' waits, vendors.
 - references/findings.md: organic, noise, positions, durability.

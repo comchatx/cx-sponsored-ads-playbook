@@ -3,7 +3,7 @@
 ## The daily budget
 
 - A daily budget is averaged over the calendar month: the month's spend stays within daily budget × days, and the invoice is adjusted for any over-delivery. (B22)
-- A single day may spend up to 100% more, or 25% if the profile opted out, read as `isOptedOutForAverageDailyBudgetIncrease` on `GET /accountBudgets/featureFlags`. (B22)
+- A single day may spend up to 100% more, or 25% if the profile opted out, read as `isOptedOutForAverageDailyBudgetIncrease` among the account budget feature flags. (B22)
 - Amazon's library guide still prints 25%. (B22)
 - A mid-month change caps the rest of the month at the new budget × days left. (B22)
 - When a budget changes several times in a day, the highest applies that day and the last from the next day. (B22)
@@ -28,7 +28,7 @@
 ## Budget usage and hourly cost
 
 - Budget usage percent is the day's spend over the day's effective budget, which includes budget-rule increases and the average-daily-budget lift. (B25)
-- It is read as `budgetUsagePercent` with `usageUpdatedTimestamp` through `POST /{sp,sb,sd}/campaigns/budget/usage` and `/portfolios/budget/usage`, for up to 100 ids. (B25)
+- It is read as `budgetUsagePercent` with `usageUpdatedTimestamp` from the SP, SB and SD campaign and the portfolio budget usage operations, for up to 100 ids. (B25)
 - Stream v1's `budget-usage` feed (every 5% consumed) needs an SQS or Firehose destination, stops on 2027-06-30 and is "not carried forward in Stream v2", Amazon pointing to the Campaign Management API instead. (B25)
 - Hourly cost per campaign comes from v1 reports with the `hour.value` dimension, kept 14 days with a 14-day maximum range. (B31)
 

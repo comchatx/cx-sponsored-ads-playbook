@@ -4,10 +4,10 @@
 
 - Suggested bids and ranges are calculated from bids of similar ads that won impressions over the past 7 days, offered as low, median and high and updated daily, so they exist for an ASIN with no history of its own. (B13)
 - The console gives a separate suggestion for events in the next 45 days. (B13)
-- `POST /sp/targets/bid/recommendations` returns up to three values per target by theme, and its v5 content type adds impression estimates. (B13)
+- The SP target bid recommendation returns up to three values per target by theme, and its v5 version adds impression estimates. (B13)
 - A per-placement analysis is currently available only for existing ad group requests in the US. (B13)
 - Performance Estimate figures and the old theme-based impact metrics are not a forecast and do not consider budget constraints. (B13)
-- The v2 `/v2/sp/targets/bidRecommendations` endpoint and the v3 theme-based content type were announced for shutoff on 2025-05-15, though the SP v3 model read on 2026-11-09 still lists the v3 content type. (B13)
+- The v2 SP target bid recommendations and the v3 theme-based version of the SP target bid recommendation were announced for shutoff on 2025-05-15, though the SP v3 model read on 2026-11-09 still lists that v3 version. (B13)
 
 ## Recommendations
 
@@ -15,7 +15,7 @@
 - Applying one is the same write to the named campaign, keyword or placement that any other change uses. (B36)
 - The cross-product v1 Recommendations API (August 2026) serves the types its *Recommendation types* page lists (four on 2026-11-09); Amazon adds types over time, and its guide tells readers to tolerate `recommendationType` values they do not recognise. (B36)
 - A v1 recommendation carries a `state` (`ACTIVE`, `APPLIED`, `DEFERRED`, `DISMISSED`, `EXPIRED`, `INACTIVE`) and `potentialImpacts`, "Estimated customer benefits if recommendation is followed". (B36)
-- The three recommendation surfaces (product-specific recommendations, `/recommendations/list` and `/recommendations/apply`, and `/adsApi/v1/query/recommendations`) have different shapes. (B36)
+- The three recommendation surfaces (product-specific recommendations, the recommendation list and apply operations, and the v1 recommendations query) have different shapes. (B36)
 
 ## Changes Amazon makes itself
 

@@ -16,7 +16,7 @@
 
 ## Harvesting
 
-- Target promotion groups (`/sp/targetPromotionGroups`) are Amazon's own harvest: they link an auto ad group to manual destination ad groups and move converting search terms and ASINs into them. (S14)
+- Sponsored Products target promotion groups are Amazon's own harvest: they link an auto ad group to manual destination ad groups and move converting search terms and ASINs into them. (S14)
 - They move them on recommendations "based on performance heuristics" that the specification does not state. (S14)
 - The Target Promotion guide does not describe adding negatives in the source. (S14)
 - Several practitioners add a term moved to exact as a negative where it came from. (S18)

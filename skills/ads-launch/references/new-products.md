@@ -6,7 +6,7 @@
 
 ## Finding a new ASIN
 
-- Product Selector's `POST /product/metadata` returns `createdDate`, the date the item was first available on Amazon. (L4)
+- Product Selector's product metadata read returns `createdDate`, the date the item was first available on Amazon. (L4)
 - The recommendation API groups unadvertised, recently added ASINs as `NEW_ASIN`. (L4)
 
 ## Amazon's 30-day roadmap
@@ -17,7 +17,7 @@
 
 - A seller new to Amazon earns Sponsored Products credits by creating a first SP campaign within 90 days of listing the first buyable ASIN and spending within 30 days of that campaign's launch. (L5)
 - Under the 2024 terms the credit is issued within 14 days after that window, is valid 30 days and cannot pay for the spend that earned it. (L5)
-- The beta `POST /adsApi/v1/query/promotionOffers` and `query/promotionRewards` list an account's promotion offers and rewards. (L6)
+- The beta v1 promotion offers and promotion rewards queries list an account's promotion offers and rewards. (L6)
 - Promotional credits apply only to future costs, may be limited to one ad product and expire under their terms. (L6)
 
 ## FBA New Selection

@@ -25,10 +25,10 @@
 
 ## Where negatives are written
 
-- In v1 a negative keyword, ASIN or brand is a target created with `negative: true` on v1's create-targets operation, and `query/targets` filters by `negativeFilter`. (S10)
-- Sponsored Products 3.0 writes negatives on `/sp/negativeKeywords`, `/sp/campaignNegativeKeywords` and the negative target paths. (S24)
-- Sponsored Brands writes them on `POST /sb/negativeKeywords` and `/sb/negativeTargets`, at most 100 per call. (S24)
-- Sponsored Display writes ad-group negative targeting clauses on `POST /sd/negativeTargets`, and the Sponsored Display 3.0 model has no negative keyword path. (S24)
+- In v1 a negative keyword, ASIN or brand is a target created with `negative: true` on v1's create-targets operation, and v1's query-targets operation filters by `negativeFilter`. (S10)
+- Sponsored Products 3.0 writes negatives as ad-group negative keywords, campaign negative keywords and negative targets. (S24)
+- Sponsored Brands writes them as negative keywords and negative targets, at most 100 per call. (S24)
+- Sponsored Display writes ad-group negative targeting clauses, and the Sponsored Display 3.0 model has no negative keyword operation. (S24)
 - The v1 target tables have no Sponsored Display column, while the v1 `AdProduct` enum and the campaign-management overview include it, and no 2026 release note read announces it in v1 campaign management. (S24)
 
 ## Campaign-level negative product targets

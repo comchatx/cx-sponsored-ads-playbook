@@ -9,11 +9,11 @@
 
 ## Profiles and global accounts
 
-- A profile is one advertiser account in one marketplace; `GET /v2/profiles` returns nothing for an account that has never created a campaign, and types each profile as `seller`, `vendor` or `agency`, with `KDP_AUTHOR` as a sub-type (A4).
+- A profile is one advertiser account in one marketplace; the profile list returns nothing for an account that has never created a campaign, and types each profile as `seller`, `vendor` or `agency`, with `KDP_AUTHOR` as a sub-type (A4).
 - The United Kingdom is `UK` in the Profiles model and `GB` in the v1 `Marketplace` and `CountryCode` enums (A6).
 - Ads API v1 reporting, v1 recommendations and Stream v2 identify the advertiser by a global account id (`amzn1.ads-account.g.*`), not by profile (A5).
-- `POST /adsApi/v1/query/advertiserAccounts` maps each global account to its per-marketplace `profileId`s, paging by `nextToken`, with pages that can be empty while a `nextToken` remains (A5).
-- Amazon names it the replacement for the legacy `/adsAccounts*` endpoints, which answer `Warning: 299` from July 2026, block new client integrations (existing callers continue "through an allowlist") and answer `404` from July 2027 (A5).
+- v1's advertiser-account query maps each global account to its per-marketplace `profileId`s, paging by `nextToken`, with pages that can be empty while a `nextToken` remains (A5).
+- Amazon names it the replacement for the legacy `adsAccounts` operations, which answer `Warning: 299` from July 2026, block new client integrations (existing callers continue "through an allowlist") and answer `404` from July 2027 (A5).
 - Stream v2 takes no manager account id, Vendor Group id or Seller Central merchant id (A5).
 
 ## The offer behind an ad

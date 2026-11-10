@@ -6,7 +6,7 @@ description: "How a seller's Sponsored Products, Sponsored Brands and Sponsored 
 ## Serving
 
 A Sponsored Products or display ad serves only while its product holds the Featured Offer and is in stock, judged when the shopper views it; an out-of-stock product is paused within its campaign, and one without the Featured Offer gets zero impressions even when the campaign runs (A8).
-SP v3 with `includeExtendedDataFields` returns every entity's serving status, so an ad can read `AD_NOT_IN_BUYBOX` or `AD_OUT_OF_STOCK` while its campaign runs; statuses and v1 `deliveryReasons` also name each money stop (A8, A15, A16, A17).
+SP v3 with extended data returns every entity's serving status, so an ad can read `AD_NOT_IN_BUYBOX` or `AD_OUT_OF_STOCK` while its campaign runs; statuses and v1 `deliveryReasons` also name each money stop (A8, A15, A16, A17).
 `getItemOffers` names the current Buy Box holder (`IsBuyBoxWinner`) (A12).
 When another seller holds the Featured Offer on a brand's own ASIN, its Sponsored Brands ads keep serving, sending shoppers to a page whose default offer is the other seller's; Amazon routes the case to Seller Support (A9).
 

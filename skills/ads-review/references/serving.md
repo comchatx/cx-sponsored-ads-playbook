@@ -24,7 +24,7 @@
 
 ## Product eligibility
 
-- The Eligibility API's `POST /eligibility/product/list` takes ASINs, SKU optional, and an ad type (`sp` by default, `sb`, `sd` or `dsp`), and returns per-product statuses, each `INELIGIBLE` or `ELIGIBLE_WITH_WARNING`, that include `NOT_IN_BUYBOX`, `OUT_OF_STOCK` and `INELIGIBLE_PRODUCT_COST` (A27).
+- The Eligibility API's product eligibility check takes ASINs, SKU optional, and an ad type (`sp` by default, `sb`, `sd` or `dsp`), and returns per-product statuses, each `INELIGIBLE` or `ELIGIBLE_WITH_WARNING`, that include `NOT_IN_BUYBOX`, `OUT_OF_STOCK` and `INELIGIBLE_PRODUCT_COST` (A27).
 - The SP 3.0 serving-status reasons include `CP_INELIGIBLE`, `CP_INELIGIBLE_ASIN`, `CP_INELIGIBLE_UNKNOWN` and `CP_INELIGIBLE_VENDOR`, which Amazon's model does not describe (A27).
 - CNBC reported in 2019 that Amazon emailed vendors that products "no longer qualif[y] for advertising" because their sale "currently results in a loss to Amazon", glossing the practice as CRaP ("Can't Realize a Profit"), a term no Amazon page read in 2026 uses (A27).
 - Flywheel (Gabe Fishbein, 2024) reports a rise in ASINs becoming ineligible for Sponsored Products after Amazon re-evaluated "safe-listed" unprofitable ASINs, in their account only SP placements being affected and some ASINs restored through Amazon reps (A27).
@@ -32,9 +32,9 @@
 
 ## Serving statuses and delivery reasons
 
-- Sponsored Products v3 returns the serving status of every entity in `extendedData` when `includeExtendedDataFields` is set, with values such as `AD_NOT_IN_BUYBOX`, `AD_OUT_OF_STOCK` and `AD_NO_PURCHASABLE_OFFER` (A15).
+- Sponsored Products v3 returns the serving status of every entity in `extendedData` when extended data is requested, with values such as `AD_NOT_IN_BUYBOX`, `AD_OUT_OF_STOCK` and `AD_NO_PURCHASABLE_OFFER` (A15).
 - Sponsored Brands and Sponsored Display keep their own, largely shared enums (A15).
-- The flag's request description and the response schema name the fields differently, and extended-data list calls weigh five times a standard call against the rate limit (A15).
+- The extended-data flag's request description and the response schema name the fields differently, and extended-data list calls weigh five times a standard call against the rate limit (A15).
 - In Ads API v1 an entity carries a user-set `state` (`DRAFT`, `PROPOSED`, `ENABLED`, `PAUSED`, `ARCHIVED`) and a separate `status.deliveryStatus` (`DELIVERING`, `LIMITED`, `NOT_DELIVERING`, `UNAVAILABLE`) with `deliveryReasons` (A16).
 - SP v1 writes accept `ENABLED` and `PAUSED` only (A16).
 - Amazon Ads Status publishes six months of incidents by region and category (ad delivery, campaign management, reports, Marketing Stream) as a page and a `history.json` (A19).

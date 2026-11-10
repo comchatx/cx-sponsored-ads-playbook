@@ -2,7 +2,7 @@
 
 ## Events
 
-`POST /sp/v1/events` returns individual and grouped special events with suggested date ranges in the advertiser's marketplace, each with an `eventId`. (E3)
+Amazon's Sponsored Products events operation returns individual and grouped special events with suggested date ranges in the advertiser's marketplace, each with an `eventId`. (E3)
 Budget-rule event recommendations (`EVENTS_FOR_EXISTING_CAMPAIGN`) return, per campaign, the events Amazon recommends with a `suggestedBudgetIncreasePercent`. (E3)
 Amazon chooses those events from the campaign's products, and they change when the products change. (E3)
 Recommended events exist for Sponsored Products and Sponsored Brands only. (E3)

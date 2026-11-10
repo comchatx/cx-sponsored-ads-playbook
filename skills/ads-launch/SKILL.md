@@ -11,12 +11,12 @@ The amazon-ads skill (cx-amazon-ads) carries every call; its references/door.md:
 
 - Sponsored Products needs a Professional plan or vendor account and an eligible category; variation parents and suppressed listings cannot be advertised (L1).
 - Sponsored Brands, display ads, Streaming TV and Stores need Brand Registry or a vendor account; vendors need not enroll to advertise (L2, L22).
-- `POST /eligibility/product/list` rates each product and ad type `ELIGIBLE`, `ELIGIBLE_WITH_WARNING` or `INELIGIBLE` with reasons (P1).
+- Product eligibility rates each product and ad type `ELIGIBLE`, `ELIGIBLE_WITH_WARNING` or `INELIGIBLE` with reasons (P1).
 - No eligibility reason reads reviews; Amazon's five or more reviews at 3.5 stars is guidance (L3).
 
 ## New products
 
-- `POST /product/metadata` returns `createdDate`, the item's first-available date on Amazon (L4).
+- Product metadata returns `createdDate`, the item's first-available date on Amazon (L4).
 - Review Requests (US beta): an SP campaign with goal `ENGAGEMENT`, billed per rating or review left on its ad card (L15).
 - No Amazon page claims a "honeymoon" ranking boost in Amazon's own voice; practitioners disagree (L13).
 

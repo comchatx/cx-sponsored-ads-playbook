@@ -10,7 +10,7 @@ No Amazon page read states a statistical test or confidence level for an ad chan
 
 No Amazon page or model read offers a randomized test for sponsored ads. (C10)
 Manage Your Experiments covers listing content only: images, titles, bullets, descriptions and A+. (C10)
-Brand Lift surveys exposed and unexposed groups, excludes SP, and its API paths sit under DSP; the launch page's `/measurementStudies/brandLift` paths are in no model. (C10)
+Brand Lift surveys exposed and unexposed groups, excludes SP, and its API operations sit under DSP; the Brand Lift operations its launch page names are in no model. (C10)
 Creative Testing is a pre-launch DSP panel survey, and SalesDuo's Borle (2026) agrees. (C10)
 SB v4 lets several ads share an ad group, with no stated split. (C10)
 DSP alone has ten 10% customer holdout groups, on a page that advises against before/after comparison of bid adjustments. (C10)

@@ -20,7 +20,7 @@ description: "What a sponsored ad's click costs and how its spend runs: Amazon's
 
 - A daily budget is averaged over the calendar month; one day may spend up to 100% more (25% if opted out). (B22)
 - Sponsored-ads budgets are not paced; an out-of-budget campaign waits for midnight. (B23)
-- `POST /{sp,sb,sd}/campaigns/budget/usage` returns `budgetUsagePercent`, spend over the day's effective budget, with `usageUpdatedTimestamp`; Trellis advises recording when each campaign ran out. (B25, B33)
+- SP/SB/SD campaign budget usage returns `budgetUsagePercent`, spend over the day's effective budget, with `usageUpdatedTimestamp`; Trellis advises recording when each campaign ran out. (B25, B33)
 - The SP budget recommendation returns a suggested daily budget, the last 7 days' share in budget and estimated missed impressions, clicks and sales, "not a guarantee"; missed sales are click-attributed, not ad-caused. (B26)
 - Budget rules only raise budgets; SP reads the raised one as `budget.effectiveBudget`. (B27)
 - A portfolio cap stops its campaigns with `PORTFOLIO_OUT_OF_BUDGET`. (B28)
@@ -32,5 +32,5 @@ description: "What a sponsored ad's click costs and how its spend runs: Amazon's
 - references/budgets.md: averaging, pacing, usage, recommendations, budget rules, portfolios, tools.
 - references/writes.md: limits, refusals, bid and budget writes.
 - references/automation.md: Amazon's own changes, recommendations, agents, bid tools, lifts.
-- API paths and headers: the amazon-ads skill's references/door.md.
+- Calls: the amazon-ads skill's references/door.md.
 - Metrics, reports: ../ads-review/references/metrics.md, ../ads-review/references/reports.md.
