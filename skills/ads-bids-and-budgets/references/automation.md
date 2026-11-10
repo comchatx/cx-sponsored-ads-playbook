@@ -5,7 +5,7 @@
 - Suggested bids and ranges are calculated from bids of similar ads that won impressions over the past 7 days, offered as low, median and high and updated daily, so they exist for an ASIN with no history of its own. (B13)
 - The console gives a separate suggestion for events in the next 45 days. (B13)
 - The SP target bid recommendation returns up to three values per target by theme, and its v5 version adds impression estimates. (B13)
-- A per-placement analysis is currently available only for existing ad group requests in the US. (B13)
+- Its per-placement analysis is available only for existing ad group requests, in the marketplaces the Sponsored Products 3.0 model names in its v5 content type's description. (B13)
 - Performance Estimate figures and the old theme-based impact metrics are not a forecast and do not consider budget constraints. (B13)
 - The v2 SP target bid recommendations and the v3 theme-based version of the SP target bid recommendation were announced for shutoff on 2025-05-15, though the SP v3 model read on 2026-11-09 still lists that v3 version. (B13)
 
@@ -13,7 +13,7 @@
 
 - Amazon's bid, budget and targeting recommendations are dated estimates refreshed about daily. (B36)
 - Applying one is the same write to the named campaign, keyword or placement that any other change uses. (B36)
-- The cross-product v1 Recommendations API (August 2026) serves the types its *Recommendation types* page lists (four on 2026-11-09); Amazon adds types over time, and its guide tells readers to tolerate `recommendationType` values they do not recognise. (B36)
+- The cross-product v1 Recommendations API (August 2026) serves the types its *Recommendation types* page, https://advertising.amazon.com/API/docs/en-us/guides/recommendations/recommendations-api/recommendation-types, lists; Amazon adds types over time, and its guide tells readers to tolerate `recommendationType` values they do not recognise. (B36)
 - A v1 recommendation carries a `state` (`ACTIVE`, `APPLIED`, `DEFERRED`, `DISMISSED`, `EXPIRED`, `INACTIVE`) and `potentialImpacts`, "Estimated customer benefits if recommendation is followed". (B36)
 - The three recommendation surfaces (product-specific recommendations, the recommendation list and apply operations, and the v1 recommendations query) have different shapes. (B36)
 
@@ -22,7 +22,7 @@
 - Amazon changes a seller's bids, budgets, targets and creative without a seller write, through its own switches on the campaign, portfolio or ad extension. (B35)
 - For Alexa for Shopping, Alexa+ and prompts, it does so through automatic eligibility with no documented campaign switch. (B35)
 - Auto targeting, keyword groups, SB theme targeting, SB cost-control rules and the v1 `autoCreateTargets` flag choose and refresh targets. (B35)
-- Every US SP campaign is opted in to auto-assembled videos; the opt-out, `optOuts.videoExtension`, leaves videos already delivering running until paused through the ad extension. (B35)
+- Every SP campaign in the marketplaces Amazon's *Auto-assembled videos* guide, https://advertising.amazon.com/API/docs/en-us/guides/sponsored-products/auto-assembled-videos, covers is opted in to auto-assembled videos; the opt-out, `optOuts.videoExtension`, leaves videos already delivering running until paused through the ad extension. (B35)
 - Campaigns were "automatically enrolled in prompts". (B35)
 - SB headlines can be rewritten under DCO consent. (B35)
 - Full-Funnel, DVA+ and Amazon's creative tools hand planning, targeting or creative to Amazon. (B35)

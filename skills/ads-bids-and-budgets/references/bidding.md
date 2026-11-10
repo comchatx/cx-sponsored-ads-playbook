@@ -17,7 +17,7 @@
 ## Audiences
 
 - In Sponsored Products, adjustments of different kinds multiply (placement × audience × video). (B8)
-- An SP 3.0 campaign may boost up to 10 audiences (Amazon or AMC audiences; one outside the US), each 0–900%. (B8)
+- An SP 3.0 campaign may boost up to 10 audiences (Amazon or AMC audiences), each 0–900%; a marketplace can allow fewer, and Amazon's *Adjust Sponsored Products bids* and *Bidding strategies for Sponsored Products* help pages, https://advertising.amazon.com/help/GYYZVM7LGSRYGWV5 and https://advertising.amazon.com/help/GCU2BUWJH2W3A8Z7, give the count where it does. (B8)
 - When a shopper is in several boosted audiences only the highest boost applies, ties going to one audience at random. (B8)
 - In v1 the field `bidAdjustments.audienceBidAdjustments[]` takes at most one per campaign. (B8)
 - Audience ids come from the targetable-entities list, and "Only the audiences retrieved using these filters are usable". (B8)
@@ -32,7 +32,7 @@
 - Their cost shows in the placement report and, since 2026-06-08, in a US bulksheet column, not in Campaign Manager. (B9)
 - PPC Land's Luis Rijo reports that from 2026-08-10 SP ads may also serve through Amazon Influencer Program creators, enrolled by default at existing bids and budgets. (B9)
 - The placement report itself is in ../ads-review/references/reports.md.
-- A site restriction (Amazon Business only, or Amazon Haul in the US) is set at creation, cannot be changed and has its own program-eligibility reason. (B10)
+- A site restriction (Amazon Business only, or Amazon Haul in the marketplaces Amazon's *Sites selection for Sponsored Ads campaigns* help page, https://advertising.amazon.com/help/GJGYD2FKNF3MUWBQ, names) is set at creation, cannot be changed and has its own program-eligibility reason. (B10)
 - A site-restricted campaign has no audience (shopper-cohort) bid adjustments and no Amazon Business placement adjustment. (B10)
 
 ## Rule-based bidding
@@ -40,13 +40,13 @@
 - Rule-based bidding adjusts base bids per impression toward a ROAS guardrail that Amazon bases on the previous 21 days and does not guarantee. (B11)
 - It can raise a bid up to five times the adjusted bid, and sets a goal itself when none is given. (B11)
 - Amazon warns that it can reduce conversions under an aggressive guardrail. (B11)
-- It needs a campaign running at least 10 days with at least 10 conversions in the last 30, at or above a marketplace minimum daily budget, whose figure this skill does not hold, so a newly launched campaign is not eligible. (B11)
+- It needs a campaign running at least 10 days with at least 10 conversions in the last 30, at or above the marketplace's minimum daily budget, which Amazon's *Sponsored Products Rule-based bidding overview* guide, https://advertising.amazon.com/API/docs/en-us/guides/rules/bidding-rules/overview, gives per marketplace, so a newly launched campaign is not eligible. (B11)
 - A comparison of rule-based campaigns with ineligible ones mixes the rule's effect with that gate. (B11)
 - Amazon switches it off when 20-day ROAS falls below 30% of the prior 20-to-40-day ROAS, restoring the earlier strategy and bids. (B11)
 
 ## Schedule bid rules
 
-- Schedule bid rules are SP only and only raise bids, by an integer 1–100% of the base bid, for an hour window, weekday, date range or event ("Recurring Events" in JP only, "Individual Events" worldwide). (B12)
+- Schedule bid rules are SP only and only raise bids, by an integer 1–100% of the base bid, for an hour window, weekday, date range or event; which marketplaces have "Recurring Events" and which "Individual Events" is given in Amazon's announcement *Events for schedule bid rules, now available for Sponsored Products advertisers in the advertising console*, https://advertising.amazon.com/resources/whats-new/event-based-bid-rules-for-sponsored-products-advertisers. (B12)
 - Several rules add together and the total adds to the placement adjustment: Amazon's example is $1.00 with top of search +10% and a Monday rule +20% giving $1.30. (B12)
 - A rule change takes effect within 24 hours, and a campaign carries at most 20 rules. (B12)
 - They cannot be applied to a campaign with rule-based bidding active, and go on hold if the campaign switches to rule-based bidding. (B12)

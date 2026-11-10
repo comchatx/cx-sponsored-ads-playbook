@@ -5,12 +5,11 @@ description: "Sponsored ads around Amazon's sales events: the Prime Day, Prime B
 
 ## Calendar
 
-Prime Day 2026 ran June 23–26 in 23 countries; since 2019 its start has ranged from June 21 to October 13. (E1)
-Black Friday 2026 is November 27; Amazon had not published US Black Friday Week dates on 2026-11-09. (E1)
+An event's dates and length differ by marketplace and year; SP's events operation returns suggested date ranges for the advertiser's marketplace. (E1, E2, E3)
+Since 2019 Prime Day's start has moved between June and October; in 2025 it went from 48 to 96 hours. (E1)
 
 ## Events in the Ads API
 
-SP's events operation returns special events with suggested date ranges. (E3)
 Budget-rule event recommendations (`EVENTS_FOR_EXISTING_CAMPAIGN`) give an SP or SB campaign Amazon's recommended events, each with a `suggestedBudgetIncreasePercent`; a rule tied to an unannounced event is created with empty dates that Amazon fills in on announcement. (E3)
 Theme-based bid recommendations offer `PRIME_DAY`, `FALL_PRIME_DEAL_EVENT` and `BFCM_HOLIDAY`. (E4)
 
@@ -30,11 +29,11 @@ Store-level scanner research puts the post-promotion dip at 4–25% of the promo
 ## Deals and claims
 
 An advertised deal must be live whenever the ad is; sponsored ads mention Prime Day only through dynamically pulled detail-page information such as deal badges. (E13)
-Amazon's ad policy bounds event names by duration: "available on Black Friday only" means 24 hours (November 27 in 2026), "Black Friday Week" about 8 days. (E1, E13)
+Amazon's ad policy bounds an event's name in an ad, such as "Black Friday Week", by the event's length, as its Event days page for that marketplace states (https://advertising.amazon.com/help/GQ3SJ5QCWCQCKCYQ). (E1, E13)
 
 ## References
 
-- references/calendar.md: dates by region.
+- references/calendar.md: where event dates are read; history.
 - references/api-events.md: events, budget-rule events, themes.
 - references/spend.md: budgets, CPC, conversion, post-event.
 - references/measurement.md: attribution, benchmarks, promotion research.

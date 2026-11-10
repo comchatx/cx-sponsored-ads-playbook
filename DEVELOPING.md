@@ -47,7 +47,9 @@ npm ci
 npm run typecheck
 npm test               # pi at the pin loads the package and its tarball and expands every template;
                        # every line of the skills cites a position that exists, none of the ten moved ones,
-                       # and each of the 323 that stay is cited; each SKILL.md body is at most 371 words
+                       # and each of the 323 that stay is cited; each SKILL.md body is at most 371 words;
+                       # no line of a skill file, frontmatter and headings included, names a request route,
+                       # a polling interval or a sales event's calendar date
 ```
 
 The skills were measured with Anthropic's `skill-creator`; the cases, the fixture and the stand-in `cx` are in [`evals/`](evals/README.md), and nothing there ships.

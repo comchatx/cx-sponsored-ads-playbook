@@ -60,27 +60,61 @@ it("G10 enters without its AMC clause, which went to cx-amc-playbook", () => {
   for (const { file, line, ids } of lines) if (ids.includes("G10")) expect(line, file).not.toMatch(/\bAMC\b|Marketing Cloud/);
 });
 
+/** Every skill file whole, its frontmatter and headings included, line by line. */
+const files = markdown(join(ROOT, "skills")).map((file) => ({ file, text: readFileSync(file, "utf8") }));
+
+/** The lines of a file's whole text that a check finds. */
+const caught = (text: string, check: (line: string) => boolean): string[] => text.split("\n").filter(check);
+
 /** An Ads API request route as a request names it: a method and a path, or a path of Amazon's from its root. */
 const ROUTE = /\b(?:GET|POST|PUT|PATCH|DELETE)\s+`?\/|`\/[A-Za-z]|(?<![\w.~/])\/(?:adsApi|sp|sb|sd|v2|v3|reporting|history|portfolios|eligibility|product|products|accountBudgets|targetPromotionGroups|insights|attribution|amc|dsp|stores|media|assets|recommendations|budgetRules)\b/;
 /** A polling interval: how often a status is asked for. */
 const POLL = /\bonce an? (?:second|minute|hour)\b|\bevery \d+ ?(?:s|sec|seconds?|min|minutes?)\b|\bpoll\w*\s+(?:about\s+|roughly\s+|at most\s+)?(?:every|once)\b/i;
+const mechanics = (line: string) => ROUTE.test(line) || POLL.test(line);
 
-it("no line of the skills names an Ads API request route or a polling interval: how a call is made and a report is asked for is the amazon-ads skill's", () => {
-  for (const { file, line } of lines) {
-    expect(ROUTE.test(line), `${file}: ${line}`).toBe(false);
-    expect(POLL.test(line), `${file}: ${line}`).toBe(false);
+/** A sales event by name. */
+const EVENT = /\b(?:Prime Day|Prime Big Deal Days|PBDD|Big Spring Sale|Black Friday|Cyber Monday|Cyber Week|BFCM|White Friday|Singles'? ?Day|11:11|Great Indian Festival|Boxing Day|Prime Early Access)\b/i;
+/** A calendar date: a month with its day, a day with its month, or an ISO date. */
+const CALENDAR = /\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|July?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.? \d{1,2}\b|\b\d{1,2} (?:January|February|March|April|May|June|July|August|September|October|November|December)\b|\b(?:19|20)\d{2}-\d{2}-\d{2}\b/;
+const eventDate = (line: string) => EVENT.test(line) && CALENDAR.test(line);
+
+/** A skill file with one line placed in its frontmatter, its heading or its body. */
+const control = (where: "frontmatter" | "heading" | "body", line: string) =>
+  [
+    "---",
+    "name: ads-example",
+    where === "frontmatter" ? `description: "${line}"` : 'description: "An example."',
+    "---",
+    "",
+    where === "heading" ? `## ${line}` : "## Example",
+    "",
+    where === "body" ? `- ${line} (A1)` : "- A line (A1).",
+  ].join("\n");
+
+it("no line of any skill file, frontmatter and headings included, names an Ads API request route or a polling interval: how a call is made and a report is asked for is the amazon-ads skill's", () => {
+  expect(files.length).toBeGreaterThan(0);
+  for (const { file, text } of files) expect(caught(text, mechanics), file).toEqual([]);
+});
+
+it("the route and polling check catches a route or an interval in a body line, a heading and the frontmatter", () => {
+  for (const line of ["A v1 report is created with `POST /adsApi/v1/create/reports`", "`POST /history` returns up to 90 days", "The list is /sp/campaigns/list", "A v1 report's status is polled about once a minute"]) {
+    for (const where of ["frontmatter", "heading", "body"] as const) expect(caught(control(where, line), mechanics), `${where}: ${line}`).toHaveLength(1);
+  }
+  for (const line of ["SP/SB and/or SD", "How a report is asked for: the amazon-ads skill's references/door.md", "The interval has poor coverage"]) {
+    for (const where of ["frontmatter", "heading", "body"] as const) expect(caught(control(where, line), mechanics), `${where}: ${line}`).toEqual([]);
   }
 });
 
-it("the route and polling checks catch the lines they are for", () => {
-  for (const line of [
-    "- A v1 report is created with `POST /adsApi/v1/create/reports` (R6).",
-    "- `POST /history` returns up to 90 days (C1).",
-    "- The list is `/sp/campaigns/list` (T6).",
-  ]) expect(ROUTE.test(line), line).toBe(true);
-  expect(POLL.test("- A v1 report's status is polled about once a minute (R6)."), "poll").toBe(true);
-  for (const line of ["- SP/SB and/or SD (A8).", "- How a report is asked for: the amazon-ads skill's references/door.md.", "- The interval has poor coverage (S20)."]) {
-    expect(ROUTE.test(line) || POLL.test(line), line).toBe(false);
+it("no line of any skill file, frontmatter and headings included, states a sales event's calendar date: an event's dates differ by marketplace and year, and are read where Amazon gives them", () => {
+  for (const { file, text } of files) expect(caught(text, eventDate), file).toEqual([]);
+});
+
+it("the event-date check catches a dated event in a body line, a heading and the frontmatter", () => {
+  for (const line of ["Black Friday 2026 is November 27", "Prime Day ran June 23–26", "Black Friday Week deals were accepted until 2026-11-18"]) {
+    for (const where of ["frontmatter", "heading", "body"] as const) expect(caught(control(where, line), eventDate), `${where}: ${line}`).toHaveLength(1);
+  }
+  for (const line of ["An event's dates differ by marketplace and year; the events operation returns them for the advertiser's marketplace", "Prime Day changed from 48 to 96 hours in 2025", "Amazon announced on 2026-07-06 a change to the Featured Offer"]) {
+    for (const where of ["frontmatter", "heading", "body"] as const) expect(caught(control(where, line), eventDate), `${where}: ${line}`).toEqual([]);
   }
 });
 

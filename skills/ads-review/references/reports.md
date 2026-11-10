@@ -21,7 +21,7 @@
 ## Reporting v1
 
 - v1's report operations create, retrieve and delete a report, each answering 207 with one result (R6).
-- A v1 report holds one report and one period for one advertiser (R6).
+- A v1 report request holds one report and one period (R6).
 - A v1 report's status is `PENDING`, `PROCESSING`, `COMPLETED` or `FAILED` (R6).
 - A completed v1 report lists up to 100 parts, each with its own pre-signed URL and expiry, partitioned formats splitting into chunks of up to 1 GB uncompressed (R6).
 - A v1 create has no `425` and no idempotency key, and no Amazon page says what an identical create does while its twin runs (R6).
@@ -30,7 +30,7 @@
 - A completed v1 report may carry warnings (`NO_PERMISSION`, `PENDING_DEPRECATION`, `DATE_LIMITED`) in a list Amazon says will grow, and warnings never stop it completing (R8).
 - In v1 rows are the group-by of every requested dimension, an attribute needs its primary key, money metrics need `budgetCurrency.value`, and currencies are not summed across budget currencies unless `currencyOfView` converts them (R10).
 - In v1 a missing value is `null` in JSON and `""` in CSV and "does not imply zero"; a measured zero is `0` (R11).
-- v1 keeps daily rows longer than hourly rows, with a cap on the days one request spans, and most v3 types keep their own retention; the figures are read at run time from Amazon's *Dates and historical data retention* page and the v3 type pages (R12).
+- v1 keeps daily rows longer than hourly rows, with a cap on the days one request spans, and most v3 types keep their own retention; Amazon's *Dates and historical data retention* page, https://advertising.amazon.com/API/docs/en-us/guides/reporting/ads-v1/dates, and the v3 type pages give the figures (R12).
 - Amazon's v3-to-v1 field map gives `keywordId` as `adGroupTarget.id`, `keyword` and `targeting` as `targeting.value`, `keywordType` and `matchType` as `targetingMatchType.value`, `keywordBid` as `adGroupTarget.bid` and `searchTerm` as `searchTerm.value` (R20).
 - The Dimensions library defines no `target.value`, though Amazon's own v1 examples write it and the New features warning example flags it `PENDING_DEPRECATION` (R20).
 - v1 pages document no incompatibility between placement and target, term or hour dimensions, an incompatible pair being refused with `400004`, while v3 has no target-by-placement report (R20).
@@ -65,7 +65,7 @@
 - SP, SB and DSP campaign management on v1 have been GA since 2025; at launch each call is bound to one ad product, with a per-product rate limit and batch sizes (`maxItems`, `maxResults`), SB writes taking far fewer items per call than SP's (R22).
 - The v1 contract and overview also list Sponsored Display and Sponsored Television as supported, and SD has a published v1 specification with no dated GA note (R22).
 - The Amazon Ads MCP server is served from `advertising-ai.amazon.com`, `-eu` and `-fe`, not the Ads API hosts, with the same token and client id, and the `cx-amazon-ads` door, whose origins are the `advertising-api*` hosts, does not reach it (R23).
-- The MCP server's `campaign_management` group holds 32 tools, among them a single-call SP campaign create whose specification states no response and no behaviour on a failure part-way (R23).
-- None of those tools is named for harvesting or negatives, although the MCP server's 2026-02-18 release note describes workflows that "automate keyword harvesting from automatic to manual campaigns" (R23).
+- The MCP server's `campaign_management` tools are listed in Amazon's *MCP tools: campaign_management* specification, https://d3a0d0y2hgofx6.cloudfront.net/en-us/mcp/campaign_management.json, among them a single-call SP campaign create whose specification states no response and no behaviour on a failure part-way (R23).
+- As read on 2026-11-09, none of those tools is named for harvesting or negatives, although the MCP server's 2026-02-18 release note describes workflows that "automate keyword harvesting from automatic to manual campaigns" (R23).
 - Amazon serves a skills library on the Ads API hosts, with an `ads-api-migration` skill published on 2026-11-02 (R23).
 - Test accounts serve and bill nothing, are created under a separate `advertising::test:create_account` scope as vendor or author accounts only, and do not run rules (R24).

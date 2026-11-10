@@ -11,7 +11,7 @@
 - Amazon's program eligibility read returns per marketplace and program (`SB`, `SD`, `SPOT`, `DTC`, `MAAS`) whether the account may use it, with reasons covering standing, terms, brand relation, business verification, tax, billing and payment. (P2)
 - Most advertisers are verified automatically; the others are verified through verification tasks. (P2)
 - Sponsored Brands does not support adult, used or refurbished products and is limited to a listed set of categories. (P3)
-- Streaming TV needs a professional seller with Brand Registry or a vendor account, is not available to Health and Personal Care advertisers and is in open API beta in BR, CA, MX, UK and US. (P3)
+- Streaming TV needs a professional seller with Brand Registry or a vendor account, is not available to Health and Personal Care advertisers and is in open API beta in the marketplaces Amazon's Sponsored TV overview lists (https://advertising.amazon.com/API/docs/en-us/guides/sponsored-tv/overview). (P3)
 
 ## What an ad shows
 
@@ -61,7 +61,7 @@
 - Claims must be accurate and substantiated. (P6)
 - Tobacco and nicotine, weapons (some knives excepted), THC or CBD, political ads, religious services, fundraising or proselytizing (religious books and merchandise excepted) and adult sexual products are prohibited across all supply. (P6)
 - Consumer healthcare products are tiered by sensitivity; tiers 2 and 3 are prohibited on Fire TV, Fire tablet, Alexa and the store homepage and barred from audience building. (P6)
-- Ad text must be in a language the marketplace's shoppers understand, and Amazon translates SB and display text automatically within 24 hours in AE, CA, DE, IN, JP, SA and US. (P7)
+- Ad text must be in a language the marketplace's shoppers understand, and Amazon translates SB and display text automatically within 24 hours in the marketplaces Amazon's help page Sponsored ads translation lists (https://advertising.amazon.com/help/GJ67QHHYCKMEJGG9). (P7)
 - Creative may not reference Amazon products or services or use Amazon branded elements. (P8)
 
 ## Moderation

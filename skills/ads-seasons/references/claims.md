@@ -15,7 +15,7 @@ The price or saving appears in the same format on ad and landing page, and promo
 Numeric prices or savings are allowed only where Amazon renders them dynamically, and pricing superlatives are prohibited. (E13)
 "Up to X%" needs at least 10% of the promoted ASINs at or above X%. (E13)
 A claim made inaccurate by dynamic pricing requires pausing the creative and changing it to a qualified claim. (E13)
-An event name in an ad is bounded by the event's duration: "available on Black Friday only" means 24 hours (November 27 in 2026), "Black Friday Week" about 8 days. (E1, E13)
+An event's name in an ad, such as "available on Black Friday only" or "Black Friday Week", is bounded by the event's length, as Amazon's Event days page for that marketplace states (https://advertising.amazon.com/help/GQ3SJ5QCWCQCKCYQ). (E1, E13)
 Sponsored ads may not mention Prime Day except through dynamically pulled detail-page information such as deal badges, and may not use "Prime" outside "Prime Day". (E13)
 Ad products and ad policy at large: ../ads-launch/references/products-and-policy.md.
 

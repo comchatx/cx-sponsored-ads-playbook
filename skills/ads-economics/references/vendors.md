@@ -43,7 +43,7 @@
 ## Brand Analytics for vendors
 
 - Search Query Performance and Search Catalog Performance are available through the SP-API to sellers only. (G38)
-- Repeat Purchase (18 stores), Market Basket and Search Terms are available to sellers and vendors with the Brand Analytics role and Brand Registry, Search Terms also requiring a brand representative. (G38)
+- Repeat Purchase, Market Basket and Search Terms are available to sellers and vendors with the Brand Analytics role and Brand Registry, Search Terms also requiring a brand representative; Amazon's *Analytics Reports* page (https://developer-docs.amazon/sp-api/docs/report-type-values-analytics.md) lists the stores Repeat Purchase covers. (G38)
 - AMALYTIX (Trutz Fries, October 2026) reports that Vendor Central offers vendors Top Search Terms, Repeat Purchase Behavior and Market Basket Analysis, but not Search Query Performance or Search Catalog Performance, as checked in a vendor account in October 2026. (G38)
 
 ## Hybrid brands

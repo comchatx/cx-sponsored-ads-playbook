@@ -24,7 +24,7 @@ The amazon-ads skill (cx-amazon-ads) carries every call; its references/door.md:
 
 - Amazon recommends a new advertiser start with automatic Sponsored Products and use its search term report to find manual targets; its guides differ on when manual targeting joins (L10).
 - Amazon's guides build a campaign by separate creates, in order: campaign, ad group, product ad (SKU for sellers, ASIN for vendors), then targets; an auto campaign serves once those three are active, before any negative; both create APIs accept `PAUSED` as first state (L20).
-- Before a campaign exists, the API suggests keywords, new-ad-group bids and an initial budget (`-1` when information is short); Amazon suggests $10 a day, above the API minimum (L11).
+- Before a campaign exists, the API suggests keywords, new-ad-group bids and an initial budget (`-1` when information is short); Amazon's suggested starting budget exceeds the API minimum (L11).
 - Amazon's new-campaign time marks: metrics checked at least twice weekly in week one; match types tested at least one to two weeks before keywords pause; at least 20 clicks before a keyword becomes a negative; negatives left two weeks or more before a strategy change (L12).
 - Practitioners' opening bids: Canopy Management above Amazon's suggestion, Ad Badger conservative on manual bids, ecomcrew narrow on exact match, high bids, widening later (L19).
 

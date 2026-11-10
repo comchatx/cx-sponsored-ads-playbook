@@ -6,7 +6,7 @@ Sponsored Products attributes seller conversions over 7 days and vendor conversi
 Sponsored Brands and Sponsored Display attribute over 14 days, click or view. (E8)
 Conversions are dated to the ad interaction and restated 1, 7 and 28 days after the conversion. (E8)
 Amazon advises checking 7–14-day attribution before changing campaigns after a peak, because peak-event sales often occur days after the click. (E8)
-Marketplace Ad Pros found the clicks of June 26, the last day of Prime Day 2026, fully mature around July 10. (E8)
+Marketplace Ad Pros found the clicks of Prime Day 2026's last day fully mature about two weeks later. (E8)
 Attribution and metrics at large: ../ads-review/references/metrics.md.
 Report types and columns: ../ads-review/references/reports.md.
 

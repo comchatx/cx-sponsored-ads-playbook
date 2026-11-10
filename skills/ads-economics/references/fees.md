@@ -4,7 +4,7 @@
 
 - The margin before ads rests on Amazon's fees. (G4)
 - The referral fee is a category-specific percentage of the total price or a minimum, whichever is greater; the fee category may differ from the one shoppers see, and media adds a closing fee. (G4)
-- FBA charges fulfilment by price, weight and dimensions, monthly storage, aged inventory past 181 days, returns processing, removal, disposal, liquidation and inbound placement. (G4)
+- FBA charges fulfilment by price, weight and dimensions, monthly storage, aged inventory, returns processing, removal, disposal, liquidation and inbound placement; Amazon's *Fulfillment by Amazon (FBA)* page (https://sell.amazon.com/fulfillment-by-amazon) lists them with the storage age from which inventory is charged as aged. (G4)
 - The SP-API Product Fees API estimates fees per SKU or ASIN at a supplied price; Amazon states the estimates are not guaranteed. (G4)
 - The FBA Fee Preview report holds per-SKU estimates updated at least every 72 hours. (G4)
 - The Finances API's `listTransactions` returns the actual charges and may omit the last 48 hours. (G4)
@@ -12,11 +12,11 @@
 ## Fees move
 
 - The 2026 US letter raised FBA fees by $0.08 a unit on average from 2026-01-15. (G5)
-- The 2027 letter raises fulfilment by $0.19 a unit on average (about 0.8% of average selling price), mostly from 2027-01-15. (G5)
-- From 2027-02-01 the 2027 letter drops the storage utilization surcharge and folds aged inventory into an age-based storage rate that Amazon says is flat or lower for inventory turning in under six months and higher for aged inventory. (G5)
-- From 2027-02-01 the 2027 letter applies the low-inventory-level fee only below 28 days of supply. (G5)
-- A 3.5% fuel and logistics surcharge on the fulfilment fee (about $0.17 per US FBA unit) applies from 2026-04-17 in the US and Canada, to Buy with Prime and MCF from 2026-05-02, and on top of peak fees. (G5)
-- Holiday peak fees, about $0.32 a unit over non-peak, run 2026-10-15 to 2027-01-14. (G5)
+- Amazon's 2027 US fee letter, *Update to US Referral and Fulfillment by Amazon fees for 2027* (https://sellingpartners.aboutamazon.com/update-to-us-referral-and-fulfillment-by-amazon-fees-for-2027), gives the average change in FBA fulfilment fees per unit, most changes taking effect from 2027-01-15. (G5)
+- From 2027-02-01 the 2027 US letter drops the storage utilization surcharge and folds aged inventory into an age-based storage rate that Amazon says is flat or lower for inventory turning in under six months and higher for aged inventory. (G5)
+- From 2027-02-01 the 2027 US letter applies the low-inventory-level fee only below 28 days of supply. (G5)
+- A 3.5% fuel and logistics surcharge on the fulfilment fee applies from 2026-04-17 in the US and Canada, to Buy with Prime and MCF from 2026-05-02, and on top of peak fees; Amazon's news post *Fuel and logistics-related surcharge: FBA, MCF, and BWP in US and CA* (https://sellercentral.amazon.com/seller-forums/discussions/t/7cbc0233-ee5b-4359-978a-dee7cad5c6f4) states the rate, its dates and its average per US FBA unit. (G5)
+- Holiday peak fulfilment fees for FBA, Remote Fulfillment, MCF and Buy with Prime apply for a holiday season at dates and an average per-unit increase over non-peak rates that Amazon states for that season; for 2026 they are stated in Amazon's news post *Holiday 2026: Same fees, same eligibility, earlier deadlines* (https://sellercentral.amazon.com/seller-forums/discussions/t/3e31fbb7-04e0-4ed4-873e-f74b1052e2ff). (G5)
 - The Data Kiosk economics dataset itemises the fee types, shows a fee separately on each side of a change date and previews fees up to 120 days ahead. (G5)
 
 ## Fulfilment programs

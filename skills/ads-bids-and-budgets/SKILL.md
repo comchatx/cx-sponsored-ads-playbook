@@ -12,7 +12,7 @@ description: "What a sponsored ad's click costs and how its spend runs: Amazon's
 - SP strategies: `LEGACY_FOR_SALES` (down only), `AUTO_FOR_SALES` (up and down), `MANUAL`, `RULE_BASED`; an API-created campaign with no strategy gets `LEGACY_FOR_SALES`, so down only may be nobody's choice. (B5)
 - Under up and down, Amazon's help and API models allow up to 100% at every placement, while its author-facing guide still gives 50% outside top of search; no page dates a change. (B6)
 - SP placement adjustments run 0–900%; dynamic bidding works on the adjusted bid; kinds of adjustment multiply. (B7, B8)
-- Rule-based bidding needs at least 10 days running, 10 conversions in the last 30 and a marketplace minimum daily budget (figure not held). (B11)
+- Rule-based bidding needs at least 10 days running, 10 conversions in the last 30 and the minimum daily budget Amazon publishes per marketplace. (B11)
 - Its ROAS guardrail rests on the previous 21 days and is not guaranteed; Amazon warns an aggressive one can reduce conversions. (B11)
 - SB and display cost control set a target average CPC, not a maximum. (B16)
 

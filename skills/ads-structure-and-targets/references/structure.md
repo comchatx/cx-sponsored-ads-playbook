@@ -54,7 +54,7 @@
 - Vendors identify a Sponsored Products product ad by ASIN and sellers by SKU; in Sponsored Display vendors use the `asin` field where sellers use `sku`. (T49)
 - The v3 advertised-SKU column is not available for vendors, and Review Requests take an ASIN from both. (T49)
 - Only vendors may give a Sponsored Brands campaign a custom landing page URL, which must include the ASINs of at least three products advertised in the campaign and cannot be combined with an `asins` list; the merged model's `CUSTOM_URL` landing-page type is "Available for vendors only". (T49)
-- Amazon's SP model defines custom text ads only for KDP authors and book vendors in the US, and its brand negative-target recommendations are "Only available for Sellers and Vendors". (T49)
+- Amazon's *Sponsored Products 3.0* model, https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/SponsoredProducts_prod_3p.json, defines custom text ads only for KDP authors and book vendors, in the marketplaces it names, and its brand negative-target recommendations are "Only available for Sellers and Vendors". (T49)
 
 ## Which products are advertised
 

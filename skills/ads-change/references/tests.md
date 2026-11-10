@@ -14,7 +14,7 @@ Brand Lift surveys exposed and unexposed groups, excludes SP, and its API operat
 Creative Testing is a pre-launch DSP panel survey, and SalesDuo's Borle (2026) agrees. (C10)
 SB v4 lets several ads share an ad group, with no stated split. (C10)
 DSP alone has ten 10% customer holdout groups, on a page that advises against before/after comparison of bid adjustments. (C10)
-Multi-touch attribution divides credit and is beta in the US; AMC's exposed against non-exposed conversions are an observational split; MMM feeds a model the advertiser runs. (C10)
+Multi-touch attribution divides credit; the marketplaces where it is available, and whether it is still a beta, are stated on Amazon's page *Uncover ad value across the funnel with multi-touch attribution (beta)*, https://advertising.amazon.com/resources/whats-new/uncover-ad-value-across-funnel-with-multi-touch-attribution; AMC's exposed against non-exposed conversions are an observational split; MMM feeds a model the advertiser runs. (C10)
 No Ads API model or release note read has an experiment, split or holdout operation, and no page read offers sellers a self-serve SP incrementality measurement. (C10)
 
 ## Amazon's own experiments

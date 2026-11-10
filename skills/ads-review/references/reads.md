@@ -20,7 +20,7 @@
 
 - Amazon states that an offer whose price plus shipping is above the Competitive External Price, where one exists, or above recent prices is ineligible to be the Featured Offer at that price "regardless of changes to price or stock of competitors" (A11).
 - SP-API exposes the reference prices (`PRICING_HEALTH`), the price at or below which an offer can expect to win, which Amazon says "is not guaranteed" (`getFeaturedOfferExpectedPriceBatch`, up to 40 SKUs), and the winner per customer segment (`getCompetitiveSummary`) (A11).
-- Landed price subtracts points, a program that exists only in Japan (A11).
+- Landed price subtracts Amazon Points, and the marketplaces where the Points program runs are stated in Amazon's Product Fees model, *productFeesV0.json*, https://github.com/amzn/selling-partner-api-models/blob/main/models/product-fees-api-model/productFeesV0.json (A11).
 - Repricer.com and AMALYZE hold that price moves Featured Offer status and conversion, without publishing data or a method (A11).
 - The Buy Box holder over time is in Keepa's histories, `-1` when no offer or seller qualified, and the current holder in SP-API `getItemOffers` as `IsBuyBoxWinner` (A12).
 - Sales and Traffic's `buyBoxPercentage` is the share of page views with a buy box, and that report's `refundRate` description reads inverted (A12).

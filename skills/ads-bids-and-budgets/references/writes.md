@@ -4,9 +4,8 @@ Paths, headers, origins, the token and the reply's handling are the amazon-ads s
 
 ## Bid limits
 
-- Amazon publishes minimum and maximum SP, SB and SD bids per marketplace and currency on the API limits page. (B14)
-- On 2026-11-09 the SP minimum was 0.02 in USD, CAD, GBP, EUR, AUD and SGD, 2 in JPY and 1 in INR. (B14)
-- The page contains at least one apparent error (EG SP maximum 5.50). (B14)
+- Amazon publishes minimum and maximum SP, SB and SD bids per marketplace and currency on the Ads API *Limits, constraints, and quotas* page, https://advertising.amazon.com/API/docs/en-us/reference/concepts/limits. (B14)
+- On 2026-11-09 that page contained at least one apparent error (EG SP maximum 5.50). (B14)
 - A refused SP 3.0 bid carries a `biddingError` with its reason and the marketplace's `lowerLimit` and `upperLimit`. (B14, B20)
 
 ## Bid writes

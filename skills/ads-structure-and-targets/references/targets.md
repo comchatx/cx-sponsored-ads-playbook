@@ -43,7 +43,7 @@ Search terms and negatives are ../ads-search-terms/SKILL.md's; the search term r
 ## Amazon-built targets
 
 - Sponsored Brands theme targets are keywords related to the brand or to the landing pages, which Amazon generates "based on historical performance and brand interactions", and a goal-based campaign creates them by default. (T29)
-- SP keyword groups (beta, US only on 2026-11-09) are Amazon-maintained keyword sets built from the advertised ASINs and refreshed over time. (T29)
+- SP keyword groups are Amazon-maintained keyword sets built from the advertised ASINs and refreshed over time; the marketplaces where they are available, and whether they are still a beta, are stated in Amazon's Ads API guide *Sponsored Product keyword groups targeting*, https://advertising.amazon.com/API/docs/en-us/guides/sponsored-products/keyword-group-targeting. (T29)
 - The v1 theme for peer brands' category searches picks the peer brands automatically, and the pages read do not say which ad product accepts it. (T29)
 
 ## Recommendations and keyword sources

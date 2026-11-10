@@ -12,7 +12,7 @@
 
 - Sponsored Brands goal-based campaigns have two goals: drive page visits, on CPC and the default when neither goal nor cost type is sent, and grow brand impression share, on vCPM and measured by top-of-search impression share. (T13)
 - Earlier Sponsored Brands campaigns are tagged "Drive page visits". (T13)
-- Goal-based campaigns are not supported in Ireland. (T13)
+- The marketplaces where goal-based campaigns are not supported are named in Amazon's *Sponsored Brands v4* model, https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/sponsored-brands/4-0/openapi.json. (T13)
 
 ## Formats
 

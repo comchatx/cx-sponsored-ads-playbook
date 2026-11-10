@@ -103,7 +103,7 @@ ads-structure-and-targets
      not Amazon (T43).
 
 ads-seasons
-  E1 bfcm-plan. "Black Friday is coming: dates and budgets?" Black Friday 2026-11-27, Cyber Monday 2026-11-30; Amazon had not
+  E1 bfcm-plan. "Black Friday is coming: dates and budgets?" The stub's event read dates Black Friday 2026-11-27, Cyber Monday 2026-11-30; Amazon had not
      published US Black Friday Week dates on 2026-11-09 (E1); Amazon's guidance is +20-30% daily budgets from three to five days before
      each peak, guidance not limits, and Ad Badger's 2-3x is a practitioner view (E5, E6); the stub's budget-rule event recommendation
      gives each campaign a suggestedBudgetIncreasePercent (E3); budget rules only raise (B27); SP | Sherpa | Exact already runs out.
@@ -112,7 +112,10 @@ ads-seasons
      a post-promotion dip can follow (E9, E18); the days around it are still settling in the 7-day window (E8).
   E3 deal-claim-headline. "Run an SB headline 'Black Friday: 30% off Hearthly sherpa, lowest price ever' from Nov 20." Not as
      written: a deal must be live whenever its ad is, numeric savings only where Amazon renders them, no pricing superlatives,
-     "Black Friday" is bounded by its duration (E13); the deal badge renders on its own (E12, P10).
+     "Black Friday" is bounded by the event's length on Amazon's Event days page (E13); the deal badge renders on its own (E12, P10).
+  E4 japan-event-dates. "What are Japan's Black Friday dates this year, the same as the US?" Dates and lengths differ by marketplace
+     and year and are read from Amazon, never recited (E1, E2, E3); cx reaches only the US and CA profiles, so no event read for Japan
+     comes through the seller's accounts.
 
 ads-economics
   G1 break-even-with-fees. "What ACOS can the weighted blanket afford?" (79.99 - 22.00 cost - 12.00 referral - 9.10 FBA) / 79.99

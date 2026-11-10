@@ -16,7 +16,7 @@
 
 - For a campaign that does not exist yet, the API returns keyword suggestions for ASINs, bids for a new ad group and an initial budget recommendation. (L11)
 - The initial budget recommendation is `-1` when there is not enough information, and comes with up to five special-event budgets. (L11)
-- Amazon suggests $10 a day, above the API minimum. (L11)
+- Amazon's guide Best practices for your Sponsored Products ads (https://advertising.amazon.com/library/guides/sponsored-products-best-practices) suggests a starting daily budget above the API's minimum daily budget, which the Ads API *Limits, constraints, and quotas* page (https://advertising.amazon.com/API/docs/en-us/reference/concepts/limits) gives per marketplace and currency. (L11)
 
 ## Amazon's time marks
 
