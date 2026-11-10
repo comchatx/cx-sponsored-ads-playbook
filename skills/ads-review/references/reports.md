@@ -39,7 +39,7 @@
 ## Limits
 
 - A throttled call answers `429` with `Retry-After` in seconds; limits move with system load and, for reports, with the region's queue (R4).
-- Field reports show `429`s without `Retry-After`, one persisting over 24 hours on change history and one from the MCP gateway as HTML (R4).
+- Field reports show `429`s without `Retry-After`: one, filed on 2025-12-04 for a seller in marketplace `A1F83G8C2ARO7P`, persisting over 24 hours on change history, and one, filed on 2026-03-07, from the EU MCP gateway as HTML (R4).
 - Amazon's pages disagree on Reporting v1 concurrency: its limits page and v1 overview say limits apply per client id, shared across every advertiser the client calls for, with concurrency "as low as 1", while the reporting overview, the Stream v2 overview and the GA note say per advertiser (R9).
 
 ## Marketing Stream

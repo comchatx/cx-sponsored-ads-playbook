@@ -44,7 +44,7 @@
 - Third-party bid tools set each target's bid from its value per click times a target ACoS (Ad Badger and AdLabs: revenue per click, order value × conversion rate) on a daily or hourly schedule, and write it through the same Ads API endpoints. (B39)
 - They state that they add negatives from wasted spend, cut bids and pause by hour, pause and revive targets and tie bids to organic rank, none of which Amazon's documented rules do. (B39)
 - Auto-to-manual harvesting is offered both by these tools and by Amazon's target promotion groups. (B39)
-- Helium 10, Intentwise, Ad Badger and Adbrew now sell MCP connections or Claude skills, alongside Amazon's own MCP server. (B39)
+- As their pages read on 2026-11-09, naming no marketplace, Helium 10, Intentwise, Ad Badger and Adbrew sold MCP connections or Claude skills, alongside Amazon's own MCP server. (B39)
 - Pacvue describes "approval-based execution with defined guardrails" and dayparting from Marketing Stream data and 14-day hourly patterns. (B39)
 - Skai describes daily bid and budget optimizations, negatives and harvesting automated on user conditions, and outside agents' bid and budget changes each subject to human approval. (B39)
 

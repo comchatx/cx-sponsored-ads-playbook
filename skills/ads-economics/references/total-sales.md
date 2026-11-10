@@ -18,7 +18,7 @@
 - A new-to-brand purchase is one by a shopper with no purchase from the brand in the previous 12 months, judged on all shopping within the brand on Amazon, not only attributed purchases. (G10)
 - Amazon's new-to-brand help page says the metrics are for Sponsored Brands and Display and the data "isn't available for Sponsored Products". (G10)
 - Reporting v3 carries new-to-brand columns in no Sponsored Products report type. (G10)
-- v1 names Sponsored Products in the eligibility of 90 of its 102 new-to-brand fields (purchases and sales, not new-to-brand ROAS), view-attributed fields included, although Amazon reports 0 view conversions for Sponsored Products. (G10)
+- v1's *Purchases (new to brand)* page, https://d3a0d0y2hgofx6.cloudfront.net/en-us/guides/reporting/ads-v1/metrics/amazon-retail-conversions/purchases-new-to-brand.md, names Sponsored Products in the eligibility of its new-to-brand purchase and sales fields, not new-to-brand ROAS, view-attributed fields included, although Amazon reports 0 view conversions for Sponsored Products. (G10)
 
 ## Long-term sales
 

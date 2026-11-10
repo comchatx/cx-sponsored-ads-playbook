@@ -48,7 +48,7 @@
 - Performance rules read ACOS, CTR, CVR or ROAS on SP and SD, and ROAS, top-of-search share or new-to-brand on SB, over 7 days for sellers and 14 for vendors. (B27)
 - Several rules add (+40% and +100% apply as +140%), and a campaign can carry up to 250. (B27)
 - The API guide says rules are evaluated at the start of the day and again when a rule is created or updated or the daily budget changes, while the help page describes a daily review that sets the next day's budget. (B27)
-- A performance rule does not apply below a minimum daily budget, which Amazon's *Understand budget rules in Sponsored ads* page, https://advertising.amazon.com/help/GNSMLANWNF344YBE, gives in US dollars only. (B27)
+- A performance rule does not apply below a minimum daily budget; Amazon's *Understand budget rules in Sponsored ads* page, https://advertising.amazon.com/help/GNSMLANWNF344YBE, states it for the US in US dollars, and no page read on 2026-11-09 states it for another marketplace. (B27)
 - A raised budget reads back as SP `budget.effectiveBudget`, SB and SD `ruleBasedBudget.value`, or v1 `monetaryBudget.ruleValue`. (B27)
 - Amazon warns that `applicableRuleId` can be incomplete when several rules are active; the campaign's rule list is the full record. (B27)
 

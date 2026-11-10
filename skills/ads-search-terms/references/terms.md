@@ -8,6 +8,7 @@
 ## Practitioners' thresholds
 
 - Practitioners judge a term with clicks and no orders at different points and tie the count to price, margin or conversion rate. (S17)
+- The practitioner figures below are as their pages read on 2026-11-09, and none of those pages names a marketplace. (S17)
 - Ad Badger (Michael Erickson Facchin) negates at 2,500 impressions with CTR under 0.18% and no conversions, more than $35 spend with no conversions, or more than 34 clicks without one, calls these "starting points" and exempts competitor brand terms. (S17)
 - Jungle Scout (Galeana) judges at 10 clicks; Seller Labs at 20–30; Canopy at 20–30 for $30–100 products and 40–50 above $100. (S17)
 - Scale Insights' default "Unique Word with 0 Sales" filter is at 25 clicks per word, not per term. (S17)
@@ -24,7 +25,7 @@
 - Ad Badger adds it in broad and auto for a term kept in exact at a lower bid. (S18)
 - Helium 10's Prestozon rule adds it as negative exact in the broad ad group and negative phrase in the auto campaign. (S18)
 - Adbrew negates a term that reaches exact in every auto, broad and phrase campaign of its product group. (S18)
-- Adbrew (Ayush Chaudhary) moves a term to phrase at one order in 30 days within 1.5× target ACoS and to exact at two orders at or under target, excludes the last 7 days, and calls these "practitioner defaults … not Amazon rules". (S18)
+- Adbrew (Ayush Chaudhary, 2026-10-27, read 2026-11-09, naming no marketplace) moves a term to phrase at one order in 30 days within 1.5× target ACoS and to exact at two orders at or under target, excludes the last 7 days, and calls these "practitioner defaults … not Amazon rules". (S18)
 
 ## Small counts
 

@@ -32,7 +32,7 @@
 - The Net PPM report schema's definition is "(Product Revenue – Product COGS – Vendor Funded Coop) / Product Revenue", a fraction from 0 to 1 measuring Amazon's profitability, in a vendor-only report that takes only `reportPeriod` and is in Pacific time. (G34)
 - Data Kiosk's definition is "(Shipped Revenue - Shipped CCOGS + CCOGS - Sales Discount) / Shipped Revenue", where contra-COGS is "the dollars realized by customer outbound shipments minus Display Ads Contra COGS". (G34)
 - MerchantSpring (Seiton) and SellerApp (Purohit) state that a vendor's advertising spend is not part of Net PPM. (G34)
-- Seiton gives approximate Net PPM targets of about 40–45% for hardlines, 30–37% for softlines and 27–35% for consumables, which she says vary by sub-category and over time. (G34)
+- Seiton, in a MerchantSpring article of 2026-04-06, updated 2026-09-11, read 2026-11-09 and naming no marketplace, gives approximate Net PPM targets of about 40–45% for hardlines, 30–37% for softlines and 27–35% for consumables, which she says vary by sub-category and over time. (G34)
 
 ## Vendor TACoS
 

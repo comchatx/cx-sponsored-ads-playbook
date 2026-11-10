@@ -19,7 +19,7 @@ description: "What a seller's sponsored ads earn: Amazon's ACOS, ROAS and break-
 - Amazon dates an attributed purchase to the ad interaction in the campaign's time zone; Sales and Traffic dates ordered sales to the period. (G20)
 - A seller's Sponsored Products attributed sales include other products the same merchant sells. (G20)
 - A new-to-brand purchase is by a shopper with no purchase from the brand in the previous 12 months, judged on all shopping within the brand on Amazon, not only attributed purchases. (G10)
-- Amazon's help page says new-to-brand data "isn't available for Sponsored Products"; v1 names Sponsored Products in 90 of its 102 new-to-brand fields' eligibility. (G10)
+- Amazon's help says new-to-brand data "isn't available for Sponsored Products"; v1's *Purchases (new to brand)*, https://d3a0d0y2hgofx6.cloudfront.net/en-us/guides/reporting/ads-v1/metrics/amazon-retail-conversions/purchases-new-to-brand.md, lists it for new-to-brand purchases and sales. (G10)
 - Long-term sales and ad-attributed Subscribe & Save cover Sponsored Brands and Display among others, not Sponsored Products. (G11, G12)
 - No Ads API metric, report column or help page read defines TACOS. (G14)
 - A total-account series alone does not separate the ads' effect from price, deals, stock or seasonality. (G26)

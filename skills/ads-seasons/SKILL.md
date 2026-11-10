@@ -18,7 +18,7 @@ Theme-based bid recommendations offer `PRIME_DAY`, `FALL_PRIME_DEAL_EVENT` and `
 Amazon advises daily budgets +20–30% around Black Friday and Cyber Monday, three to five days ahead, as guidance, not limits; Ad Badger recommends 2–3× on Prime event days. (E5, E6)
 How a budget rule raises a budget: ../ads-bids-and-budgets/references/budgets.md.
 Amazon says conversion rates often drop during major sales events and that a temporary ACOS spike is read against TACOS. (E7)
-Practitioners disagree on post-event spend and on December 26 to mid-January, their "Q5"; no Amazon page read uses the term. (E16, E20, E5)
+Practitioners disagree on post-event spend and on December 26 to mid-January, their "Q5", unused by any Amazon page read 2026-11-09. (E16, E20, E5)
 
 ## Reading an event
 

@@ -6,7 +6,7 @@ For the 2025–2026 holiday Amazon advises launching Sponsored Products campaign
 It advises raising daily budgets 20–30% around Black Friday and Cyber Monday, starting three to five days ahead of each peak, as guidance figures, not limits. (E5)
 Amazon describes the season in three phases: build (October), peak (November through Cyber Monday) and extend (December and beyond). (E5)
 It defines the extend phase by last-minute gift shoppers, post-holiday deal seekers, visitors who browsed but did not buy during peak events, and seasonal buyers to turn into repeat customers; its New Year guide adds January resolution shoppers. (E5)
-No Amazon page read uses the term "Q5" or describes CPC after December 25. (E5)
+No Amazon page read on 2026-11-09 uses the term "Q5" or describes CPC after December 25. (E5)
 In Amazon's post-event teaching scenario, "Extend holiday deals into January and maintain Sponsored Brands investment" is the answer marked incorrect. (E5)
 The answer marked correct moves budget to high-performing branded terms and repositions seasonal stock with non-holiday messaging. (E5)
 

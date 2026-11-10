@@ -17,7 +17,7 @@ The amazon-ads skill (cx-amazon-ads) carries every call; its references/door.md:
 ## New products
 
 - Product metadata returns `createdDate`, the item's first-available date on Amazon (L4).
-- Review Requests (US beta): an SP campaign with goal `ENGAGEMENT`, billed per rating or review left on its ad card (L15).
+- Review Requests (marketplaces and stage: its *overview*, https://advertising.amazon.com/API/docs/en-us/guides/review-requests/overview): an SP campaign with goal `ENGAGEMENT`, billed per rating or review left on its ad card (L15).
 - No Amazon page claims a "honeymoon" ranking boost in Amazon's own voice; practitioners disagree (L13).
 
 ## First campaign
@@ -30,5 +30,5 @@ The amazon-ads skill (cx-amazon-ads) carries every call; its references/door.md:
 
 ## References
 
-- references/accounts.md: sellers, vendors, Brand Registry; references/products-and-policy.md: eligibility, ad products, policy, moderation, billing, terms; references/new-products.md: credits, Vine, roadmap, coupons, rank manipulation; references/first-campaign.md: launch ACoS bands; references/new-product-ranking.md: cold start, launch multiples.
+- references/accounts.md: accounts, Brand Registry; references/products-and-policy.md: eligibility, ad products, policy, billing; references/new-products.md: credits, Vine, roadmap, coupons, rank manipulation; references/first-campaign.md: launch ACoS bands; references/new-product-ranking.md: cold start, launch multiples.
 - Existing campaigns' serving and budget: ../ads-review/references/serving.md, ../ads-bids-and-budgets/references/budgets.md.

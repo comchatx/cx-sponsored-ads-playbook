@@ -33,13 +33,13 @@
 
 ## Review Requests
 
-- Review Requests (US beta) is a Sponsored Products campaign with goal `ENGAGEMENT`, a goal fixed once set. (L15)
+- Review Requests is a Sponsored Products campaign with goal `ENGAGEMENT`, a goal fixed once set; the marketplaces where it runs, and its stage, are on Amazon's *Review Requests overview* (https://advertising.amazon.com/API/docs/en-us/guides/review-requests/overview). (L15)
 - It is billed per rating or review left on the ad card, serves products with fewer than 1,000 reviews and pauses at 1,000. (L15)
 - Amazon frames Review Requests as an answer to new products' cold-start problem. (L15)
 
 ## Coupons
 
-- Under the coupon rules as captured, a product with no reviews is not barred by the rating rule, whose floors apply to products with 1–4 reviews (2.5 stars) and 5 or more reviews (3 stars). (L8)
+- Under Seller Central's *Coupon eligibility criteria* (GJHCPEFJ5JJQD52D) as captured in version 14 on 2026-10-14, a capture that names no marketplace, a product with no reviews is not barred by the rating rule, whose floors apply to products with 1–4 reviews (2.5 stars) and 5 or more reviews (3 stars). (L8)
 - Amazon's full new-product guide says "Coupon quality validation rules do not apply to new products". (L8)
 
 ## New & Notable and newness messaging

@@ -29,7 +29,7 @@
 - Sponsored Products 3.0 writes negatives as ad-group negative keywords, campaign negative keywords and negative targets. (S24)
 - Sponsored Brands writes them as negative keywords and negative targets, at most 100 per call. (S24)
 - Sponsored Display writes ad-group negative targeting clauses, and the Sponsored Display 3.0 model has no negative keyword operation. (S24)
-- The v1 target tables have no Sponsored Display column, while the v1 `AdProduct` enum and the campaign-management overview include it, and no 2026 release note read announces it in v1 campaign management. (S24)
+- The v1 target tables have no Sponsored Display column, while the v1 `AdProduct` enum and the campaign-management overview include it, and no release note of 2026, as read on 2026-11-09, announces it in v1 campaign management. (S24)
 
 ## Campaign-level negative product targets
 
@@ -47,5 +47,5 @@
 
 - No Amazon model, help page or bulksheet tab read on 2026-11-09 carries a shared negative keyword list or portfolio-level negatives. (S23)
 - Karooya wrote in 2019 that "the shared negative keyword list has been missing from Amazon Ads", and its tool adds each list entry as campaign-level negative keywords in every associated campaign. (S23)
-- RedHen Labs keeps 69 campaign-level exact negatives across 43 campaigns. (S23)
+- RedHen Labs wrote on 2026-08-27 (read 2026-11-09), naming no marketplace, that it kept 69 campaign-level exact negatives across 43 campaigns. (S23)
 - SellerSprite writes that Amazon allows reusable negative keyword lists and that portfolios can carry negatives across campaigns. (S23)

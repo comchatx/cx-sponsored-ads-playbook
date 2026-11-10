@@ -11,7 +11,7 @@
 - Amazon's program eligibility read returns per marketplace and program (`SB`, `SD`, `SPOT`, `DTC`, `MAAS`) whether the account may use it, with reasons covering standing, terms, brand relation, business verification, tax, billing and payment. (P2)
 - Most advertisers are verified automatically; the others are verified through verification tasks. (P2)
 - Sponsored Brands does not support adult, used or refurbished products and is limited to a listed set of categories. (P3)
-- Streaming TV needs a professional seller with Brand Registry or a vendor account, is not available to Health and Personal Care advertisers and is in open API beta in the marketplaces Amazon's Sponsored TV overview lists (https://advertising.amazon.com/API/docs/en-us/guides/sponsored-tv/overview). (P3)
+- Streaming TV needs a professional seller with Brand Registry or a vendor account, is not available to Health and Personal Care advertisers and is offered through the API in the marketplaces, and at the stage, that Amazon's *Sponsored TV overview* gives (https://advertising.amazon.com/API/docs/en-us/guides/sponsored-tv/overview). (P3)
 
 ## What an ad shows
 
@@ -20,13 +20,13 @@
 
 ## Sponsored Products video
 
-- SP video is US only, not for Books, billed per click from the campaign budget and approved in 48–72 hours. (P4)
+- SP video runs only in the marketplaces Amazon's *Understand Sponsored Products video* names (https://advertising.amazon.com/help/G45ASMDJY8XXQQFK), is not for Books, is billed per click from the campaign budget and is approved in 48–72 hours. (P4)
 - It can be auto-assembled from existing detail-page or uploaded video, with no new video generated. (P4)
 - Amazon's help page calls auto-assembly "an opt-in feature", while the API guide says "All campaigns are opted in to auto-assembled videos by default". (P4)
 
 ## Prompts
 
-- Prompts are an AI-generated extension of US SP and SB campaigns, built from detail-page, Brand Store and campaign data, auto-enrolled, billed per click from the campaign budget and pausable per prompt. (P11)
+- Prompts are an AI-generated extension of SP and SB campaigns in the marketplaces Amazon's *Understand prompts on Sponsored Products and Sponsored Brands* names (https://advertising.amazon.com/help/GLWNW26EWQZW46WZ), built from detail-page, Brand Store and campaign data, auto-enrolled, billed per click from the campaign budget and pausable per prompt. (P11)
 - A prompt can open a Rufus dialog, can show in shopping results and on product pages, and is not available to authors and publishers. (P11)
 - Prompts have been generally available since 2026-03-25, a date Ad Badger agrees on. (P11)
 - They are reported in the `spPromptAdExtension` and `sbPromptAdExtension` v3 report types, whose data delivery ends with v3 on 2027-06-30. (P11)
@@ -46,7 +46,7 @@
 ## Creators
 
 - Creator Connections lets a brand offer creators a commission on net price for sales within 24 hours of a click. (P15)
-- It needs a US-advertising account based in the US, China or Hong Kong and a Brand Registry role. (P15)
+- It needs a Brand Registry role and an Amazon Ads account advertising in, and based in, the countries Amazon's *Understand Amazon Creator Connections* lists (https://advertising.amazon.com/help/GPARAL6JVGFEJKG2). (P15)
 - Its results are reported only in its own portal at campaign level, and its charges appear on the advertising invoice; in India the same name will cover SP creator content. (P15)
 - An invite-only Sponsored Content Requests program inside Creator Connections is described by trade press only. (P17)
 - SP creator placements are part of off-Amazon reach, with the CPC set from the maximum bid, expected performance and sales, and clicks drawing on the same campaign budget. (P16)
@@ -56,7 +56,7 @@
 
 ## Ad content policy
 
-- On Amazon O&O supply, ads may not use all capitals (except in Japan), scare tactics, unsubstantiated warranty claims, calls to action in custom images, deal teasers, social links, contact details or disparagement of competitors. (P6)
+- On Amazon O&O supply, ads may not use all capitals (outside the marketplace exception that Amazon's *Prohibited content and products for Amazon O&O supply*, https://advertising.amazon.com/help/GTEEH3E3J2BDELBA, names), scare tactics, unsubstantiated warranty claims, calls to action in custom images, deal teasers, social links, contact details or disparagement of competitors. (P6)
 - On that supply, seasonal or holiday promotions start, in the policy's words, "no earlier than 8 weeks leading up to the event". (P6)
 - Claims must be accurate and substantiated. (P6)
 - Tobacco and nicotine, weapons (some knives excepted), THC or CBD, political ads, religious services, fundraising or proselytizing (religious books and merchandise excepted) and adult sexual products are prohibited across all supply. (P6)
