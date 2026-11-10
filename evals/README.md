@@ -43,3 +43,16 @@ A grader reads `skill-creator`'s `agents/grader.md` and checks each assertion ag
 ## Rerunning
 
 With `skill-creator` installed in Claude Code, its `scripts/aggregate_benchmark.py` builds the benchmark, `eval-viewer/generate_review.py --static <file>` writes the viewer, and `scripts/run_loop.py --report none` runs the description loop. `run_eval.py` writes a temporary command file under the nearest `.claude/` above its working directory, so it is run from a scratch directory that has its own `.claude/`. `python3 -I evals/fixture.py <dir> --summary` reprints the graded figures after any change to the fixture; the tree it writes is the same on every run.
+
+## What was measured (2026-11-10)
+
+One run per case and configuration, in Claude Code (Opus 5.5), each graded by a `skill-creator` grader against the case's expectations; a baseline run had only the `cx-sources` and `amazon-ads` skills, since nothing in this package's ground is reachable without the door.
+
+| | With the skills | Baseline |
+|---|---|---|
+| Iteration 1, the skills as first written | 143 of 183 expectations, 78.1% | 113 of 183, 61.7% |
+| Iteration 2, after the analyst's findings (load-bearing facts moved into the bodies, reference pointers sharpened, nine expectations reworded to check the fact rather than its wording) | 86.7% | 64.0% |
+
+A single run per configuration leaves the per-case figures noisy: three cases moved down between iterations with no change to their skill's facts. `ads-structure-and-targets`'s brand-search case stays at the baseline's 4 of 8, because no run found the Brand Analytics report the tree holds under `tenant/reports/`, and no position of this package says where an SP-API report lands.
+
+The trigger queries were run through `skill-creator`'s `run_eval.py` and its description loop (`run_loop.py`, three iterations, 40% held out). In Claude Code, beside the many other skills of the machine it ran on, each description loaded its skill on 0 to 4 of 30 runs of its should-trigger queries, and the loop's rewrites moved the held-out score by at most one query of eight; the descriptions stay as written, in the listing playbook's form. A box's pi lists skills its own way, so these figures say little about triggering there.
