@@ -1,10 +1,11 @@
 {
   "name": "@comchatx/cx-sponsored-ads-playbook",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Traces why ad spend or sales moved, then judges each fix.",
   "license": "MIT",
   "author": "ComChatX",
   "comchatx": {
+    "name": "Amazon Ads Playbook",
     "about": "查出广告花费和销量变化的原因，改后判断是否见效。",
     "mark": {
       "line": "chart"

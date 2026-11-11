@@ -101,6 +101,10 @@ it("the package's line is the signed one: npm's description in English, comchatx
   expect(pkg.comchatx.about).toBe(LINE.zh);
 });
 
+it("the card's name is the signed one", () => {
+  expect((manifest() as { comchatx: { name: string } }).comchatx.name).toBe("Amazon Ads Playbook");
+});
+
 it("each template's English description and Chinese words are the signed ones", () => {
   const { comchatx } = manifest() as { comchatx: { prompts: Record<string, unknown> } };
   expect(Object.keys(comchatx.prompts).sort()).toEqual([...PROMPTS]);
