@@ -26,6 +26,42 @@ How a call is made and how a report is asked for and landed is the `amazon-ads` 
 
 Ten positions of the research left with the split of 2026-11-10 and no skill cites them: S16, E17, G13, G29, C11, M18 and R25 (to `cx-amc-playbook`), G24 (to `cx-brand-measurement` and `cx-dva-playbook`), P5 and P18 (to `cx-brand-creative`); G10 enters without its AMC clause.
 
+## What the README no longer says
+
+The README's words were signed on 2026-11-11. These parts of the earlier README left it then and are kept here whole, in both languages: two questions that the `/ads-harvest` and `/ads-margin` templates already ask, a paragraph on what cx also does that the `/ads-launch`, `/ads-season` and `/ads-brand` templates show, a sentence on prices that the Plugins page's source cards already give, and the later plugins, none of which is published yet.
+
+> - Which search terms should get their own keywords, and which should I negate?
+> - What ACOS can B0EXAMPLE1 afford before an ad sale loses money?
+>
+> cx also gets a new product advertising, readies your ads for Amazon's events, and shows who advertises on your brand's searches.
+>
+> Each is its own plugin, and its page gives its price.
+>
+> ## Not in this plugin
+>
+> Four later plugins take the advertising work this one leaves:
+>
+> - **cx-amc-playbook:** questions your ad reports cannot answer, from Amazon Marketing Cloud, and the audiences built there. This plugin uses those audiences in your bids.
+> - **cx-brand-measurement:** traffic you send to Amazon from outside it, your Store's visits, and your brand's awareness against peers.
+> - **cx-brand-creative:** your Store pages and new ad images, logos and video. This plugin uses assets already in your library.
+> - **cx-dva-playbook:** display, video and streaming TV beyond Sponsored Display, DSP and Full-Funnel campaigns.
+
+> - 哪些搜索词值得单独建关键词，哪些该否定？
+> - B0EXAMPLE1 的 ACOS 最高能到多少，广告订单才不亏？
+>
+> cx 还能让新品开始投广告，为亚马逊大促准备好广告，并告诉你谁在你品牌的搜索词上投广告。
+>
+> 每个都是单独的插件，价格见各自的页面。
+>
+> ## 不在这个插件里
+>
+> 另外四个插件以后会接手这个插件不做的广告工作：
+>
+> - **cx-amc-playbook：** 广告报表回答不了的问题，用 Amazon Marketing Cloud 来答，以及在那里建的受众。这个插件会在出价里用到这些受众。
+> - **cx-brand-measurement：** 你从亚马逊站外带来的流量、店铺的访问，以及品牌相对同行的认知度。
+> - **cx-brand-creative：** 你的店铺页面，以及新的广告图片、标志和视频。这个插件只用素材库里已有的素材。
+> - **cx-dva-playbook：** Sponsored Display 之外的展示、视频和流媒体电视广告，以及 DSP 和 Full-Funnel 广告活动。
+
 ## What it needs
 
 pi, and in the box the `cx` command with the Amazon Ads source; Amazon SP-API and Keepa where a skill names their reads. It reaches no network itself.

@@ -1,11 +1,11 @@
 {
   "name": "@comchatx/cx-sponsored-ads-playbook",
   "version": "0.1.0",
-  "description": "Finds why your ads spend or sell as they do, then judges if each change worked.",
+  "description": "Traces why ad spend or sales moved, then judges each fix.",
   "license": "MIT",
   "author": "ComChatX",
   "comchatx": {
-    "about": "找出广告花费和销量背后的原因，改后判断是否见效。",
+    "about": "查出广告花费和销量变化的原因，改后判断是否见效。",
     "mark": {
       "line": "chart"
     },
@@ -13,75 +13,59 @@
     "order": 51,
     "skills": {
       "ads-review": {
-        "about": {
-          "en": "How your sponsored ads stand and why spend or sales moved: what serves, what stopped and why, and what the figures mean.",
-          "zh": "你的赞助广告现状，以及花费或销量为什么变化：哪些在投放、哪些停了、原因是什么，数字各代表什么。"
-        }
+        "zh": "分析广告表现，以及花费和销量变化的原因。",
+        "en": "How your ads perform, and why spend or sales moved."
       },
       "ads-launch": {
-        "about": {
-          "en": "Getting a new product, seller or brand advertising: the gates, the programs, and the first campaigns.",
-          "zh": "让新品、新卖家或新品牌开始投广告：门槛、计划和第一批广告活动。"
-        }
+        "zh": "判断新品能否投广告，并搭建首批广告活动。",
+        "en": "Whether a new product can advertise, and its first campaigns."
       },
       "ads-structure-and-targets": {
-        "about": {
-          "en": "How campaigns are shaped and what each keyword, product or category target matches, including your brand's own searches.",
-          "zh": "广告活动怎么搭，每个关键词、商品或品类投放会匹配什么，包括你品牌自己的搜索。"
-        }
+        "zh": "分析广告活动的结构和每种投放会匹配什么。",
+        "en": "How campaigns are built, and what each target matches."
       },
       "ads-search-terms": {
-        "about": {
-          "en": "What shoppers searched before clicking your ads, which terms to move into their own targets, and which to negate.",
-          "zh": "买家点你的广告前搜了什么，哪些词值得单独投放，哪些该否定。"
-        }
+        "zh": "找出值得单独投放和该否定的搜索词。",
+        "en": "Search terms worth targeting, and ones to negate."
       },
       "ads-bids-and-budgets": {
-        "about": {
-          "en": "How the auction prices a click, and how bids, placements, rules and budgets shape what you pay and when you run out.",
-          "zh": "竞价如何给一次点击定价，以及出价、版位、规则和预算如何决定你付多少钱、何时用完预算。"
-        }
+        "zh": "分析出价、版位和预算如何决定花费。",
+        "en": "How bids, placements and budgets decide what you spend."
       },
       "ads-seasons": {
-        "about": {
-          "en": "Amazon's events and your deals and coupons, and what they do to clicks, costs and sales.",
-          "zh": "亚马逊大促和你的秒杀、优惠券，以及它们对点击、成本和销量的影响。"
-        }
+        "zh": "安排大促前后的预算、出价和促销。",
+        "en": "Budgets, bids and deals around Amazon's sales events."
       },
       "ads-economics": {
-        "about": {
-          "en": "What an ad sale is worth after fees and costs, and what your ads add to your total and organic sales.",
-          "zh": "扣除费用和成本后，一笔广告订单值多少钱，以及广告给总销量和自然销量带来了什么。"
-        }
+        "zh": "算出广告订单的利润和广告对总销量的贡献。",
+        "en": "What an ad sale earns, and what ads add to total sales."
       },
       "ads-change": {
-        "about": {
-          "en": "What a change to your ads left behind, and whether it worked, did not, or cannot be told yet.",
-          "zh": "一次广告改动留下了什么记录，以及它见效了、没见效，还是暂时无法判断。"
-        }
+        "zh": "查广告改动记录，判断一次改动是否见效。",
+        "en": "Amazon's change history, and whether a change worked."
       }
     },
     "prompts": {
       "ads-review": {
-        "zh": "查看我最近几周的赞助广告：变了什么、为什么，以及你会怎么改。"
+        "zh": "复盘最近几周的广告，并提出修改。"
       },
       "ads-launch": {
-        "zh": "让我的新品开始投广告：能否投放，以及你会先建哪些广告活动，例如 /ads-launch B0EXAMPLE1 US,DE。"
+        "zh": "为新品开始投广告，从能否投放到首批广告活动。"
       },
       "ads-harvest": {
-        "zh": "梳理上次以来的搜索词：哪些值得单独投放，哪些该否定，以及理由。"
+        "zh": "梳理搜索词，找出值得单独投放和该否定的词。"
       },
       "ads-season": {
-        "zh": "为我所在站点的下一个亚马逊大促准备好广告：日期、预算、出价和促销。"
+        "zh": "为下一个亚马逊大促准备好广告。"
       },
       "ads-margin": {
-        "zh": "算出我的商品一笔广告订单值多少钱：盈亏平衡 ACOS、背后的利润，以及这对目标意味着什么。"
+        "zh": "算出广告订单能赚多少，以及盈亏平衡的 ACOS。"
       },
       "ads-brand": {
-        "zh": "看看谁在我品牌的搜索词和商品页上投广告，守住这些位置要花多少钱。"
+        "zh": "看看谁在你的品牌搜索词和商品页上投广告，守住要花多少钱。"
       },
       "ads-change-review": {
-        "zh": "判断某天做的广告改动是否见效，以及有多确定，例如 /ads-change-review 2026-10-01。"
+        "zh": "判断某一天的广告改动是否见效。"
       }
     },
     "builds": [
