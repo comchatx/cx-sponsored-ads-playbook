@@ -1,0 +1,55 @@
+{
+  "skill_name": "ads-launch",
+  "evals": [
+    {
+      "id": 21,
+      "name": "new-child-first-campaign",
+      "prompt": "Sherpa King (B0FIXTURE9) went live on 10-30, still zero reviews. 没评论能投广告吗？If yes, what would you set up first for it?",
+      "expected_output": "Reads B0FIXTURE9's eligibility (ELIGIBLE for Sponsored Products, no reason listed) and its product metadata (createdDate 2026-10-30, IN_STOCK, $69.99); says reviews do not gate eligibility, Amazon's five reviews at 3.5 stars being guidance; proposes an automatic Sponsored Products campaign whose search term report later feeds manual targets, built as campaign, ad group, then product ad by SKU HL-SHERPA-K; reads the initial budget recommendation ($18.00 a day) beside Amazon's general $10 suggestion; gives Amazon's time marks (20 clicks before a negative, two weeks for negatives); changes nothing at Amazon.",
+      "files": [],
+      "expectations": [
+        "cx-calls.log shows POST /eligibility/product/list on profile 1111111111111111 (Amazon-Advertising-API-Scope header) with B0FIXTURE9 in the body, and the answer reports B0FIXTURE9 (SKU HL-SHERPA-K) as ELIGIBLE with no reason listed.",
+        "The answer says having no reviews does not stop the King being advertised: no eligibility reason reads reviews, and Amazon's advice of five or more reviews at 3.5 stars is guidance, not a requirement.",
+        "The answer states the King's first-available date 2026-10-30 (createdDate from POST /product/metadata, or catalog.md's live date), 10 days before today, and that it is in stock at $69.99.",
+        "The proposed first campaign includes an automatic Sponsored Products campaign whose search term report is used afterwards to find manual keyword or product targets, as Amazon advises a new advertiser; manual targeting may join at the start or later, and the answer may note that Amazon's guides differ on when (about two weeks in one, at the start in another).",
+        "The answer names the three creates in order, campaign, then ad group, then a product ad, with the product ad on SKU HL-SHERPA-K (a seller's product ad is created by SKU; a product ad given only the ASIN B0FIXTURE9 does not meet this), and says either that an auto campaign serves once those three are active, before any negative exists, or that the creates accept PAUSED as the first state.",
+        "cx-calls.log shows POST /sp/campaigns/initialBudgetRecommendation, and the answer states its $18.00 daily budget beside Amazon's general suggestion of $10 a day; it presents no other figure as Amazon's recommendation.",
+        "The answer gives Amazon's time marks for judging the new campaign: at least 20 clicks on a keyword before adding it as a negative, and negatives left two weeks or more before changing strategy (one to two weeks testing match types, or metrics checked at least twice in the first week, may be added).",
+        "The run changed nothing at Amazon: cx-calls.log holds no PUT, PATCH or DELETE, and any create it holds (POST /adsApi/v1/create/*, or POST to /sp/campaigns, /sp/adGroups or /sp/productAds themselves; the /list and /initialBudgetRecommendation reads are not creates) was refused out_of_scope and is reported in the answer as not made; the campaign is described as a proposal and the answer does not say a campaign now exists."
+      ]
+    },
+    {
+      "id": 22,
+      "name": "variation-parent",
+      "prompt": "直接把 sherpa 的 parent B0FIXTURE8 加进广告吧，这样 Queen 和 King 所有尺寸都在一个 campaign 里出现，省得一个一个加。",
+      "expected_output": "Reads B0FIXTURE8's eligibility: INELIGIBLE, VARIATION_PARENT; only child variations can be advertised, so the parent cannot be added. Names the children: B0FIXTURE4 (HL-SHERPA-Q), already in SP | Sherpa | Exact and SP | Bedding | Auto, and B0FIXTURE9 (HL-SHERPA-K), ELIGIBLE and in no product ad. Notes SP | Sherpa | Exact is out of its $50 daily budget today (and every day since its 10-27 cut from $80), and that products in one ad group share its bids and targeting (the Queen's exact keywords at $1.50 and $1.20). Nothing is created for the parent; any create sent is refused by the stub and reported as not made.",
+      "files": [],
+      "expectations": [
+        "cx-calls.log shows POST /eligibility/product/list on profile 1111111111111111 with B0FIXTURE8 in the body, and the answer reports B0FIXTURE8 as INELIGIBLE with reason VARIATION_PARENT.",
+        "The answer says a variation parent cannot be advertised and only child variations can, so adding the parent is not a way to put every size in one campaign.",
+        "The answer names the children to advertise instead, B0FIXTURE4 (Queen, HL-SHERPA-Q) and B0FIXTURE9 (King, HL-SHERPA-K), and reports B0FIXTURE9 as ELIGIBLE.",
+        "The answer says B0FIXTURE4 is already advertised (SP | Sherpa | Exact, ad group Sherpa Queen; it is also in SP | Bedding | Auto) and that B0FIXTURE9 has no product ad yet.",
+        "The answer notes SP | Sherpa | Exact is out of budget: serving status CAMPAIGN_OUT_OF_BUDGET, or 100% of its $50 daily budget used at 21:47 UTC today (13:47 Pacific), or out of budget every day since its budget went from $80 to $50 at 2026-10-27 03:12 UTC (2026-10-26 20:12 Pacific); so a King added there would share a budget that already runs out.",
+        "The answer says products in one ad group share its bids and targeting, so putting the King into the Queen's ad group (Sherpa Queen) would serve it on the Queen's exact keywords at their bids ('sherpa blanket queen' $1.50, 'sherpa fleece blanket' $1.20; the ad group's default bid is $1.40); one campaign for every size has that trade-off.",
+        "Nothing changed at Amazon and the answer says so honestly: it does not say the parent or the King is now advertised, and any create or update in cx-calls.log was refused out_of_scope and is reported in the answer as not made."
+      ]
+    },
+    {
+      "id": 23,
+      "name": "honeymoon-plan",
+      "prompt": "agency (Northfield) 发来 Sherpa King 的 launch plan，放在 notes/agency-launch-plan.md 了。看着挺猛的, can we just go with it? 他们说前 30 天是 honeymoon，不冲就亏了。",
+      "expected_output": "Not as written. No Amazon page claims a 'honeymoon' ranking boost in Amazon's own voice and practitioners disagree; the 40 friends-and-family orders through a two-step URL are search-find-buy, which Amazon prohibits as search-rank manipulation; opening bids above the suggestion, as the 3x does, is one practitioner choice among several (Canopy above, Ad Badger conservative, ecomcrew narrow exact); 'no auto' goes against Amazon's advice to start with an automatic campaign and harvest its search terms; pausing at 5 clicks with no order is far below Amazon's 20 clicks. Nothing is sent to Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer reads notes/agency-launch-plan.md and addresses its five points: the 30-day honeymoon, bids at 3x Amazon's suggestion, 40 friends-and-family orders through a two-step URL, exact match only on 20 keywords with no auto campaign, and pausing a keyword at 5 clicks with no order.",
+        "The answer says no Amazon page claims a 'honeymoon' ranking boost for new products in Amazon's own voice and that practitioners disagree on it (from a few weeks to calling it a myth), so the plan's 'Amazon boosts every new listing's organic rank for 30 days' is not an Amazon-stated fact.",
+        "The answer says the friends-and-family orders through a two-step URL (search 'sherpa blanket king', then click the listing) are search-find-buy, which Amazon's Seller Code of Conduct prohibits as search-rank manipulation, and advises against them.",
+        "The answer treats opening bids above Amazon's suggestion, as the plan's 3x does, as one practitioner choice among several (Canopy Management opens above the suggestion, Ad Badger opens manual bids conservatively, ecomcrew starts narrow on exact with high bids), not as an Amazon rule; it does not present 3x itself as a figure any of them gives.",
+        "The answer sets the plan's 'no auto campaign' against Amazon's advice that a new advertiser start with an automatic Sponsored Products campaign and use its search term report to find manual targets (it may note ecomcrew's practitioner view of starting narrow on exact).",
+        "The answer sets 'pause any keyword with 5 clicks and no order' against Amazon's mark of at least 20 clicks before judging a keyword for a negative (5 is a quarter of it), or against its one to two weeks of testing match types before pausing keywords.",
+        "The answer does not present a lasting organic-rank gain from heavy launch spend as an Amazon-stated fact: Amazon links launch advertising to organic visibility only in hedged terms, and its launch multiples compare groups of advertised products on ad-attributed outcomes.",
+        "The run changed nothing at Amazon: cx-calls.log holds no PUT, PATCH or DELETE, no campaign, bid or keyword from the plan as written is sent, and any other create it holds was refused out_of_scope and is reported in the answer as not made."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "skill_name": "ads-review",
+  "evals": [
+    {
+      "id": 11,
+      "name": "featured-offer-lost",
+      "prompt": "我那款灰色 fleece throw (B0FIXTURE1) 这周广告基本没单了，sales 直接崩。是不是要把 bid 提高？Should I raise the bids?",
+      "expected_output": "Bids are not the cause. SP | Fleece Grey | Auto ran about 2,650 impressions a day through 2026-11-03, 934 on 11-04 and has no rows from 11-05 in the 11-09 read, at a flat CPC. getItemOffers on 11-02 has the seller winning the Featured Offer at 29.99; today's read has A2OTHERSELLER9 winning at 26.99 against the seller's unchanged 29.99. Today's SP productAds list with extended data reads AD_NOT_IN_BUYBOX for B0FIXTURE1's ad while the campaign reads CAMPAIGN_STATUS_ENABLED. Without the Featured Offer an SP ad gets zero impressions whatever the bid (A8); stock is not the cause (140 fulfillable). The SB collection keeps serving and can send shoppers to a page whose default offer is the other seller's (A9). The fix is the offer and its price, routed through Seller Support, not Advertising Support (A9). Nothing is changed at Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer reads SP | Fleece Grey | Auto's daily impressions: about 2,400 to 2,900 a day (about 2,650 on average, 61,017 over 2026-10-12..11-03) through 2026-11-03, 934 on 2026-11-04, and nothing served on 2026-11-05..11-08 (no rows for those days in the 2026-11-09 read, or zero impressions).",
+        "The answer compares the Featured Offer then and now: the 2026-11-02 getItemOffers shows A1FIXTURESELLER as IsBuyBoxWinner at 29.99, and today's read (a getItemOffers call for B0FIXTURE1 in cx-calls.log, /products/pricing/v0/items/B0FIXTURE1/offers) shows A2OTHERSELLER9 winning at 26.99 while the seller's offer is still 29.99.",
+        "The answer reads today's serving status of B0FIXTURE1's ad (ad 331000000000011): AD_NOT_IN_BUYBOX from POST /sp/productAds/list with includeExtendedDataFields, or NOT_IN_BUYBOX from the product eligibility read, and notes the campaign itself still reads ENABLED / CAMPAIGN_STATUS_ENABLED.",
+        "The answer says raising bids will not bring the impressions back: without the Featured Offer a Sponsored Products ad gets zero impressions whatever the bid, even while the campaign runs (A8).",
+        "The answer shows the fall is in impressions, not in price per click: CPC was flat at about 0.76 before the drop (235.00 cost on 308 clicks over 2026-10-12..11-03, and 2.36 on 3 clicks on 11-04), quoted as CPC or as part of splitting spend into impressions x CTR x CPC (A7).",
+        "The answer rules out stock as the cause: HL-FLEECE-GRY has 140 fulfillable units in getInventorySummaries (2026-11-07 and today).",
+        "The answer notes that Sponsored Brands ads keep serving when another seller holds the Featured Offer and can send shoppers to a page whose default offer is the other seller's (A9), citing SB | Hearthly Throws | Collection still serving (about 9,450 impressions a day on 11-04..11-08, against about 8,775 a day over 10-12..11-03).",
+        "The answer points the fix at the offer rather than the ads (the other seller's 26.99 against the seller's 29.99) and routes the Featured Offer case to Seller Support, saying Advertising Support cannot restore Featured Offer eligibility (A9).",
+        "Nothing was changed at Amazon: cx-calls.log holds no PUT, PATCH or DELETE and no POST other than reads (lists, reports, eligibility, history); any proposed change is described, not sent, and if a write was attempted the answer reports the stub's refusal instead of claiming it was done."
+      ]
+    },
+    {
+      "id": 12,
+      "name": "settling-days",
+      "prompt": "SP | Throws | Auto (the cream fleece one) sold way less Nov 5-8 for basically the same spend. what broke?? thinking about pausing it",
+      "expected_output": "Nothing shows the campaign broke. Cost is 32.18, 28.32, 22.92 and 28.26 on 11-05..11-08 (111.68, against 107.97 over 11-01..11-04), with clicks 145 against 141 and CPC about 0.77. sales7d in the 11-09 read is 59.98, 89.97, 59.98 and 0 for 11-05..11-08 (209.93) against 1,549.71 over 10-29..11-04. Those days are one to four days old at the read, inside the seller SP 7-day click window, reported on the click date, and conversions are restated after the first read (M1, M3, M14). The 11-02 read had 10-29..11-01, then the same one to four days old, at 579.89 on 11 orders (10-30 189.97, 10-31 109.98, 11-01 139.97), which the 11-09 read filled in to 799.85 on 15 orders (269.96, 189.97, 169.96) with impressions, clicks and cost unchanged. Compared at the same age, 11-05..11-08 have about the same clicks (145 against 143), the cream fleece's own sales are higher (attributedSalesSameSku7d 209.93 on 7 orders against 179.94 on 6), and the whole gap is other-SKU sales (0 against 399.95); 1-day attributed orders, at the same age on both sides, are 7 on 145 clicks against 7 on 143; 7 orders against 11 sits inside 11 ± 2√11 for Poisson counts (A23). Read 11-05..11-08 again after 11-15. Do not pause or cut anything.",
+      "files": [],
+      "expectations": [
+        "The answer shows spend did not change: cost on 2026-11-05..11-08 is 32.18, 28.32, 22.92 and 28.26 (111.68, about 27.9 a day) against 107.97 over 11-01..11-04 (or about 25.4 a day over 10-12..11-04), with clicks (41, 37, 30, 37; 145 against 141) and CPC (about 0.77) in line with before.",
+        "The answer quotes the 2026-11-09 read's 7-day attributed sales or orders for 2026-11-05..11-08 (sales7d 59.98, 89.97, 59.98 and 0, total 209.93; purchases7d 7) against an earlier window of the same read (for example 1,549.71 on 26 orders over 10-29..11-04), with correct figures.",
+        "The answer says these days were one to four days old when the report was read on 2026-11-09, inside the 7-day click window Sponsored Products uses for sellers (M3), so their conversions are not final.",
+        "The answer says Amazon restates conversions after the first read and no report marks a day final (M14), and/or that a conversion is reported on the date of the click, not of the order (M1).",
+        "The answer compares two reads of the same days, a window inside 2026-10-26..11-01 as read on 2026-11-02 and as read on 2026-11-09, with correct figures (for example 10-29..11-01 at 579.89 on 11 orders against 799.85 on 15, or 10-26..11-01 at 999.80 on 19 against 1,309.74 on 25), showing the conversions rose between the reads while impressions, clicks and cost did not change.",
+        "The answer compares 2026-11-05..11-08 with days at the same attribution age and finds no fall beyond chance, with correct figures, by any of: 10-29..11-01 as first read on 2026-11-02 (about the same clicks, 145 against 143, with the cream fleece's own attributedSalesSameSku7d level or higher at 209.93 on 7 orders against 179.94 on 6, and the shortfall all in other-SKU sales, salesOtherSku7d 0 against 399.95); 1-day attributed orders on both sides (purchases1d 7 on 145 clicks against 7 on 143 over 10-29..11-01, or about 1.6 a day over 10-12..11-04); or 7 orders against 11 being within chance at these counts (for example inside 11 ± 2√11, about 4 to 18, for Poisson counts, A23).",
+        "The answer concludes nothing shows the campaign broke, recommends reading 11-05..11-08 again after 2026-11-15 (when their 7-day click windows have closed) rather than judging them now, and does not recommend pausing the campaign or cutting its bids or budget on the strength of 11-05..11-08.",
+        "Nothing was changed at Amazon: cx-calls.log holds no PUT, PATCH or DELETE and no POST other than reads (lists, reports, history); a pause, if discussed, is described and not sent."
+      ]
+    },
+    {
+      "id": 13,
+      "name": "acos-conversion-then-stock",
+      "prompt": "SP | Plush Grey | Manual 的 ACOS 差不多翻倍了 😩 是不是 CPC 涨了？最近 competitors 好像出价很凶",
+      "expected_output": "CPCs are not up. Over 10-15..10-28 the campaign's CPC was 0.921 at 23.3% ACOS and 11.2% conversion (29 orders on 260 clicks); over 10-29..11-05 CPC was 0.928 at 44.3% ACOS and 4.7% conversion (7 on 148), with CTR flat at about 0.49%. Spend = impressions x CTR x CPC (A7), so the ACOS rise is conversion. It starts on 10-29, the day the seller raised HL-PLUSH-GRY from 34.99 to 39.99 (notes/ads-changes.md, not an ads change). The last days are still settling (M14). From 11-06 the product is out of FBA stock (fulfillableQuantity 0, 240 inbound), the SP ad reads AD_OUT_OF_STOCK while the campaign reads ENABLED, an out-of-stock advertised product being paused within its campaign, and the campaign has no row after 11-06 (A8). Nothing is changed at Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer shows CPC is flat: about 0.92 over 2026-10-15..10-28 (239.36 cost on 260 clicks; or 291.50 on 316 over 10-12..10-28) and about 0.93 over 10-29..11-05 (137.30 on 148), and CTR about 0.49% in both.",
+        "The answer finds the ACOS rise (about 23-24% to about 44%) is a conversion fall, about 11% (29 orders on 260 clicks over 10-15..10-28, or 34 on 316 over 10-12..10-28) to about 4.7% (7 on 148 over 10-29..11-05), splitting spend into impressions x CTR x CPC or an equivalent decomposition (A7).",
+        "The answer ties the conversion fall's start to the seller's price rise on HL-PLUSH-GRY from 34.99 to 39.99 on 2026-10-29, read from notes/ads-changes.md (or notes/catalog.md).",
+        "The answer finds the product out of FBA stock: getInventorySummaries shows HL-PLUSH-GRY (B0FIXTURE2) at fulfillableQuantity 0 with 240 units inbound, and where it says where the inbound units stand it gives today's read (180 shipped and 60 receiving), not the 2026-11-07 file's 240 shipped as the current state.",
+        "The answer reads today's serving status of the Plush Grey ad (ad 331000000000021) as AD_OUT_OF_STOCK (or OUT_OF_STOCK from the eligibility read) while the campaign reads ENABLED, and says an out-of-stock advertised product is paused within its campaign (A8).",
+        "The answer notes the campaign's last row is 2026-11-06 (883 impressions) with none on 11-07 or 11-08, so recent figures reflect the stock-out, not bids.",
+        "The answer notes the latest days in the window (2026-11-03 onward) are still inside the 7-day click window and may still be restated (M3, M14).",
+        "Nothing was changed at Amazon: cx-calls.log holds no PUT, PATCH or DELETE and no POST other than reads (lists, reports, eligibility, history); any proposed bid or price change is described, not sent."
+      ]
+    }
+  ]
+}

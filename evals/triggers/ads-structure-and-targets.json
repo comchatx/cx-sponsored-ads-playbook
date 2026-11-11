@@ -1,0 +1,82 @@
+[
+  {
+    "query": "our SP auto campaign SP | Throws | Auto is eating budget on substitutes. can I pause just the substitutes and complements groups and keep close match running, or do I need a separate auto campaign per group?",
+    "should_trigger": true
+  },
+  {
+    "query": "我想把 SP | Fleece Grey | Auto 直接改成手动投放（manual），campaign 设置里能切换吗？还是得重建一个",
+    "should_trigger": true
+  },
+  {
+    "query": "Can I put keyword targets and ASIN targets in the same SP ad group? I tried adding a product target for B0COMPET05 into my 'Sherpa Queen' keyword ad group and it got rejected",
+    "should_trigger": true
+  },
+  {
+    "query": "accidentally archived SP | Plush Grey | Manual yesterday instead of pausing it, how do I turn it back on",
+    "should_trigger": true
+  },
+  {
+    "query": "audit how my campaigns are built: 8 SP campaigns, one ad group has two SKUs at 29.99 and 44.99 sharing one default bid, no portfolios, and I can't tell which ad group is for what",
+    "should_trigger": true
+  },
+  {
+    "query": "same keyword 'weighted blanket' is in my exact campaign at 1.20 and my broad campaign at 0.90 — am I bidding against myself and driving up my own CPC?",
+    "should_trigger": true
+  },
+  {
+    "query": "竞品 Snugwell 一直在我的品牌词下面出现，我能不能反过来投他们的 ASIN 和品牌词？广告文案里能写他们的名字吗",
+    "should_trigger": true
+  },
+  {
+    "query": "product targeting on B0COMPET05: exact or expanded? what does 'expanded' actually add, and where do product-target ads show up — search or detail pages?",
+    "should_trigger": true
+  },
+  {
+    "query": "my SB product collection campaign 'SB | Hearthly Throws | Collection' — heard collection ads are being retired, what happens if I create a new one now?",
+    "should_trigger": true
+  },
+  {
+    "query": "creating ad groups through the API returns NON_ARCHIVED_QUOTA_EXCEEDED. what's the limit, and does archiving old ad groups free up room?",
+    "should_trigger": true
+  },
+  {
+    "query": "pull the search term report for SP | Throws | Broad for the last 30 days and tell me which terms to add as negatives, heated blanket stuff keeps getting clicks",
+    "should_trigger": false
+  },
+  {
+    "query": "SP | Sherpa | Exact runs out of budget by 3pm every day. raise the 50 dollar budget or lower bids? and should I switch from down only to up and down",
+    "should_trigger": false
+  },
+  {
+    "query": "weighted blanket sells at 79.99, landed cost 22, FBA fee about 9 — 我的盈亏平衡 ACOS 是多少？30% 的目标合理吗",
+    "should_trigger": false
+  },
+  {
+    "query": "Black Friday 和 Cyber Monday 预算要提前几天加，加多少？去年 BFCM 那周 CPC 涨了好多",
+    "should_trigger": false
+  },
+  {
+    "query": "I cut every bid in SP | Throws | Broad by 20% on Nov 5 and ACOS dropped since. did the bid cut work or is it just noise?",
+    "should_trigger": false
+  },
+  {
+    "query": "SP | Fleece Grey | Auto reads enabled but the ad for B0FIXTURE1 says AD_NOT_IN_BUYBOX and spend has dropped since Nov 4 — is the campaign set up wrong, or is something else stopping it?",
+    "should_trigger": false
+  },
+  {
+    "query": "B0FIXTURE9 king size just went live, no reviews yet. can it even be advertised yet, and should I do Vine first before turning ads on?",
+    "should_trigger": false
+  },
+  {
+    "query": "what's the exact request body for POST /reporting/reports to get spTargeting by day, and which header carries the profile id? I keep getting 400",
+    "should_trigger": false
+  },
+  {
+    "query": "rewrite my sherpa blanket queen title and bullets so 'sherpa blanket queen' is up front, and we lost the Buy Box on B0FIXTURE1 to a reseller — what do I fix on the listing",
+    "should_trigger": false
+  },
+  {
+    "query": "Q4 plan beyond sponsored ads: run an AMC query for shoppers who saw our Sponsored TV spot, retarget them with DSP, put Amazon Attribution tags on our Instagram links, and refresh the Store page hero images",
+    "should_trigger": false
+  }
+]

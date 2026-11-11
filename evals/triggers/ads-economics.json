@@ -1,0 +1,82 @@
+[
+  {
+    "query": "what ACOS can I afford on a $39.99 throw? landed cost is $11.20 + $0.80 freight, referral 15%, FBA fee about $6.90 this quarter",
+    "should_trigger": true
+  },
+  {
+    "query": "我的 TACOS 现在 12%，算高还是低？Amazon 官方的 TACOS 到底是用哪个 sales 算的",
+    "should_trigger": true
+  },
+  {
+    "query": "SP campaign shows ROAS 5.6 but more than half of the attributed sales are other SKUs, not the advertised one. is it actually profitable or is that halo inflating it",
+    "should_trigger": true
+  },
+  {
+    "query": "How many new-to-brand customers did my Sponsored Products campaigns bring last month? I can't find the NTB column in the SP campaign report",
+    "should_trigger": true
+  },
+  {
+    "query": "do ad sales actually lift organic rank on Amazon, or are attributed sales mostly orders we'd have gotten anyway? trying to justify a 45% ACOS on our hero ASIN",
+    "should_trigger": true
+  },
+  {
+    "query": "SB report shows long-term sales $12,400 against $3,100 attributed sales. is that real incremental revenue I can count when judging the campaign?",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我按每个产品的利润算一下广告 target ACOS，成本在 costs.csv 里，FBA 费用用最新的 fee estimate，旺季 peak fee 要不要算进去",
+    "should_trigger": true
+  },
+  {
+    "query": "退货率 8% 的话 break-even ACOS 要怎么调？广告报表里的 attributed sales 有没有扣掉退货",
+    "should_trigger": true
+  },
+  {
+    "query": "we're hybrid, 1P vendor on some ASINs and 3P on others. how do I compute TACOS across both, and does Net PPM include our ad spend?",
+    "should_trigger": true
+  },
+  {
+    "query": "Ads Math: weighted blanket AOV is $80 and buyers reorder about twice a year, what's the max CPA I can pay for a new customer and still break even",
+    "should_trigger": true
+  },
+  {
+    "query": "SP | Fleece Grey | Auto 从 11-05 起一点曝光都没有了，productAds 的 servingStatus 显示 AD_NOT_IN_BUYBOX，是出什么问题了",
+    "should_trigger": false
+  },
+  {
+    "query": "B0FIXTURE9 king size went live Oct 30 with zero reviews. set up its first SP campaign: auto or manual, what daily budget, and is it eligible to advertise yet?",
+    "should_trigger": false
+  },
+  {
+    "query": "go through my auto campaign's search terms since mid-October: which converting ones move to an exact campaign, which no-order ones get negative exact, and should exact/phrase/broad be separate ad groups",
+    "should_trigger": false
+  },
+  {
+    "query": "Sherpa exact runs out of budget around 1pm every day. raise the budget or cut bids? and with up and down plus top of search +200%, what's the most I can be charged per click",
+    "should_trigger": false
+  },
+  {
+    "query": "黑五 11-27 和 Cyber Monday 的广告预算要提多少？提前几天开始提，deal 那天 bid 要不要也加",
+    "should_trigger": false
+  },
+  {
+    "query": "我 11-05 把 Throws Broad 所有关键词 bid 降了 20%，ACOS 从 30% 掉到 23%，这个改动算成功了吗，还是再降 20%",
+    "should_trigger": false
+  },
+  {
+    "query": "cx raw amazon-ads keeps returning 401 on POST /sp/campaigns/list. which Amazon-Advertising-API-Scope value goes in the header and how do I read my profile ids",
+    "should_trigger": false
+  },
+  {
+    "query": "ACOS on SP | Plush Grey | Manual went from about 28% to 55% in two weeks. is it CPC going up or conversion falling? pull the daily clicks, CPC and orders and tell me what changed",
+    "should_trigger": false
+  },
+  {
+    "query": "write me an AMC SQL query for path to conversion and new-to-brand overlap between shoppers exposed to my SP and SB ads, and can I join Amazon Attribution data from my Google ads into it",
+    "should_trigger": false
+  },
+  {
+    "query": "our agency wants to put $5k a month into Sponsored TV and DSP retargeting next quarter and measure it with Brand Metrics; we also need to upload new lifestyle images to our Store page. where do we start",
+    "should_trigger": false
+  }
+]

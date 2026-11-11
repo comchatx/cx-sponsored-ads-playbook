@@ -1,0 +1,82 @@
+[
+  {
+    "query": "two weeks ago I raised bids 25% on my exact match campaign and ACOS dropped from 52% to 38%. but the week before the raise was a really bad week. did the bid raise actually do that?",
+    "should_trigger": true
+  },
+  {
+    "query": "我的 auto campaign 预算昨天晚上从 $40 变成 $25 了，我自己没改过，agency 说也不是他们。Amazon 那边能查到是谁改的吗？",
+    "should_trigger": true
+  },
+  {
+    "query": "how long should I wait after a bid change before I judge it? it's been 3 days and ACOS looks better already, can I call it",
+    "should_trigger": true
+  },
+  {
+    "query": "is there any way to run a real A/B test on Sponsored Products bids, like split traffic 50/50 between bid $1.00 and $1.30 on the same keyword?",
+    "should_trigger": true
+  },
+  {
+    "query": "上周 agency 把 top of search placement 从 50% 调到 150%，同一周我们自己又把几个主词 bid 降了 15%，现在 ACOS 涨了 8 个点，怎么判断是哪个改动造成的",
+    "should_trigger": true
+  },
+  {
+    "query": "we negated 'heated blanket' as phrase in the broad campaign on Oct 20. did that actually cut the wasted spend or did clicks just move to other terms? compare before vs after",
+    "should_trigger": true
+  },
+  {
+    "query": "Teikametrics 接管我们账号以后 ACOS 从 41% 降到 29%，但交给它那个月刚好是我们全年最差的一个月，这个提升到底能不能信？",
+    "should_trigger": true
+  },
+  {
+    "query": "our bulk update of 40 keyword bids came back HTTP 207 and only some bids changed in the console. how do I tell which ones went through, and is it safe to just resend the whole batch?",
+    "should_trigger": true
+  },
+  {
+    "query": "the change history shows BUDGET_AMOUNT and BID_AMOUNT events but nothing for the negative product targets I added last week or my SD campaign edits. is history missing them?",
+    "should_trigger": true
+  },
+  {
+    "query": "someone on reddit says turn branded SP ads off every other day for a month to measure incrementality, another says do a geo holdout. which one actually works for a small seller on amazon?",
+    "should_trigger": true
+  },
+  {
+    "query": "my Sherpa campaign runs out of budget by 1pm every day. should I raise the daily budget to $80 or lower bids, and is a weekend budget rule worth turning on?",
+    "should_trigger": false
+  },
+  {
+    "query": "pull the search terms from my Throws auto campaign with 15+ clicks and zero orders in the last 30 days and tell me which to add as negative exact",
+    "should_trigger": false
+  },
+  {
+    "query": "为什么我的 Fleece Grey auto campaign 这两天突然没有曝光了？campaign 状态还是 delivering，库存也有",
+    "should_trigger": false
+  },
+  {
+    "query": "what's my break-even ACOS on the sherpa queen? price $59.99, FBA fee $9.80, referral 15%, COGS $18, about 3% returns",
+    "should_trigger": false
+  },
+  {
+    "query": "Black Friday 前一周 budget 要加多少？去年 BFCM 期间 CPC 大概涨了多少，deal 期间要不要提 bid",
+    "should_trigger": false
+  },
+  {
+    "query": "new King size child just went live yesterday, no reviews yet. build its first SP campaigns for me: auto plus exact on 'sherpa blanket king', separate campaigns or one ad group?",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I call the Ads API for our Canada profile? which header carries the profile id, which origin, and how do I get the access token from the refresh token",
+    "should_trigger": false
+  },
+  {
+    "query": "Buy Box 一直被一个 reseller 抢走，我的标题和五点是不是也要改一下才能拿回来？另外 Manage Your Experiments 里标题测试 B 版本赢了，要不要直接用",
+    "should_trigger": false
+  },
+  {
+    "query": "write an AMC SQL query for how many households saw our Sponsored TV and DSP ads before buying through a sponsored products click, last 60 days",
+    "should_trigger": false
+  },
+  {
+    "query": "上个月我把 B0FIXTURE2 的标题和主图都换了，之后 unit session percentage 从 9% 涨到 11%，广告一直没动过。这个 listing 改动算成功吗？要不要再用 Manage Your Experiments 验证一下",
+    "should_trigger": false
+  }
+]

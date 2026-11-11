@@ -1,0 +1,53 @@
+{
+  "skill_name": "ads-bids-and-budgets",
+  "evals": [
+    {
+      "id": 51,
+      "name": "out-of-budget",
+      "prompt": "SP | Sherpa | Exact 每天下午就不跑了, why? And how did it spend $71 on Nov 3 when the daily budget is $50?? 亚马逊多扣我钱了？",
+      "expected_output": "Reads today's list (CAMPAIGN_OUT_OF_BUDGET), budget usage (budgetUsagePercent 100 at 2026-11-09T21:47:12Z) and change history (IN_BUDGET true->false every day since 10-27, mostly between about 11:20 and 14:05 Pacific, 17:55 on 11-03, back to true at local midnight; budget 80 -> 50 at 2026-10-27T03:12:44Z, which the seller's log does not record and history does not attribute). Explains that sponsored-ads budgets are spent as fast as possible, not paced, and an out-of-budget campaign waits for midnight; that the $71.31 on 11-03 is the averaged daily budget (one day up to 100% more, the feature flags not opted out, the month within $50 x 30 = $1,500, $421.32 spent 11-01..11-08), not an overcharge; that the budget recommendation ($82 suggested, 56% of 11-02..11-08 in budget, $104-171 missed sales) is a click-attributed estimate, not a guarantee. Nothing changed at Amazon: no write, or a refused one reported as refused.",
+      "files": [],
+      "expectations": [
+        "cx-calls.log shows the run read today's campaign state through cx (POST /sp/campaigns/list and POST /sp/campaigns/budget/usage with Amazon-Advertising-API-Scope=1111111111111111), and the answer states SP | Sherpa | Exact reads CAMPAIGN_OUT_OF_BUDGET with budget usage at 100% as of 13:47 Pacific today (2026-11-09T21:47:12Z; either the local or the UTC time passes, and the campaign id 311000000000003 is optional).",
+        "cx-calls.log shows a POST /history read, and the answer states the campaign has gone out of budget (IN_BUDGET true -> false) every day since 2026-10-27, around midday to early afternoon Pacific (roughly 11:20-14:05; 17:55 on 11-03), and come back in budget at local midnight.",
+        "The answer explains that sponsored-ads budgets are spent as quickly as possible rather than paced across the day, and that an out-of-budget campaign does not serve again until the budget resets at midnight.",
+        "The answer explains the $71.31 on 2026-11-03 as Amazon's average daily budget: a single day may spend up to 100% more than the daily budget (not 25%, since isOptedOutForAverageDailyBudgetIncrease reads false), while the month stays within $50 x 30 = $1,500; it gives November's spend to date as $421.32 (11-01..11-08), and does not call the $71.31 an overcharge.",
+        "The answer names the budget cut from $80 to $50 at 2026-10-27T03:12:44Z (the evening of 10-26 Pacific) from change history as the start of the daily stops, and notes that the seller's notes/ads-changes.md does not record it and change history does not say who made it.",
+        "The answer quotes the budget recommendation (suggested $82, percentTimeInBudget 0.56 for 11-02..11-08, missed sales $104-171) and says the missed sales are click-attributed estimates, not a guarantee and not sales the ad would cause.",
+        "The run changed nothing at Amazon and claims no change: cx-calls.log holds no PUT, PATCH or DELETE (or, if one was sent, the answer reports it was refused and the budget is still $50), and the answer does not say any budget or bid was changed."
+      ]
+    },
+    {
+      "id": 52,
+      "name": "placement-ceiling",
+      "prompt": "My bid on 'weighted blanket 15 lbs' exact is $1.20 but top of search is costing me like $3 a click. 我出价才1.2，亚马逊是不是在乱收费？",
+      "expected_output": "No overcharge. SP | Weighted | Exact runs AUTO_FOR_SALES (up and down) with PLACEMENT_TOP 200, so the maximum effective bid at top of search is 1.20 x 3 = 3.60, which dynamic bidding can raise by up to 100% to 7.20; Amazon never charges above the maximum effective bid. Top of search 2026-10-23..11-08 averaged $2.95 a click (319 clicks, $939.85; highest day $3.06), inside the ceiling; the placement report is the campaign's, both keywords together. Rest of search, with no adjustment, can reach 2.40 under the current pages' 100% or 1.80 under the author guide's 50%. History shows the top-of-search adjustment went 100 -> 200 on 2026-10-22 (and the bid 0.90 -> 1.20 on 10-19); top-of-search CPC was about $2.40 for 10-12..10-21. Ways down: MANUAL (fixed), LEGACY_FOR_SALES (down only) or a lower top-of-search adjustment. Nothing changed at Amazon: no write, or a refused one reported as refused.",
+      "files": [],
+      "expectations": [
+        "The answer reads SP | Weighted | Exact (311000000000004) as dynamicBidding strategy AUTO_FOR_SALES with PLACEMENT_TOP percentage 200, and the keyword 'weighted blanket 15 lbs' as EXACT with bid 1.20.",
+        "The answer computes the top-of-search maximum effective bid as 1.20 x (1 + 2.00) = $3.60, and says dynamic bidding up and down works on that placement-adjusted bid and can raise it by up to 100%, to $7.20.",
+        "The answer states Amazon never charges more than the maximum effective bid, which includes bid adjustments and the bidding strategy, so a ~$3 top-of-search click is within what the settings authorise and is not an overcharge.",
+        "The answer reads the spCampaigns placement report and gives top of search since the 10-22 change as about $2.95 a click (2026-10-23..11-08: 319 clicks, $939.85, no day above about $3.06; counting 10-22 too also gives about $2.95), and notes the placement figures are the campaign's, covering both its keywords (including 'weighted blanket queen' at $1.05), not the one keyword alone.",
+        "The answer gives rest of search's ceiling with no adjustment as $2.40 under the 100% that Amazon's current pages give for all placements, and $1.80 under the 50% that Amazon's author-facing guide still gives, naming the disagreement between Amazon's own pages.",
+        "The answer names, from change history, the top-of-search adjustment raised 100 -> 200 at 2026-10-22T16:40:09Z (and the bid 0.90 -> 1.20 on 2026-10-19), and gives top-of-search CPC before 10-22 as roughly $2.3-2.5 (about $2.40 for 10-12..10-21 taken together, or two figures split at the 10-19 bid change) against about $2.95 after.",
+        "The answer gives at least one way to lower the ceiling (any of MANUAL fixed bids, LEGACY_FOR_SALES down only, or a lower top-of-search adjustment; naming all three is not required) and does not claim any was made; cx-calls.log holds no PUT, PATCH or DELETE (or the answer reports a sent one was refused and the campaign is unchanged)."
+      ]
+    },
+    {
+      "id": 53,
+      "name": "rule-based-not-eligible",
+      "prompt": "把 SP | Waffle | Auto 换成 rule-based bidding，ROAS 目标设 4。new campaign, just do it pls",
+      "expected_output": "Not yet. The campaign (311000000000008) reads LEGACY_FOR_SALES, which an API-created campaign with no strategy gets; it was created 2026-10-28T19:20:40Z with a $15 daily budget. Rule-based bidding needs at least 10 days running (met, about 12), at least 10 conversions in the last 30 days (not met: spCampaigns 10-28..11-08 holds 4 purchases from 79 clicks and $46.42, sales $204.96) and at least a marketplace minimum daily budget, so it is not eligible now. The guardrail rests on the previous 21 days and is not guaranteed; comparing it later against campaigns that were never eligible would mix the rule with the gate. Nothing changed at Amazon: no write, or a refused one reported as refused.",
+      "files": [],
+      "expectations": [
+        "The answer reads SP | Waffle | Auto (311000000000008) through cx (POST /sp/campaigns/list in cx-calls.log) and states its strategy is LEGACY_FOR_SALES (dynamic bids down only), that it started or was created on 2026-10-28 (the timestamp 19:20:40Z and the campaign id are optional), and its daily budget is $15.",
+        "The answer says LEGACY_FOR_SALES is what Amazon gives a campaign created through the API with no bidding strategy set, so the seller did not necessarily choose it.",
+        "The answer names rule-based bidding's eligibility conditions: at least 10 days running, at least 10 conversions in the last 30 days, and at or above a marketplace minimum daily budget.",
+        "The answer counts the campaign's conversions from the spCampaigns report as 4 (79 clicks, $46.42 cost, $204.96 sales, 10-28..11-08), below the 10 required, while the 10-day condition is met (about 12 days since 10-28).",
+        "The answer concludes the campaign is not eligible for rule-based bidding now and does not claim it was switched or that a ROAS 4 goal is set.",
+        "The answer says Amazon's ROAS guardrail is based on the previous 21 days and is not guaranteed (an aggressive one can cut conversions), giving the campaign's ROAS to date as about 4.4 (204.96 / 46.42).",
+        "The run changed nothing at Amazon: cx-calls.log holds no PUT, PATCH or DELETE, or, if a PUT to /sp/campaigns was sent, the answer reports that it was refused and the strategy is still LEGACY_FOR_SALES."
+      ]
+    }
+  ]
+}

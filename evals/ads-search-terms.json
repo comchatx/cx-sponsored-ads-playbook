@@ -1,0 +1,56 @@
+{
+  "skill_name": "ads-search-terms",
+  "evals": [
+    {
+      "id": 41,
+      "name": "harvest-and-negate",
+      "prompt": "Can you go through the search terms in SP | Throws | Auto since Oct 12? 哪些词该挪去 exact，哪些该加否定，给我列个清单",
+      "expected_output": "Reads spSearchTerm 2026-10-12..11-08 for campaign 311000000000005 (ad group Throws Auto: 942 clicks, 83 orders, about 8.8% conversion). Promotes 'throw blanket' (426 clicks, 42 orders), 'fleece throw' (281, 27), 'fleece throw blanket' (23, 3) and 'cream fleece throw' (15, 3) to exact in a manual campaign, negated exact in the auto, as practitioners' practice rather than an Amazon rule (S18). Negates 'electric heated throw blanket' (42 clicks, 0 orders, $37.86): its 95% upper bound on conversion is about 3/42, roughly 7%, under the campaign's 8.8% (S20); with negative exact or phrase, as Amazon recommends (S13), up to 72 hours to act (S8). Leaves 'sherpa throw' (9 clicks, under Amazon's 20, S13, C9). 'christmas throw blanket' got all 11 clicks on 11-05..11-08, inside the 7-day window, so uncertain, not a loser (S21). 'b0compet01' (13 clicks, 0 orders) is a competitor's detail page, kept out, if at all, with a negative product target, not a keyword (S2, S5); '*' (32 clicks, 2 orders) is a detail-page placement with no keyword (S2). Nothing is written to Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer proposes 'throw blanket' (426 clicks, 42 orders) and 'fleece throw' (281 clicks, 27 orders) as exact keywords, and at least one of 'fleece throw blanket' (23 clicks, 3 orders) or 'cream fleece throw' (15 clicks, 3 orders).",
+        "The answer proposes negating 'electric heated throw blanket' and gives its figures: 42 clicks, 0 orders, $37.86 spent, 2026-10-12..11-08.",
+        "The answer backs the 'electric heated throw blanket' call with a count-based bound: zero orders in 42 clicks puts the 95% upper bound on its conversion rate near 3/42, about 7%, below the campaign's own rate (83 orders in 942 clicks, about 8.8%), or an equivalent interval (Wilson, Jeffreys) with its figures.",
+        "The answer does not call 'christmas throw blanket' (11 clicks, 0 orders) a loser to negate: it notes all its clicks fall on 2026-11-05..11-08, inside the 7-day attribution window, so orders may still arrive and the term is uncertain.",
+        "The answer does not negate 'sherpa throw' (9 clicks, 0 orders) now, saying it has too few clicks, under Amazon's guide's 20 clicks or a stated threshold of its own.",
+        "The answer treats 'b0compet01' (13 clicks, 0 orders, $9.20) as a competitor's detail page (the ASIN B0COMPET01), not a typed query, and says it is kept out with a negative product (ASIN) target rather than a negative keyword, whether or not it proposes excluding it now; it does not treat '*' (32 clicks, 2 orders) as a keyword to promote or negate.",
+        "The answer says negating a promoted term as exact in the auto campaign is a practitioners' practice, not a rule Amazon states, or names Amazon's own route (target promotion groups) as distinct from it.",
+        "Nothing changed at Amazon: cx-calls.log holds no PUT, PATCH, DELETE or POST that creates (no keyword, negative keyword or negative target was sent; a POST to a /list, /reporting/reports or recommendations path is a read), the answer describes the keywords and negatives as proposals and claims none was created, and the tree diff shows only replies cx landed and files the run wrote."
+      ]
+    },
+    {
+      "id": 42,
+      "name": "negative-phrase-leak",
+      "prompt": "三周前我在 SP | Throws | Broad 里把 heated blanket 加成了 negative phrase，现在还在为 heated 的搜索付钱?? is the negative broken or what",
+      "expected_output": "Reads the negative keyword lists and spSearchTerm 2026-10-12..11-08. The negative is not broken: 'heated blanket' NEGATIVE_PHRASE, ad-group level in Knit only, created 2026-10-20T17:30:12Z, live (S6); there is no campaign-level negative in this campaign, so nothing covers Fleece Cream. 'heated blanket' itself (12 clicks, $10.16) last clicked on 10-21, inside the up-to-72-hour buffer (S8). 'heated blanket for couch' (12 clicks, $9.60, 0 orders, through 11-07) comes through ad group Fleece Cream on the broad 'warm blanket', where nothing negates it (S6). 'heated throw blanket' (17 clicks, $14.40, through 11-08, Knit) does not hold the complete phrase (S7). 'heated throw blanket' and 'blanket heated' both still clicked after the buffer. 'blanket heated' (5 clicks, $4.18, Knit, clicks on 10-24, 10-29 and 11-03) turns on whether phrase match is order-sensitive, which practitioners dispute (S19). The fix is new negatives, not an edit of the existing one, whose match type cannot be changed (S7): for example negative phrase 'heated' at campaign level, which in SP covers both ad groups (S6). Nothing is written to Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer reads the existing negative as negative phrase 'heated blanket' on ad group Knit only (not campaign-wide), added 2026-10-20 (17:30 UTC) and still live (enabled).",
+        "The answer shows that no negative covers ad group Fleece Cream: it says SP | Throws | Broad has no campaign-level negative keyword, or that Fleece Cream has no negative of its own and none at campaign level reaches it.",
+        "The answer says the negative works as Amazon describes, not broken: 'heated blanket' itself (12 clicks, $10.16) has no click after 2026-10-21, inside the up-to-72-hour delay Amazon states before a negative keyword takes effect.",
+        "The answer explains 'heated blanket for couch' (12 clicks, $9.60, 0 orders, last click 2026-11-07) comes through ad group Fleece Cream (the broad keyword 'warm blanket'), which an ad-group negative in Knit does not cover. Its figures may be the 2026-10-12..11-08 totals or the same clicks split by window around the negative (before it, after the buffer), provided each figure matches the report.",
+        "The answer explains 'heated throw blanket' (17 clicks, $14.40, 0 orders, ad group Knit, still clicked after the buffer, through 2026-11-08) is not blocked because it does not contain the complete phrase 'heated blanket'. Its figures may be the 2026-10-12..11-08 totals or the same clicks split by window around the negative (before it, after the buffer), provided each figure matches the report.",
+        "The answer notes 'blanket heated' (5 clicks, $4.18, ad group Knit) still drew clicks after the buffer (2026-10-24, 10-29 and 11-03, last 11-03) and ties it to whether negative phrase is order-sensitive, which practitioners dispute; it does not state either reading as Amazon's rule. Its figures may be the 2026-10-12..11-08 totals or the same clicks split by window around the negative (before it, after the buffer), provided each figure matches the report.",
+        "The answer proposes the fix as new negatives rather than an edit of the existing one (if it raises editing it, it says an existing negative keyword's match type cannot be changed), and the new negatives cover both ad groups: a campaign-level negative in SP | Throws | Broad (which in Sponsored Products applies to every ad group) or the same negative in both ad groups, for example negative phrase 'heated'.",
+        "Nothing changed at Amazon: cx-calls.log holds no PUT, PATCH, DELETE or POST that creates (a POST to a /list, /reporting/reports or recommendations path is a read), the answer describes any new negative as a proposal and claims none was created, and the tree diff shows only replies cx landed and files the run wrote."
+      ]
+    },
+    {
+      "id": 43,
+      "name": "no-asin-column",
+      "prompt": "In SP | Bedding | Auto, which search terms actually sold the weighted blanket (B0FIXTURE5)? 还有哪些词有曝光但是没人点的，也拉出来看看",
+      "expected_output": "Neither list can be read from the search term report. It has no advertised-ASIN column (S3), and campaign 311000000000006's one ad group, Bedding Auto, holds both B0FIXTURE4 and B0FIXTURE5 (T1). It holds only terms with at least one click (S1): spTargeting shows 32,147 impressions for the campaign over 10-12..11-08 against 22,047 in the search-term rows, all 138 clicks accounted for. spAdvertisedProduct gives per-ASIN totals only: B0FIXTURE5 75 clicks, 3 orders, $67.30 spend, $239.97 sales; B0FIXTURE4 63 clicks, 4 orders, $54.97 (context the question does not call for). Any link from a term to B0FIXTURE5 through the $79.99 sale value is an inference from price, not a column. Reading terms by ASIN means giving each product its own ad group. Nothing is written to Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer says the Sponsored Products search term report has no advertised-ASIN column, so which terms sold B0FIXTURE5 cannot be read from it.",
+        "The answer names that the campaign's single ad group, Bedding Auto (321000000000061), advertises both B0FIXTURE4 and B0FIXTURE5, so every term row in it belongs to both products' ads.",
+        "The answer says a search term with impressions and no click has no row in the search term report, so a list of terms with impressions and no clicks cannot be produced from it.",
+        "The answer backs that with figures: spTargeting holds 32,147 impressions for SP | Bedding | Auto over 2026-10-12..11-08 while the search-term rows sum to 22,047 (about 10,100 impressions with no term row), or an equivalent comparison of the two reports.",
+        "The answer gives B0FIXTURE5's per-ASIN figures from spAdvertisedProduct (75 clicks, 3 orders, $67.30 spend, $239.97 sales) and keeps B0FIXTURE4's results apart from them (for example its 4 orders); B0FIXTURE4's clicks and spend are not required.",
+        "The answer does not present any term as having sold B0FIXTURE5 as a figure read from the report; any link it draws (for instance from the $79.99 sales value on 'weighted blanket' on 2026-10-20, 'sherpa blanket' on 10-25 or '*' on 11-01) is labelled an inference from the price.",
+        "The answer proposes giving B0FIXTURE5 and B0FIXTURE4 their own ad groups (or campaigns) so search terms can be read per product from then on.",
+        "Nothing changed at Amazon: cx-calls.log holds no PUT, PATCH, DELETE or POST that creates (no ad group, product ad or campaign was sent; a POST to a /list, /reporting/reports or recommendations path is a read), the answer describes the split as a proposal and claims none was made, and the tree diff shows only replies cx landed and files the run wrote."
+      ]
+    }
+  ]
+}

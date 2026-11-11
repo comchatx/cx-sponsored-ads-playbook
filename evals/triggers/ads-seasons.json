@@ -1,0 +1,82 @@
+[
+  {
+    "query": "black friday week dates for the US announced yet? my best deal got approved in october but seller central still shows no dates, and I need to know when to start pushing ads",
+    "should_trigger": true
+  },
+  {
+    "query": "明年 Prime Day 大概几月？去年是 6 月底，我要提前规划 SP 预算和备货，日本站也是同一天吗",
+    "should_trigger": true
+  },
+  {
+    "query": "During Prime Big Deal Days our CPC went up and conversion dropped, ACOS hit 48% on the weighted blanket campaign. normal for an event or did we screw up the bids?",
+    "should_trigger": true
+  },
+  {
+    "query": "set up BFCM budget rules on my sponsored products campaigns — what % increase does Amazon itself recommend for Black Friday and Cyber Monday, and how many days before should they start?",
+    "should_trigger": true
+  },
+  {
+    "query": "我的 lightning deal 那天转化率翻倍，第二天就掉回去了，甚至比平时还低，这正常吗？要不要趁 deal 那天的数据调高 bid",
+    "should_trigger": true
+  },
+  {
+    "query": "can a sponsored brands headline say 'Prime Day deal — 40% off'? or does the deal badge show up by itself",
+    "should_trigger": true
+  },
+  {
+    "query": "Prime Day ended 4 days ago and sales attributed to it are still trickling in. how long do I wait before I judge the event campaigns and cut what didn't work?",
+    "should_trigger": true
+  },
+  {
+    "query": "people keep saying Q5 after Christmas has cheap CPCs — should I keep ad spend high from Dec 26 through mid January or pull back like Amazon's post-holiday advice?",
+    "should_trigger": true
+  },
+  {
+    "query": "UK 和 US 的 Black Friday Week 时间一样吗？两个站都在投 SP，想知道各自该从哪天开始加预算",
+    "should_trigger": true
+  },
+  {
+    "query": "the year-over-year benchmark makes our Prime Day week look awful, but Prime Day landed in a different week last year. how do I compare this event to last year's fairly?",
+    "should_trigger": true
+  },
+  {
+    "query": "SP | Sherpa | Exact runs out of budget around 1pm every day. normal week, no sale coming up — raise the daily budget back to $80 or cut the bids?",
+    "should_trigger": false
+  },
+  {
+    "query": "search term report 里 'christmas throw blanket' 从 11/5 才开始有点击，还没出单——现在就加否定，还是先挪到 exact 里单独投？",
+    "should_trigger": false
+  },
+  {
+    "query": "the sherpa queen's Black Friday deal price is $47.99 — with COGS $19.60, a 15% referral fee and $9.40 FBA, what's my break-even ACOS at that price?",
+    "should_trigger": false
+  },
+  {
+    "query": "should I split my one auto campaign into separate exact, phrase and broad manual campaigns, and do I need to negate the exact terms in the broad one?",
+    "should_trigger": false
+  },
+  {
+    "query": "new King size child just went live last week with zero reviews — how should I set up its first sponsored products campaign? the parent ASIN can't be advertised right?",
+    "should_trigger": false
+  },
+  {
+    "query": "Fleece Grey auto 从上周三开始 impressions 掉到 0，是不是 agency 改了什么？帮我查一下 change history，再看看是不是丢了 featured offer",
+    "should_trigger": false
+  },
+  {
+    "query": "getting 401 on POST /sp/campaigns/list from the Ads API — which Amazon-Advertising-API-Scope value do I send, and do I need the content-type header for v3?",
+    "should_trigger": false
+  },
+  {
+    "query": "lost the Buy Box on my fleece throw to another seller undercutting by $3, and the title is a mess too — rewrite the title and bullets and tell me how to get the buy box back",
+    "should_trigger": false
+  },
+  {
+    "query": "write me an AMC SQL query: of shoppers exposed to our DSP and Sponsored TV ads in the last 60 days, how many later clicked a sponsored products ad and bought",
+    "should_trigger": false
+  },
+  {
+    "query": "upload new lifestyle images to our Brand Store homepage, set up Amazon Attribution tags for our Meta ads landing there, and where do I find Brand Metrics for the brand?",
+    "should_trigger": false
+  }
+]

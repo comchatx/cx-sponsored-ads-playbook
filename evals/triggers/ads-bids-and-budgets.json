@@ -1,0 +1,82 @@
+[
+  {
+    "query": "why does my SP sherpa exact campaign run out of budget every day around 1pm? budget is $50/day and it was fine at $80",
+    "should_trigger": true
+  },
+  {
+    "query": "我每天预算 50 刀，11 月 3 号那天花了 71.31，亚马逊是不是多扣钱了？这个月总共最多能花多少",
+    "should_trigger": true
+  },
+  {
+    "query": "bid on 'weighted blanket 15 lbs' exact is $1.20 but top of search CPC is ~$3. campaign is on dynamic up and down with top of search +200%. how high can a click actually go?",
+    "should_trigger": true
+  },
+  {
+    "query": "Should I move SP | Weighted | Exact from 'dynamic bids - up and down' to fixed bids, or just cut the top of search adjustment from 200% to 50%? which one saves more without killing orders",
+    "should_trigger": true
+  },
+  {
+    "query": "把新的 waffle 自动广告换成 rule-based bidding，ROAS 目标 4，可以吗？",
+    "should_trigger": true
+  },
+  {
+    "query": "Amazon says raise SP Sherpa Exact to $82/day, in budget only 56% of the last 7 days, missed sales $104-171. is that missed sales number real or just Amazon wanting more spend",
+    "should_trigger": true
+  },
+  {
+    "query": "set up a performance budget rule: +30% daily budget when ROAS > 4 on my throws campaigns. some of them are only $8 a day, will it still apply?",
+    "should_trigger": true
+  },
+  {
+    "query": "我的 SB 视频广告用了 cost control，target CPC 设的 $1.50，为什么报表里有的天平均 CPC 到了 $1.80？这不是上限吗",
+    "should_trigger": true
+  },
+  {
+    "query": "lower every keyword bid in SP | Throws | Broad by 10% through the API, but don't go below Amazon's minimum bid — what happens if one is under the lower limit?",
+    "should_trigger": true
+  },
+  {
+    "query": "my sherpa campaigns sit in a portfolio with a $1,500 monthly cap and they all stopped on the 20th. how should I split the portfolio cap and the daily budgets so they run to month end?",
+    "should_trigger": true
+  },
+  {
+    "query": "SP | Fleece Grey | Auto 这周订单掉了一半，曝光正常，点击也正常，是不是 featured offer 丢了还是库存问题？帮我诊断一下",
+    "should_trigger": false
+  },
+  {
+    "query": "change 'throw blanket' in SP Throws Broad from broad match to phrase. can I edit the match type or do I have to make a new keyword? and should I archive the old one",
+    "should_trigger": false
+  },
+  {
+    "query": "go through the search term report for SP | Throws | Auto since mid-October: which terms should I add as negative exact and which should move to a manual exact campaign?",
+    "should_trigger": false
+  },
+  {
+    "query": "weighted blanket sells at $79.99, FBA fee about $14, landed cost $28, returns 6%. what's my break-even ACOS and is a 30% target ACOS too tight?",
+    "should_trigger": false
+  },
+  {
+    "query": "我们 11 月 5 号把 Throws Broad 的出价全降了 20%，现在想知道这个改动到底有没有效果，用什么方法判断？要不要做 holdout",
+    "should_trigger": false
+  },
+  {
+    "query": "When is Black Friday Week 2026 on Amazon US, has Amazon announced the dates yet, and can my headline ad say 'Black Friday Deal' if I have an approved Best Deal?",
+    "should_trigger": false
+  },
+  {
+    "query": "new waffle throw went live 10-28 with zero reviews. can I run Sponsored Brands yet without brand registry approval, and should I enroll it in Vine before turning ads on?",
+    "should_trigger": false
+  },
+  {
+    "query": "my GET /v2/profiles call to advertising-api.amazon.com comes back as an empty list. how do I get the refresh token, and which header carries the profile id on /sp/campaigns/list?",
+    "should_trigger": false
+  },
+  {
+    "query": "10 月 26 号晚上是谁把 SP | Sherpa | Exact 的预算从 80 改成 50 的？代理说不是他们，BidPilot 那时候也还连着，变更记录里能查出是谁改的吗",
+    "should_trigger": false
+  },
+  {
+    "query": "thinking about Sponsored TV and a DSP retargeting line for Hearthly this Q4 — what's the minimum spend, and can AMC tell me whether people who saw the TV ad later bought on Amazon?",
+    "should_trigger": false
+  }
+]

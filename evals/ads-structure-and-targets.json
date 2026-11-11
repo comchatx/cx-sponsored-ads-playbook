@@ -1,0 +1,54 @@
+{
+  "skill_name": "ads-structure-and-targets",
+  "evals": [
+    {
+      "id": 31,
+      "name": "exact-close-variants",
+      "prompt": "my exact keyword 'sherpa blanket queen' is showing search terms like 'sherpa blankets queen', 'sherpa blanket queeen' and even 'sherpa queen blanket' in the report. isn't exact supposed to be EXACT?? is exact match broken or did someone mess with my campaign",
+      "expected_output": "Reads spSearchTerm 2026-10-12..11-08 (already in the tree) for ad group Sherpa Queen of SP | Sherpa | Exact: the three terms came through the EXACT keyword 'sherpa blanket queen'. Says exact is not broken: no match type is a literal string match, exact covers plurals and misspellings, and Amazon's guides disagree on whether exact tolerates reordering (T23). Gives the figures: 'sherpa blankets queen' 140 clicks, 14 orders; 'sherpa queen blanket' 98, 9; 'sherpa blanket queeen' 35, 2; the keyword's own text 704, 67. The two larger variants convert like the main term (10.0% and 9.2% against 9.5%); the misspelling's 35 clicks are too few to judge. To keep a variant out, a negative exact on it in that ad group, proposed, not sent; Amazon says a negative exact blocks the exact phrase or close variation (S7), so a negative on a plural or misspelling may also block 'sherpa blanket queen' itself. Nothing is changed at Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer says exact match is not broken: no match type is a literal string match, and exact also matches plurals and misspellings such as 'sherpa blankets queen' and 'sherpa blanket queeen'.",
+        "The answer says Amazon's own guides disagree on whether exact match tolerates word reordering, so 'sherpa queen blanket' is neither shown to be a bug nor clearly documented behaviour (it does not state flatly that Amazon's exact match always or never covers reordering).",
+        "The answer shows, from the spSearchTerm report for 2026-10-12..2026-11-08, that the three terms were matched by the EXACT keyword 'sherpa blanket queen' in ad group Sherpa Queen of SP | Sherpa | Exact, not by another keyword or an auto target.",
+        "The answer gives the terms' figures for 2026-10-12..2026-11-08 (within rounding): 'sherpa blankets queen' 140 clicks and 14 orders, 'sherpa queen blanket' 98 clicks and 9 orders, 'sherpa blanket queeen' 35 clicks and 2 orders, against the keyword's own text 'sherpa blanket queen' at 704 clicks and 67 orders.",
+        "The answer says the two larger variants convert about like the main term (about 10.0% and 9.2% against 9.5% of clicks; or ACOS about 24% and 27% against 24%), and that the misspelling's 2 orders from 35 clicks are too few to call it worse; it does not recommend negating 'sherpa blankets queen' or 'sherpa queen blanket' for converting badly.",
+        "If the answer proposes keeping a variant out, the tool it names is a negative exact keyword on that term in ad group Sherpa Queen (or campaign SP | Sherpa | Exact), not a change of the exact keyword's match type and not pausing the keyword, and it says that a negative exact also blocks close variations of its term, so a negative on a plural or misspelling of 'sherpa blanket queen' may block the keyword's own text too.",
+        "Nothing changed at Amazon: cx-calls.log holds no PUT, PATCH, DELETE or create POST, the tree diff shows only replies cx landed and files the run wrote, and the answer describes any negative as a proposal, not as done."
+      ]
+    },
+    {
+      "id": 32,
+      "name": "match-type-fixed",
+      "prompt": "帮我把 SP | Throws | Broad 里面那个 'throw blanket' 从 broad 改成 phrase，broad 跑得太散了，直接改就行",
+      "expected_output": "Says a keyword's match type is fixed at creation and cannot be edited in place (T4): the way is a new 'throw blanket' PHRASE keyword in ad group Knit of SP | Throws | Broad beside the broad one, then pausing the broad keyword rather than archiving it, since ARCHIVED is terminal (T6). While both run on a query both match, the match type with the higher bid serves (T22). Reads today's keyword list: the broad keyword's bid is 0.80, cut from 1.00 on 2026-11-05. The seller asked for the change: if cx tries the create or the pause, the stub refuses it (out_of_scope), and the answer says plainly that nothing was applied, with the calls that would do it.",
+      "files": [],
+      "expectations": [
+        "The answer says a keyword's match type cannot be changed on the existing keyword: it is fixed at creation, and the way to get phrase is a new keyword in phrase match beside the broad one; no call in cx-calls.log tries to set matchType on the existing keyword 341000000000071.",
+        "The answer places the new 'throw blanket' PHRASE keyword in ad group Knit (321000000000071) of campaign SP | Throws | Broad (311000000000007), the ad group holding the broad keyword.",
+        "The answer proposes pausing the broad keyword rather than archiving it, or, if it mentions archiving, says ARCHIVED is terminal and cannot be reactivated.",
+        "The answer says that while the broad and phrase versions of 'throw blanket' both run, Amazon uses the match type with the higher bid on a query both match, so the phrase keyword's bid against the broad one's 0.80 decides which of the two serves such a query until the broad one is paused.",
+        "The answer states the broad keyword's bid today is 0.80 and that it was cut on 2026-11-05 from 1.00, giving the 1.00 figure or a 20% cut from which 1.00 follows (from today's keyword list, change history or the seller's log).",
+        "The answer does not claim the phrase keyword was created or the broad keyword paused; every write cx attempted (any POST to /sp/keywords or PUT in cx-calls.log, all of which the stub refuses with out_of_scope) is reported in the answer as refused and not applied.",
+        "The tree diff shows only replies cx landed under tenant/raw/ and files the run wrote; nothing at Amazon changed."
+      ]
+    },
+    {
+      "id": 33,
+      "name": "brand-searches",
+      "prompt": "谁在抢我的品牌词？搜 'hearthly' 的时候是不是有竞品在投广告。还有我 SB | Brand | hearthly 这个 campaign 每个月都在花钱，搜我牌子的人本来就会买我的吧，还要不要继续投？",
+      "expected_output": "Says no Amazon share metric names a competitor and no Amazon field flags a search term as branded (T32, T42), so neither the share metrics nor Top Search Terms say who advertises on 'hearthly'; any advertiser may target a brand's name (T35). Reads Brand Analytics Top Search Terms for 2026-11-01..11-07: on 'hearthly' B0FIXTURE4 is first (click share 0.38), B0COMPET03 'Snugwell Fleece Throw Blanket' second (0.17), B0FIXTURE6 third (0.11); on 'hearthly blanket' B0COMPET03 is third (0.12). Those are most-clicked products, not a list of advertisers. Reads sbCampaigns 2026-10-12..11-08: SB | Brand | hearthly cost 283.22 for 629 clicks, 117 purchases and 6,968.72 sales (ACOS about 4.1%), attributed, not incremental. The evidence on brand-term ads is from search-engine field experiments, not Amazon (T43): little added with no competitor advertising, more with competitors; a competitor is among the most-clicked on 'hearthly', so keeping some coverage is a judgement on that evidence, not a measured Amazon result. Nothing changed at Amazon.",
+      "files": [],
+      "expectations": [
+        "The answer says none of Amazon's share metrics names a competitor, so neither they nor Brand Analytics Top Search Terms (most-clicked products) say which competitors advertise on 'hearthly', and that no Amazon field flags a search term as branded.",
+        "The answer reads Brand Analytics Top Search Terms for 2026-11-01..2026-11-07 and states that on 'hearthly' B0FIXTURE4 is first (click share about 0.38), B0COMPET03 (Snugwell) second (about 0.17) and B0FIXTURE6 third (about 0.11).",
+        "The answer states that on 'hearthly blanket' B0COMPET03 (Snugwell) is third by click share (about 0.12), behind B0FIXTURE4 and B0FIXTURE1.",
+        "The answer does not claim Amazon's data shows Snugwell or B0COMPET03 bidding on or advertising on 'hearthly'; if it names B0COMPET03, it presents it as a most-clicked product on the term (clicks, not a list of advertisers).",
+        "The answer gives SB | Brand | hearthly's figures from sbCampaigns 2026-10-12..2026-11-08 (within rounding): cost 283.22, 117 purchases, 6,968.72 sales and ACOS about 4.1%, with clicks given as 629 or as a click-to-purchase rate consistent with it (about 18.6%), and does not take the low ACOS as proof those sales would be lost without the ads.",
+        "The answer says the evidence on whether a brand's own ads on its own query add sales comes from field experiments on search engines (for example on Bing, or eBay's tests of its own search ads), not on Amazon: little added when no competitor advertised, more when competitors did.",
+        "The answer frames keeping or cutting the brand campaign as a judgement on that evidence (with a competitor among the most-clicked products on 'hearthly'), not as a measured Amazon result, and any practitioner threshold it cites (such as a share of spend on brand terms) is labelled a practitioner view.",
+        "Nothing changed at Amazon: cx-calls.log holds no PUT, PATCH, DELETE or create POST, the SB campaign is not paused, and the tree diff shows only replies cx landed and files the run wrote."
+      ]
+    }
+  ]
+}

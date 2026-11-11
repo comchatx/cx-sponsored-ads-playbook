@@ -523,15 +523,15 @@ G5. **RULE: Deal claims and event names in creative.**
 | Wording | Maximum duration |
 |---|---|
 | "available on Black Friday only" | 24 hours |
-| "Black Friday Week" | about 7 days (Nov 17–28) |
+| "Black Friday Week" | about 8 days, beginning 8 days before and ending by the last day of the event (Event days policy) |
 | "Black Friday weekend" | about 3 days (Nov 23–28) |
-| "Cyber Monday Week" | about 7 days (Nov 25–Dec 4) |
+| "Cyber Monday Week" | not named in the Event days policy |
 | "Black Friday" / "Cyber Monday" | about 14 days (Nov 17–Dec 4) |
 | "11:11" (the page's spelling; "Singles' Day") | about 21 days (Oct 28–Nov 19); "11:11 only" or "Singles Day only" means Nov 11 alone |
 
 - In the UAE and KSA the term is "White Friday", and it may run through Dec 7. Australia runs through Dec 4. Brazil may use "Black Friday" Nov 6–27.
 
-[official] "Black Friday and Cyber Monday advertising tips", read 2026-11-09. The calendar dates in that table are the page's, for its year; a skill reads them from the page each season.
+[official] "Black Friday and Cyber Monday advertising tips", read 2026-11-09; the two "Week" rows are Amazon Ads' "Event days" policy (https://advertising.amazon.com/help/GQ3SJ5QCWCQCKCYQ), read 2026-11-10, where the guide, read again that day, still says "approximately seven days" for both. The calendar dates in that table are the page's, for its year; a skill reads them from the page each season.
 
 G6. **RULE: Discount-range claims and dynamic prices.**
 - "If you advertise a range of discounts (by displaying 'up to' or 'from,' plus a percentage discount), at least 10% of all the ASINs in the promotion selection must be offered at or above the maximum discount advertised."
@@ -1185,7 +1185,7 @@ All pages were read 2026-11-09 by plain GET (curl with a browser user agent), un
 
 **P-seasons-and-deals-32.** A Sponsored Brands product collection featuring products on deal automatically shows a deals call-to-action and a seasonal lifestyle image. Since August 2026, a request to create a Product Collection ad creates a Manual Collection ad instead. Amazon dates the format's end twice: create requests return an error after January 2027 (Deprecations page, migration guide), and "Beginning February 2027, product collections will no longer be supported" (release note of September 18, 2026). Sources: [official] Amazon Ads "Key events store prep"; Ads API "Deprecations"; "Migration Guide for Product Collection to Collections Ad Type"; Ads API release notes, "Introducing the ListMigrations API..."; read 2026-11-09.
 
-**P-seasons-and-deals-33.** Amazon's ad policy requires an advertised deal to be live whenever the ad is live (no deal teasing). The price or saving must appear in the same format on ad and landing page. Event names are bounded by duration ("available on Black Friday only" means 24 hours; "Black Friday Week" about 7 days). Source: [official] Amazon Ads "Black Friday and Cyber Monday advertising tips", read 2026-11-09.
+**P-seasons-and-deals-33.** Amazon's ad policy requires an advertised deal to be live whenever the ad is live (no deal teasing). The price or saving must appear in the same format on ad and landing page. Event names are bounded by duration ("available on Black Friday only" means 24 hours; "Black Friday Week" about 8 days, beginning 8 days before and ending by the last day of the event). Source: [official] Amazon Ads "Black Friday and Cyber Monday advertising tips", read 2026-11-09; the "Black Friday Week" length is Amazon Ads' "Event days" policy, read 2026-11-10.
 
 **P-seasons-and-deals-34.** An "up to X%" claim requires at least 10% of the promoted ASINs to be offered at or above X%. A claim made inaccurate by dynamic pricing requires the creative to be paused and changed to a qualified claim. Source: [official] Amazon Ads "Holiday shopping season performance-boosting tips", read 2026-11-09.
 
