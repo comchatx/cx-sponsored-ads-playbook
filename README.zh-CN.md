@@ -10,6 +10,6 @@ cx 检查你的商品推广、品牌推广和展示型推广，找出花费或�
 
 ## 用到的数据
 
-- **亚马逊广告接口**：你的亚马逊广告账户，在亚马逊广告接口插件里连接。cx 在这里读取广告活动和报告，也在这里修改出价、预算和投放。
-- **亚马逊卖家接口**（如果你装了）：你的 Buy&nbsp;Box、库存、费用和总销量，让 cx 把广告放到整个店铺里看。
-- **Keepa 数据接口**（如果你装了）：Buy&nbsp;Box 和排名的历史。
+- **[亚马逊广告接口](https://www.npmjs.com/package/@comchatx/cx-amazon-ads)**：你的亚马逊广告账户，在亚马逊广告接口插件里连接。cx 在这里读取广告活动和报告，也在这里修改出价、预算和投放。
+- **[亚马逊卖家接口](https://www.npmjs.com/package/cx-amazon-sp-api)**（如果你装了）：你的 Buy&nbsp;Box、库存、费用和总销量，让 cx 把广告放到整个店铺里看。
+- **[Keepa 数据接口](https://www.npmjs.com/package/cx-keepa)**（如果你装了）：Buy&nbsp;Box 和排名的历史。

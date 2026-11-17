@@ -10,6 +10,6 @@ To have cx review your ads every week, also install [Scheduled Tasks](https://ww
 
 ## What it uses
 
-- **Amazon Ads API:** your Amazon advertising accounts, connected on the Amazon Ads API plugin. cx reads your campaigns and reports there, and changes your bids, budgets and targets there.
-- **Amazon SP-API,** where you have it: your Buy&nbsp;Box, stock, fees and total sales, so cx can set your ads against your whole store.
-- **Keepa API,** where you have it: Buy&nbsp;Box and rank history.
+- **[Amazon Ads API](https://www.npmjs.com/package/@comchatx/cx-amazon-ads):** your Amazon advertising accounts, connected on the Amazon Ads API plugin. cx reads your campaigns and reports there, and changes your bids, budgets and targets there.
+- **[Amazon SP-API](https://www.npmjs.com/package/cx-amazon-sp-api),** where you have it: your Buy&nbsp;Box, stock, fees and total sales, so cx can set your ads against your whole store.
+- **[Keepa API](https://www.npmjs.com/package/cx-keepa),** where you have it: Buy&nbsp;Box and rank history.
