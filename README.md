@@ -6,7 +6,7 @@ Some things you can ask:
 - Why did B0EXAMPLE1's ads suddenly stop getting impressions?
 - Which campaigns keep running out of budget, and how much should I add?
 
-To have cx review your ads every week, also install cx-schedule.
+To have cx review your ads every week, also install [Scheduled Tasks](https://www.npmjs.com/package/@comchatx/cx-schedule).
 
 ## What it uses
 

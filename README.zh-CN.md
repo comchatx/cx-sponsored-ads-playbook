@@ -6,7 +6,7 @@ cx 检查你的商品推广、品牌推广和展示型推广，找出花费或�
 - B0EXAMPLE1 的广告怎么突然没曝光了？
 - 哪些广告活动经常预算不够，该加到多少？
 
-如果想让 cx 每周定时复盘广告，再装上 cx-schedule。
+如果想让 cx 每周定时复盘广告，再装上[定时任务](https://www.npmjs.com/package/@comchatx/cx-schedule)。
 
 ## 用到的数据
 
