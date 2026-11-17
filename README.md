@@ -10,6 +10,6 @@ To have cx review your ads every week, also install cx-schedule.
 
 ## What it uses
 
-- **Amazon Ads:** your Amazon advertising accounts, connected on the Amazon Ads plugin. cx reads your campaigns and reports there, and changes your bids, budgets and targets there.
+- **Amazon Ads API:** your Amazon advertising accounts, connected on the Amazon Ads API plugin. cx reads your campaigns and reports there, and changes your bids, budgets and targets there.
 - **Amazon SP-API,** where you have it: your Buy&nbsp;Box, stock, fees and total sales, so cx can set your ads against your whole store.
-- **Keepa,** where you have it: Buy&nbsp;Box and rank history.
+- **Keepa API,** where you have it: Buy&nbsp;Box and rank history.
