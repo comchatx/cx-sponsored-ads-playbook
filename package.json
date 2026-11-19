@@ -1,6 +1,6 @@
 {
   "name": "@comchatx/cx-sponsored-ads-playbook",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Traces why ad spend or sales moved, then judges each fix.",
   "license": "MIT",
   "author": "ComChatX",
@@ -52,7 +52,7 @@
         "zh": "复盘最近几周的广告，并提出修改。"
       },
       "ads-launch": {
-        "zh": "为新品开始投广告，从能否投放到首批广告活动。"
+        "zh": "为新品【ASIN】开始投广告，从能否投放到首批广告活动。"
       },
       "ads-harvest": {
         "zh": "梳理搜索词，找出值得单独投放和该否定的词。"
@@ -64,10 +64,10 @@
         "zh": "算出广告订单能赚多少，以及盈亏平衡的 ACOS。"
       },
       "ads-brand": {
-        "zh": "看看谁在你的品牌搜索词和商品页上投广告，守住要花多少钱。"
+        "zh": "看看谁在我的品牌搜索词和商品页上投广告，守住要花多少钱。"
       },
       "ads-change-review": {
-        "zh": "判断某一天的广告改动是否见效。"
+        "zh": "判断【日期】的广告改动是否见效。"
       }
     },
     "builds": [
@@ -77,11 +77,35 @@
       },
       {
         "on": "cx-amazon-sp-api",
-        "need": "optional"
+        "need": "optional",
+        "why": {
+          "en": "Sets your ads against your whole store.",
+          "zh": "用于把广告放到整个店铺里看。"
+        }
       },
       {
         "on": "cx-keepa",
-        "need": "optional"
+        "need": "optional",
+        "why": {
+          "en": "Adds Buy Box and rank history.",
+          "zh": "用于看 Buy Box 和排名的历史。"
+        }
+      },
+      {
+        "on": "@comchatx/cx-schedule",
+        "need": "optional",
+        "why": {
+          "en": "Has cx review your ads on a schedule.",
+          "zh": "用于让 cx 按你定的时间复盘广告，比如每周一次。"
+        }
+      },
+      {
+        "on": "cx-amazon-seller",
+        "need": "optional",
+        "why": {
+          "en": "Tells cx from the start that you sell on Amazon.",
+          "zh": "用于让 cx 从第一条消息起就知道你在亚马逊开店。"
+        }
       }
     ]
   },
