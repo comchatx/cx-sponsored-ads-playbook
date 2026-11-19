@@ -124,6 +124,7 @@ it("the Plugins page's field gives every skill its signed words in both language
     { on: "@comchatx/cx-amazon-ads", need: "required" },
     { on: "cx-amazon-sp-api", need: "optional" },
     { on: "cx-keepa", need: "optional" },
+    { on: "cx-amazon-seller", need: "required" },
   ]);
 });
 
