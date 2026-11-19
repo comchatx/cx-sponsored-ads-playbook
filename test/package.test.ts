@@ -81,18 +81,18 @@ const SKILL_WORDS = {
   "ads-change": { zh: "查广告改动记录，判断一次改动是否见效。", en: "Amazon's change history, and whether a change worked." },
 } as const;
 const PROMPT_WORDS = {
-  "ads-review": { zh: "复盘最近几周的广告，并提出修改。", en: "Review your ads over the last few weeks, and propose changes." },
-  "ads-change-review": { zh: "判断某一天的广告改动是否见效。", en: "Tell whether the ad changes made on a given day worked." },
-  "ads-harvest": { zh: "梳理搜索词，找出值得单独投放和该否定的词。", en: "Go through your search terms for ones to target and ones to negate." },
-  "ads-launch": { zh: "为新品开始投广告，从能否投放到首批广告活动。", en: "Start a new product's ads, from whether it can serve to its first campaigns." },
-  "ads-margin": { zh: "算出广告订单能赚多少，以及盈亏平衡的 ACOS。", en: "Work out what an ad sale earns you, and your break-even ACOS." },
-  "ads-brand": { zh: "看看谁在你的品牌搜索词和商品页上投广告，守住要花多少钱。", en: "See who advertises on your brand's searches and pages, and what holding them costs." },
-  "ads-season": { zh: "为下一个亚马逊大促准备好广告。", en: "Prepare your ads for Amazon's next sales event." },
+  "ads-review": { zh: "复盘最近几周的广告，并提出修改。", en: "Review my ads over the last few weeks, and propose changes." },
+  "ads-change-review": { zh: "判断【日期】的广告改动是否见效。", en: "Tell whether the ad changes made on [date] worked." },
+  "ads-harvest": { zh: "梳理搜索词，找出值得单独投放和该否定的词。", en: "Go through my search terms for ones to target and ones to negate." },
+  "ads-launch": { zh: "为新品【ASIN】开始投广告，从能否投放到首批广告活动。", en: "Start ads for my new product [ASIN], from whether it can serve to its first campaigns." },
+  "ads-margin": { zh: "算出广告订单能赚多少，以及盈亏平衡的 ACOS。", en: "Work out what an ad sale earns me, and my break-even ACOS." },
+  "ads-brand": { zh: "看看谁在我的品牌搜索词和商品页上投广告，守住要花多少钱。", en: "See who advertises on my brand's searches and pages, and what holding them costs." },
+  "ads-season": { zh: "为下一个亚马逊大促准备好广告。", en: "Prepare my ads for Amazon's next sales event." },
 } as const;
 /** The signed Overview, each README whole. */
 const OVERVIEW = {
-  "README.md": "cx finds why spend or sales moved in your Sponsored Products, Brands and Display ads and proposes changes backed by figures. Later, from Amazon's change history, it tells if a change worked, did not, or cannot be told yet.\n\nSome things you can ask:\n\n- Why did my ad spend rise last week while sales stayed flat?\n- Why did B0EXAMPLE1's ads suddenly stop getting impressions?\n- Which campaigns keep running out of budget, and how much should I add?\n\nTo have cx review your ads every week, also install [Scheduled Tasks](https://www.npmjs.com/package/@comchatx/cx-schedule).\n\n## What it uses\n\n- **[Amazon Ads API](https://www.npmjs.com/package/@comchatx/cx-amazon-ads):** your Amazon advertising accounts, connected on the Amazon Ads API plugin. cx reads your campaigns and reports there, and changes your bids, budgets and targets there.\n- **[Amazon SP-API](https://www.npmjs.com/package/cx-amazon-sp-api),** where you have it: your Buy&nbsp;Box, stock, fees and total sales, so cx can set your ads against your whole store.\n- **[Keepa API](https://www.npmjs.com/package/cx-keepa),** where you have it: Buy&nbsp;Box and rank history.\n",
-  "README.zh-CN.md": "cx 检查你的商品推广、品牌推广和展示型推广，找出花费或销量变化的原因，提出修改，并附上理由和依据的数据。之后问起某次改动，cx 会对照亚马逊的改动记录和报告，判断已见效、未见效，还是暂时无法确定。\n\n你可以这样问：\n\n- 上周广告花费涨了，销量却没动，为什么？\n- B0EXAMPLE1 的广告怎么突然没曝光了？\n- 哪些广告活动经常预算不够，该加到多少？\n\n如果想让 cx 每周定时复盘广告，再装上[定时任务](https://www.npmjs.com/package/@comchatx/cx-schedule)。\n\n## 用到的数据\n\n- **[亚马逊广告接口](https://www.npmjs.com/package/@comchatx/cx-amazon-ads)**：你的亚马逊广告账户，在亚马逊广告接口插件里连接。cx 在这里读取广告活动和报告，也在这里修改出价、预算和投放。\n- **[亚马逊卖家接口](https://www.npmjs.com/package/cx-amazon-sp-api)**（如果你装了）：你的 Buy&nbsp;Box、库存、费用和总销量，让 cx 把广告放到整个店铺里看。\n- **[Keepa 数据接口](https://www.npmjs.com/package/cx-keepa)**（如果你装了）：Buy&nbsp;Box 和排名的历史。\n",
+  "README.md": "cx finds why spend or sales moved in your Sponsored Products, Brands and Display ads and proposes changes backed by figures. Later, from Amazon's change history, it tells if a change worked, did not, or cannot be told yet.\n\nSome things you can ask:\n\n- Why did my ad spend rise last week while sales stayed flat?\n- Why did B0EXAMPLE1's ads suddenly stop getting impressions?\n- Which campaigns keep running out of budget, and how much should I add?\n\n## What it uses\n\n- **Your Amazon advertising accounts:** cx reads your campaigns and reports there, and changes your bids, budgets and targets there.\n",
+  "README.zh-CN.md": "cx 检查你的商品推广、品牌推广和展示型推广，找出花费或销量变化的原因，提出修改，并附上理由和依据的数据。之后问起某次改动，cx 会对照亚马逊的改动记录和报告，判断已见效、未见效，还是暂时无法确定。\n\n你可以这样问：\n\n- 上周广告花费涨了，销量却没动，为什么？\n- B0EXAMPLE1 的广告怎么突然没曝光了？\n- 哪些广告活动经常预算不够，该加到多少？\n\n## 用到的数据\n\n- **你的亚马逊广告账户**：cx 在这里读取广告活动和报告，也在这里修改出价、预算和投放。\n",
 } as const;
 
 it("the package's line is the signed one: npm's description in English, comchatx.about in Chinese", () => {
@@ -122,8 +122,10 @@ it("the Plugins page's field gives every skill its signed words in both language
   for (const name of SKILLS) expect(comchatx.skills[name], name).toEqual(SKILL_WORDS[name]);
   expect(comchatx.builds).toEqual([
     { on: "@comchatx/cx-amazon-ads", need: "required" },
-    { on: "cx-amazon-sp-api", need: "optional" },
-    { on: "cx-keepa", need: "optional" },
+    { on: "cx-amazon-sp-api", need: "optional", why: { en: "Sets your ads against your whole store.", zh: "用于把广告放到整个店铺里看。" } },
+    { on: "cx-keepa", need: "optional", why: { en: "Adds Buy\u00a0Box and rank history.", zh: "用于看 Buy\u00a0Box 和排名的历史。" } },
+    { on: "@comchatx/cx-schedule", need: "optional", why: { en: "Has cx review your ads on a schedule.", zh: "用于让 cx 按你定的时间复盘广告，比如每周一次。" } },
+    { on: "cx-amazon-seller", need: "optional", why: { en: "Tells cx from the start that you sell on Amazon.", zh: "用于让 cx 从第一条消息起就知道你在亚马逊开店。" } },
   ]);
 });
 
