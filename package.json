@@ -1,6 +1,6 @@
 {
   "name": "@comchatx/cx-sponsored-ads-playbook",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Traces why ad spend or sales moved, then judges each fix.",
   "license": "MIT",
   "author": "ComChatX",
@@ -9,7 +9,18 @@
     "nameZh": "亚马逊广告分析手册",
     "about": "查出广告花费和销量变化的原因，改后判断是否见效。",
     "mark": {
-      "line": "chart"
+      "on": "book",
+      "draw": [
+        {
+          "d": "M2.55 9.6A1.5 1.5 0 0 1 4.05 8.1L7.15 8.1L14.25 3.8C14.85 3.4 15.55 3.9 15.55 4.6L15.55 18.2C15.55 18.9 14.85 19.4 14.25 19L7.15 14.7L4.05 14.7A1.5 1.5 0 0 1 2.55 13.2ZM6.85 14.8L9.45 14.8L10.4 19.1A1 1 0 0 1 9.42 20.3L8.47 20.3A1 1 0 0 1 7.49 19.5Z",
+          "cut": true
+        },
+        {
+          "d": "M19.05 8.52A4.3 4.3 0 0 1 19.05 14.28",
+          "width": 2.6,
+          "cut": true
+        }
+      ]
     },
     "section": "extensions",
     "order": 51,
