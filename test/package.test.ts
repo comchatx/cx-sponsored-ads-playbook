@@ -43,13 +43,13 @@ it("every directory under skills/ holds a SKILL.md and no script: the report rea
 
 it("each template expands in a pi session: its arguments and the seller's own words reach the model, no placeholder does", async () => {
   const expected: Record<(typeof PROMPTS)[number], [string, string]> = {
-    "ads-review": ["/ads-review 只看美国站", "Review my Amazon sponsored ads over the last few weeks: how spend and sales went, what moved and why, and what you would change, with your reasons. 只看美国站"],
-    "ads-launch": ["/ads-launch B0EXAMPLE1 US,DE 月底到货", "Get my product B0EXAMPLE1 advertising: whether it can serve, and the first campaigns you would set up for it, with your reasons. US,DE 月底到货"],
-    "ads-harvest": ["/ads-harvest", "Go through my search terms since the last pass: which to move into targets of their own, which to negate, and why."],
-    "ads-season": ["/ads-season Prime Day", "Get my sponsored ads ready for the next Amazon event in my marketplaces: its dates, budgets, bids and deals, with your reasons. Prime Day"],
-    "ads-margin": ["/ads-margin SKU-1 SKU-2", "Work out what an ad sale is worth on my products, from fees and costs to break-even ACOS, and what that makes my targets. SKU-1 SKU-2"],
-    "ads-brand": ["/ads-brand Hearthly", "Show me who advertises on my brand's searches and product pages, and what holding those places costs me. Hearthly"],
-    "ads-change-review": ["/ads-change-review 2026-10-01 预算调整", "Tell me whether the ad changes made on 2026-10-01 held, did not, or cannot be told yet, and how sure you are. 预算调整"],
+    "ads-review": ["/ads-review 只看美国站", `${PROMPT_WORDS["ads-review"].en} 只看美国站`],
+    "ads-launch": ["/ads-launch B0EXAMPLE1 US,DE 月底到货", `${PROMPT_WORDS["ads-launch"].en} B0EXAMPLE1 US,DE 月底到货`],
+    "ads-harvest": ["/ads-harvest", PROMPT_WORDS["ads-harvest"].en],
+    "ads-season": ["/ads-season Prime Day", `${PROMPT_WORDS["ads-season"].en} Prime Day`],
+    "ads-margin": ["/ads-margin SKU-1 SKU-2", `${PROMPT_WORDS["ads-margin"].en} SKU-1 SKU-2`],
+    "ads-brand": ["/ads-brand Hearthly", `${PROMPT_WORDS["ads-brand"].en} Hearthly`],
+    "ads-change-review": ["/ads-change-review 2026-10-01 预算调整", `${PROMPT_WORDS["ads-change-review"].en} 2026-10-01 预算调整`],
   };
   for (const [name, [input, text]] of Object.entries(expected)) {
     const received = await typed(ROOT, input);
@@ -113,6 +113,14 @@ it("each template's English description and Chinese words are the signed ones", 
     expect(comchatx.prompts[name], name).toEqual({ zh: PROMPT_WORDS[name].zh });
     const front = readFileSync(join(ROOT, "prompts", `${name}.md`), "utf8").match(/^description: (".*")$/m);
     expect(JSON.parse(front![1]!), name).toBe(PROMPT_WORDS[name].en);
+  }
+});
+
+it("each template's body is its description word for word, then the seller's own words", () => {
+  for (const name of PROMPTS) {
+    const text = readFileSync(join(ROOT, "prompts", `${name}.md`), "utf8");
+    const description = /^description: "(.*)"$/m.exec(text)?.[1];
+    expect(text.replace(/^---\n[\s\S]*?\n---\n/, ""), name).toBe(`${description} $@\n`);
   }
 });
 
