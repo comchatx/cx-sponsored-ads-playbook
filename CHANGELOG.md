@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.5
+
+- The tile's mark on the Plugins page is the signed drawing.
+
 ## 0.1.4
 
 - Each template's body is its description, word for word, then the seller's own words: `ads-review`, `ads-launch`, `ads-change-review`, `ads-harvest`, `ads-margin`, `ads-brand` and `ads-season`. Typing `/ads-season` sends "Prepare my ads for Amazon's next sales event."; typing `/ads-review 只看美国站` sends that template's sentence, then 「只看美国站」.
