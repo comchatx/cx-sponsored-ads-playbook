@@ -44,7 +44,7 @@ it("every directory under skills/ holds a SKILL.md and no script: the report rea
 it("each template expands in a pi session: its arguments and the seller's own words reach the model, no placeholder does", async () => {
   const expected: Record<(typeof PROMPTS)[number], [string, string]> = {
     "ads-review": ["/ads-review 只看美国站", `${PROMPT_WORDS["ads-review"].en} 只看美国站`],
-    "ads-launch": ["/ads-launch B0EXAMPLE1 US,DE 月底到货", "Get my product B0EXAMPLE1 advertising: whether it can serve, and the first campaigns you would set up for it, with your reasons. US,DE 月底到货"],
+    "ads-launch": ["/ads-launch B0EXAMPLE1 US,DE 月底到货", `${PROMPT_WORDS["ads-launch"].en} B0EXAMPLE1 US,DE 月底到货`],
     "ads-harvest": ["/ads-harvest", PROMPT_WORDS["ads-harvest"].en],
     "ads-season": ["/ads-season Prime Day", `${PROMPT_WORDS["ads-season"].en} Prime Day`],
     "ads-margin": ["/ads-margin SKU-1 SKU-2", `${PROMPT_WORDS["ads-margin"].en} SKU-1 SKU-2`],
@@ -116,11 +116,8 @@ it("each template's English description and Chinese words are the signed ones", 
   }
 });
 
-// ads-launch keeps its own body, which holds cx to the campaigns it would set up, until that is ruled.
-const OWN_BODY = ["ads-launch"] as const;
-
-it("each other template's body is its description word for word, then the seller's own words", () => {
-  for (const name of PROMPTS.filter((one) => !(OWN_BODY as readonly string[]).includes(one))) {
+it("each template's body is its description word for word, then the seller's own words", () => {
+  for (const name of PROMPTS) {
     const text = readFileSync(join(ROOT, "prompts", `${name}.md`), "utf8");
     const description = /^description: "(.*)"$/m.exec(text)?.[1];
     expect(text.replace(/^---\n[\s\S]*?\n---\n/, ""), name).toBe(`${description} $@\n`);

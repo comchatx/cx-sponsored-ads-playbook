@@ -2,7 +2,7 @@
 
 ## 0.1.4
 
-- Six templates' body is their description, word for word, then the seller's own words: `ads-review`, `ads-change-review`, `ads-harvest`, `ads-margin`, `ads-brand` and `ads-season`. Typing `/ads-season` sends "Prepare my ads for Amazon's next sales event."; typing `/ads-review 只看美国站` sends that template's sentence, then 「只看美国站」. `ads-launch` keeps its body.
+- Each template's body is its description, word for word, then the seller's own words: `ads-review`, `ads-launch`, `ads-change-review`, `ads-harvest`, `ads-margin`, `ads-brand` and `ads-season`. Typing `/ads-season` sends "Prepare my ads for Amazon's next sales event."; typing `/ads-review 只看美国站` sends that template's sentence, then 「只看美国站」.
 
 ## 0.1.3
 
