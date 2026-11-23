@@ -1,6 +1,6 @@
 {
   "name": "@comchatx/cx-sponsored-ads-playbook",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Traces why ad spend or sales moved, then judges each fix.",
   "license": "MIT",
   "author": "ComChatX",
